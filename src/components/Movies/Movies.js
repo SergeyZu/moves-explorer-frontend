@@ -6,7 +6,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList'
 
 function Movies() {
   return (
-    <main className='main'>
+    <main className='movies'>
       <Header />
       <SearchForm />
       <MoviesCardList />

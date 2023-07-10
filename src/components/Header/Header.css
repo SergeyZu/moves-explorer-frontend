@@ -1,0 +1,16 @@
+.header {
+  padding: 0 70px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid red;
+  max-width: 1280px;
+  height: 74px;
+  margin: auto;
+}
+
+.header__navigation {
+  display: flex;
+  justify-content: space-between;
+}

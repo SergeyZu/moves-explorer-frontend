@@ -26,7 +26,7 @@ function Portfolio() {
         <li className='portfolio__list-item'>
           <a
             className='portfolio__link'
-            href='https://zinchenko.nomoredomains.rocks'
+            href='https://sergeyzu.github.io/react-mesto-auth'
           >
             <h4 className='portfolio__link-text'>Одностраничное приложение</h4>
             <h4 className='portfolio__link-symbol'>↗</h4>

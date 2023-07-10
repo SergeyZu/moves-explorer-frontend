@@ -1,0 +1,22 @@
+.navtab {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.navtab__button {
+  width: 96px;
+  height: 36px;
+  border: none;
+  border-radius: 10px;
+  background-color: #303030;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  margin-right: 10px;
+}
+
+.navtab__button:last-of-type {
+  margin-right: 0;
+}

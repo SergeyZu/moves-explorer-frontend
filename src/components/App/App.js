@@ -1,6 +1,6 @@
 import './App.css'
-// import Main from '../Main/Main'
-import Movies from '../Movies/Movies'
+import Main from '../Main/Main'
+// import Movies from '../Movies/Movies'
 // import SavedMovies from '../SavedMovies/SavedMovies'
 // import Profile from '../Profile/Profile'
 // import Register from '../Register/Register'
@@ -10,8 +10,8 @@ import Movies from '../Movies/Movies'
 function App() {
   return (
     <div className='app'>
-      {/* <Main /> */}
-      <Movies />
+      <Main />
+      {/* <Movies /> */}
       {/* <SavedMovies /> */}
       {/* <Profile /> */}
       {/* <Register /> */}

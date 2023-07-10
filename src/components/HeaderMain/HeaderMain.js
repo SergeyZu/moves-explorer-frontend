@@ -5,7 +5,7 @@ import LoginMainButton from '../Buttons/LoginMainButton/LoginMainButton'
 
 function HeaderMain() {
   return (
-    <header className='header'>
+    <header className='header-main'>
       <Logo />
       <RegisterLink />
       <LoginMainButton />

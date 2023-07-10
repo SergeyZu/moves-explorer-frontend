@@ -1,7 +1,7 @@
 import './RegisterLink.css'
 
 function RegisterLink() {
-  return <button className='register-button'>Регистрация</button>
+  return <button className='register-link'>Регистрация</button>
 }
 
 export default RegisterLink

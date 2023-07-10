@@ -1,8 +1,9 @@
 import './Movies.css'
 import Header from '../Header/Header'
-import Footer from '../Footer/Footer'
 import SearchForm from '../SearchForm/SearchForm'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
+import MoreButton from '../Buttons/MoreButton/MoreButton'
+import Footer from '../Footer/Footer'
 
 function Movies() {
   return (
@@ -10,6 +11,7 @@ function Movies() {
       <Header />
       <SearchForm />
       <MoviesCardList />
+      <MoreButton />
       <Footer />
     </main>
   )

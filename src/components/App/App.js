@@ -3,7 +3,8 @@ import './App.css'
 // import Movies from '../Movies/Movies'
 // import SavedMovies from '../SavedMovies/SavedMovies'
 // import Profile from '../Profile/Profile'
-import Register from '../Register/Register'
+// import Register from '../Register/Register'
+import Login from '../Login/Login'
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       {/* <Movies /> */}
       {/* <SavedMovies /> */}
       {/* <Profile /> */}
-      <Register />
+      {/* <Register /> */}
+      <Login />
     </div>
   )
 }

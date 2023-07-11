@@ -6,7 +6,7 @@ function Footer() {
       <p className='footer__text'>
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
-      <div>
+      <div className='footer__line'>
         <p className='footer__copyright'>
           © {new Date().getFullYear()} Moves Explorer
         </p>

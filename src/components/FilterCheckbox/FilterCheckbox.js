@@ -3,9 +3,13 @@ import checkbox from '../../images/checkbox.svg'
 
 function FilterCheckbox() {
   return (
-    <div className='checkbox'>
-      <img className='checkbox__image' src={checkbox} alt='Переключатель' />
-      <p className='checkbox__text'>Короткометражки</p>
+    <div className='filter-checkbox'>
+      <img
+        className='filter-checkbox__image'
+        src={checkbox}
+        alt='Переключатель'
+      />
+      <p className='filter-checkbox__text'>Короткометражки</p>
     </div>
   )
 }

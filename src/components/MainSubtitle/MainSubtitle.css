@@ -1,0 +1,14 @@
+.main-subtitle {
+  margin: 110px auto 0;
+  width: 1141px;
+  height: 50px;
+  border-bottom: 1px solid #dadada;
+}
+
+.main-subtitle__text {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+}

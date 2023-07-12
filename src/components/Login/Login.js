@@ -7,26 +7,28 @@ function Login() {
   return (
     <section className='login'>
       <LogoButton />
+      <h2 className='login__title'>Рады видеть!</h2>
       <div className='login__form'>
-        <h2 className='login__form_title'>Рады видеть!</h2>
-        <div className='login__form_input-block'>
-          <label className='login__form_label'>
-            E-mail
-            <input className='login__form_input' />
-          </label>
-          <label className='login__form_label'>
-            Пароль
-            <input className='login__form_input' />
-          </label>
-          <span className='login__form_error'></span>
-        </div>
-        <div className='login__form_button-block'>
+        {/* <div className='login__form_input-block'> */}
+        <label className='login__form_label'>
+          E-mail
+          <input className='login__form_input' />
+        </label>
+        <label className='login__form_label'>
+          Пароль
+          <input className='login__form_input' />
+        </label>
+        <span className='login__form_error'></span>
+        {/* </div> */}
+        <div className='login__form_button'>
           <LoginButton />
-          <div className='login__form_button_question'>
-            <p>Ещё не зарегистрированы?</p>
-            <RegisterLink />
-          </div>
         </div>
+      </div>
+      <div className='login__register-link'>
+        <p className='login__question'>Ещё не зарегистрированы?</p>
+        <a className='login__link' href=''>
+          Регистрация
+        </a>
       </div>
     </section>
   )

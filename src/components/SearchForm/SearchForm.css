@@ -1,7 +1,7 @@
 .search-form {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin: 0 auto;
-  padding: 0;
+  padding-top: 80px;
   max-width: 1280px;
   height: 228px;
 }
@@ -13,7 +13,7 @@
 
 .search-form__row {
   max-width: 1140px;
-  margin: 80px auto 28px;
+  margin: 0 auto 28px;
   display: grid;
   grid-template-columns: 1fr 44px;
   row-gap: 10px;

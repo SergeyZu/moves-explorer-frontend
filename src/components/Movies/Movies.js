@@ -11,7 +11,9 @@ function Movies() {
       <Header />
       <SearchForm />
       <MoviesCardList />
-      <MoreButton />
+      <div className='movies__more'>
+        <MoreButton />
+      </div>
       <Footer />
     </main>
   )

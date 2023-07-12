@@ -1,27 +1,27 @@
 import './Profile.css'
 import Header from '../Header/Header'
-import EditButton from '../Buttons/EditButton/EditButton'
-import LogoutButton from '../Buttons/LogoutButton/LogoutButton'
 
 function Profile() {
   return (
     <section className='profile'>
       <Header />
       <div className='profile__form'>
-        <h2 className='profile__form_title'>Привет, {}</h2>
-        <div className='profile__form_input-block'>
-          <label className='profile__form_label'>
+        <h2 className='profile__title'>Привет, чувак!{}</h2>
+        <div className='profile__input-block'>
+          <label className='profile__label'>
             Имя
-            <input className='profile__form_input' />
+            <input className='profile__input' />
           </label>
-          <label className='profile__form_label'>
+          <label className='profile__label'>
             E-mail
-            <input className='profile__form_input' />
+            <input className='profile__input' />
           </label>
         </div>
-        <div className='profile__form_button-block'>
-          <EditButton />
-          <LogoutButton />
+        <div className='profile__links'>
+          <a className='profile__link profile__link_edit'>Редактировать</a>
+          <a className='profile__link profile__link_logout'>
+            Выйти из аккаунта
+          </a>
         </div>
       </div>
     </section>

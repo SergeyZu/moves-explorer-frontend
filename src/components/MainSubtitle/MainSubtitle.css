@@ -11,6 +11,11 @@
     padding: 0 50px;
   }
 }
+@media screen and (max-width: 600px) {
+  .main-subtitle {
+    padding: 0 30px;
+  }
+}
 
 .main-subtitle__text {
   margin: 0;

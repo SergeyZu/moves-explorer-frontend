@@ -4,7 +4,7 @@
   align-items: center;
   /* justify-content: space-between; */
   margin: 20px auto 0;
-  padding: 0 40px;
+  padding: 0 20px;
   box-sizing: border-box;
   /* border: 1px solid red; */
   max-width: 1200px;
@@ -42,5 +42,14 @@
     line-height: 52px;
     letter-spacing: -1.6px;
     margin: 350px 0 314px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .promo__title {
+    max-width: 520px;
+    font-size: 30px;
+    line-height: 52px;
+    letter-spacing: -1.6px;
+    margin: 300px 0 314px;
   }
 }

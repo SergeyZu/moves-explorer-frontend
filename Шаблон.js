@@ -21,6 +21,6 @@ export default Footer
   margin: 0 auto;
 }
 
-@media screen and (max-width: 825px) {
+@media screen and (max-width: 600px) {
 
 }

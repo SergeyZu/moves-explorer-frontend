@@ -1,10 +1,10 @@
 .main-subtitle {
   /* margin: 110px auto 0; */
   margin: 0 auto;
-  /* max-width: 1141px;
-  width: 100%; */
+  padding: 0 70px;
+  /* width: 100%; */
   height: 50px;
-  border-bottom: 1px solid #dadada;
+  /* border-bottom: 1px solid #dadada; */
 }
 
 .main-subtitle__text {
@@ -14,4 +14,11 @@
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.88px;
+}
+
+.main-subtitle__underline {
+  border-bottom: 1px solid #dadada;
+  margin-top: 23px;
+  max-width: 1141px;
+  width: 100%;
 }

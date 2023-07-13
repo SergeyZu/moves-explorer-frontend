@@ -3,8 +3,8 @@ import MoviesCard from '../MoviesCard/MoviesCard'
 
 function MoviesCardList() {
   return (
-    <section className='movies-card-list'>
-      <ul className='movies-card-list__list'>
+    <section>
+      <ul className='movies-card-list'>
         <MoviesCard />
       </ul>
     </section>

@@ -9,7 +9,9 @@ function SavedMovies() {
     <main className='saved-movies'>
       <Header />
       <SearchForm />
-      <MoviesCardList />
+      <div className='saved-movies__card-list'>
+        <MoviesCardList />
+      </div>
       <Footer />
     </main>
   )

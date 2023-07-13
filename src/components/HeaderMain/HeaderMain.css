@@ -10,6 +10,11 @@
   height: 74px;
   /* margin: auto; */
 }
+@media screen and (max-width: 825px) {
+  .header-main {
+    padding: 0 30px;
+  }
+}
 
 .header-main__link {
   margin: 0 30px 0;

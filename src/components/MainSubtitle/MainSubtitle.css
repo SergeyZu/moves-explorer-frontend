@@ -6,6 +6,11 @@
   height: 50px;
   /* border-bottom: 1px solid #dadada; */
 }
+@media screen and (max-width: 825px) {
+  .main-subtitle {
+    padding: 0 50px;
+  }
+}
 
 .main-subtitle__text {
   margin: 0;

@@ -7,6 +7,11 @@
   padding: 79px 70px 0;
   box-sizing: border-box;
 }
+@media screen and (max-width: 825px) {
+  .footer {
+    padding: 79px 30px 0;
+  }
+}
 
 .footer__text {
   max-width: 1140px;
@@ -26,6 +31,11 @@
   align-items: center;
   justify-content: space-between;
   max-width: 1140px;
+}
+@media screen and (max-width: 825px) {
+  .footer__line {
+    max-width: 768px;
+  }
 }
 
 .footer__copyright {

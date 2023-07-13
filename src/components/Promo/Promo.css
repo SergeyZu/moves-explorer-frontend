@@ -13,6 +13,13 @@
   border-radius: 10px;
   background-color: #272727;
 }
+@media screen and (max-width: 825px) {
+  .promo {
+    max-width: 768px;
+    width: calc(100% - 40px);
+    height: 834px;
+  }
+}
 
 .promo__title {
   text-align: center;
@@ -27,4 +34,13 @@
   line-height: 58px;
   letter-spacing: -2px;
   margin: 160px 0 151px;
+}
+@media screen and (max-width: 825px) {
+  .promo__title {
+    max-width: 680px;
+    font-size: 40px;
+    line-height: 52px;
+    letter-spacing: -1.6px;
+    margin: 350px 0 314px;
+  }
 }

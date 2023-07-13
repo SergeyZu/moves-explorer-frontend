@@ -1,5 +1,5 @@
 .login {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   max-width: 396px;
   margin: auto;
   padding-top: 70px;
@@ -47,6 +47,7 @@
 
 .login__form_error {
   height: 30px;
+  margin: 0 0 89px;
 }
 
 .login__form_button {

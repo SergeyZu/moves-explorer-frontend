@@ -11,7 +11,7 @@
 }
 @media screen and (max-width: 600px) {
   .about-me {
-    margin: 70px auto 91px;
+    margin: 70px auto;
   }
 }
 
@@ -38,6 +38,8 @@
     grid-template-areas:
       'photo'
       'text-block';
+    margin: 60px auto 0;
+    padding: 0 30px;
   }
 }
 
@@ -51,6 +53,7 @@
 @media screen and (max-width: 600px) {
   .about-me__text-block {
     grid-area: text-block;
+    margin: 40px auto 0;
   }
 }
 
@@ -69,6 +72,15 @@
     font-size: 40px;
     line-height: 40px;
     letter-spacing: -1.6px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .about-me__title {
+    margin: 0 0 20px;
+    max-width: 348px;
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -1.2px;
   }
 }
 
@@ -132,5 +144,8 @@
 @media screen and (max-width: 600px) {
   .about-me__photo {
     grid-area: photo;
+    max-width: 292px;
+    max-height: 352px;
+    margin: 0 auto;
   }
 }

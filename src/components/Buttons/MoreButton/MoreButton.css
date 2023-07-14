@@ -9,3 +9,8 @@
   font-weight: 500;
   line-height: normal;
 }
+@media screen and (max-width: 600px) {
+  .more-button {
+    width: 240px;
+  }
+}

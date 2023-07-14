@@ -1,12 +1,6 @@
 .navtab {
   display: flex;
   flex-direction: row;
-  margin-bottom: 30px;
-}
-@media screen and (max-width: 420px) {
-  .navtab {
-    margin-bottom: 22px;
-  }
 }
 
 .navtab__button {

@@ -9,7 +9,7 @@
   /* border: 1px solid red; */
   max-width: 1200px;
   width: calc(100% - 80px);
-  height: 493px;
+  /* height: 493px; */
   border-radius: 10px;
   background-color: #272727;
 }
@@ -17,7 +17,7 @@
   .promo {
     max-width: 768px;
     width: calc(100% - 40px);
-    height: 834px;
+    /* height: 834px; */
   }
 }
 @media screen and (max-width: 420px) {
@@ -66,5 +66,14 @@
     line-height: 37px;
     letter-spacing: -1.16px;
     margin: 220px 0 212px;
+  }
+}
+
+.promo__navtab {
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 420px) {
+  .promo__navtab {
+    margin-bottom: 17px;
   }
 }

@@ -9,3 +9,11 @@
   font-weight: 500;
   line-height: 16px;
 }
+@media screen and (max-width: 420px) {
+  .login-main-button {
+    width: 54px;
+    height: 26px;
+    font-size: 10px;
+    padding: 0;
+  }
+}

@@ -16,6 +16,11 @@
     padding: 0 30px;
   }
 }
+@media screen and (max-width: 420px) {
+  .main-subtitle {
+    padding: 0 14px;
+  }
+}
 
 .main-subtitle__text {
   margin: 0;
@@ -25,10 +30,21 @@
   line-height: normal;
   letter-spacing: -0.88px;
 }
+@media screen and (max-width: 420px) {
+  .main-subtitle__text {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+}
 
 .main-subtitle__underline {
   border-bottom: 1px solid #dadada;
   margin-top: 23px;
   max-width: 1141px;
   width: 100%;
+}
+@media screen and (max-width: 420px) {
+  .main-subtitle__underline {
+    margin-top: 28px;
+  }
 }

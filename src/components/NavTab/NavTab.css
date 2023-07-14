@@ -3,6 +3,11 @@
   flex-direction: row;
   margin-bottom: 30px;
 }
+@media screen and (max-width: 420px) {
+  .navtab {
+    margin-bottom: 22px;
+  }
+}
 
 .navtab__button {
   width: 96px;
@@ -16,7 +21,14 @@
   line-height: 16px;
   margin-right: 10px;
 }
-
 .navtab__button:last-of-type {
   margin-right: 0;
+}
+@media screen and (max-width: 420px) {
+  .navtab__button {
+    width: 82px;
+    height: 26px;
+    font-size: 10px;
+    margin-right: 6px;
+  }
 }

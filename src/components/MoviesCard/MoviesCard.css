@@ -68,15 +68,16 @@
 } */
 
 .movies-card__title {
-  margin: 6px 0 0;
+  margin: 4px 0 0;
   color: #fff;
   font-size: 13px;
   font-weight: 500;
   line-height: normal;
   grid-area: title;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 680px) {
   .movies-card__title {
+    margin: 6px 0 0;
     font-size: 12px;
   }
 }

@@ -8,9 +8,11 @@
   max-width: 1140px;
   height: 74px;
   margin: 0 auto;
-}
-
-.header__navigation {
   display: flex;
   justify-content: space-between;
 }
+
+/* .header__navigation {
+  display: flex;
+  justify-content: space-between;
+} */

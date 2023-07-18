@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './Profile.css'
 import Header from '../Header/Header'
 
@@ -19,9 +20,9 @@ function Profile() {
         </div>
         <div className='profile__links'>
           <a className='profile__link profile__link_edit'>Редактировать</a>
-          <a className='profile__link profile__link_logout'>
-            Выйти из аккаунта
-          </a>
+          <Link to='/signin' className='profile__link profile__link_logout'>
+            Выйти из аккаунта{' '}
+          </Link>
         </div>
       </div>
     </section>

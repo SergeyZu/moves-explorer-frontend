@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './Navigation.css'
 import LogoButton from '../Buttons/LogoButton/LogoButton'
 import AccountButton from '../Buttons/AccountButton/AccountButton'
@@ -9,14 +10,14 @@ function Navigation() {
         <LogoButton />
         <ul className='navigation__list'>
           <li className='navigation__list-item'>
-            <a className='navigation__link' href='#'>
+            <Link to='/movies' className='navigation__link'>
               Фильмы
-            </a>
+            </Link>
           </li>
           <li className='navigation__list-item'>
-            <a className='navigation__link' href='#'>
+            <Link to='/saved-movies' className='navigation__link'>
               Сохраненные фильмы
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

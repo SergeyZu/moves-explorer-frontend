@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './Login.css'
 import LogoButton from '../Buttons/LogoButton/LogoButton'
 import LoginButton from '../Buttons/LoginButton/LoginButton'
@@ -26,9 +27,9 @@ function Login() {
       </div>
       <div className='login__register-link'>
         <p className='login__question'>Ещё не зарегистрированы?</p>
-        <a className='login__link' href=''>
-          Регистрация
-        </a>
+        <Link to='/signup' className='login__link'>
+          Регистрация{' '}
+        </Link>
       </div>
     </section>
   )

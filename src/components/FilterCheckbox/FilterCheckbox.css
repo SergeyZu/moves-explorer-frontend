@@ -7,6 +7,11 @@
 .filter-checkbox__image {
   width: 36px;
   height: 20px;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.filter-checkbox__image:hover {
+  opacity: 0.6;
 }
 
 .filter-checkbox__text {

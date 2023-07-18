@@ -1,27 +1,31 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Navigation.css'
 import LogoButton from '../Buttons/LogoButton/LogoButton'
 import AccountButton from '../Buttons/AccountButton/AccountButton'
+import BurgerButton from '../Buttons/BurgerButton/BurgerButton'
+import CloseButton from '../Buttons/CloseButton/CloseButton'
 
 function Navigation() {
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <nav className='navigation'>
-      <div className='navigation__left'>
-        <LogoButton />
-        <ul className='navigation__list'>
-          <li className='navigation__list-item'>
-            <Link to='/movies' className='navigation__link'>
-              Фильмы
-            </Link>
-          </li>
-          <li className='navigation__list-item'>
-            <Link to='/saved-movies' className='navigation__link'>
-              Сохраненные фильмы
-            </Link>
-          </li>
-        </ul>
+      <div className='navigation__container'>
+        <div className='navigation__box'>
+          <div
+            className='navigation__burger'
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <CloseButton /> : <BurgerButton />}
+          </div>
+          <ul className='navigation__list'>
+            <li className='navigation__list-item'>Главная</li>
+            <li className='navigation__list-item'>Фильмы</li>
+            <li className='navigation__list-item'>Сохраненные фильмы</li>
+            <li className='navigation__list-item'>Аккаунт</li>
+          </ul>
+        </div>
       </div>
-      <AccountButton />
     </nav>
   )
 }

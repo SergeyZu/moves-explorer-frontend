@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import './Login.css'
 import LogoButton from '../Buttons/LogoButton/LogoButton'
 import LoginButton from '../Buttons/LoginButton/LoginButton'
-import RegisterLink from '../Buttons/RegisterLink/RegisterLink'
 
 function Login() {
   return (

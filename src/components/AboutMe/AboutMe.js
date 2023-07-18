@@ -1,12 +1,15 @@
 import './AboutMe.css'
-import MainSubtitle from '../MainSubtitle/MainSubtitle'
-// import Portfolio from '../Portfolio/Portfolio'
 import myphoto from '../../images/my-photo.jpg'
 
 function AboutMe() {
   return (
     <section className='about-me'>
-      <MainSubtitle subtitle='Студент' />
+      <div className='main__subtitle'>
+        <h2 className='main__subtitle__text'>
+          <a name='student'>Студент</a>
+        </h2>
+        <div className='main__subtitle__underline'></div>
+      </div>{' '}
       <div className='about-me__content'>
         <div className='about-me__column'>
           <div className='about-me__text-block'>
@@ -35,7 +38,6 @@ function AboutMe() {
         </div>
         <img className='about-me__photo' src={myphoto} alt='Фото' />
       </div>
-      {/* <Portfolio /> */}
     </section>
   )
 }

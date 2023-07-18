@@ -1,10 +1,14 @@
 import './Techs.css'
-import MainSubtitle from '../MainSubtitle/MainSubtitle'
 
 function Techs() {
   return (
     <section className='techs'>
-      <MainSubtitle subtitle='Технологии' />
+      <div className='main__subtitle'>
+        <h2 className='main__subtitle__text'>
+          <a name='techs'>Технологии</a>
+        </h2>
+        <div className='main__subtitle__underline'></div>
+      </div>{' '}
       <div className='techs__content'>
         <h3 className='techs__subtitle'>7&nbsp;технологий</h3>
         <p className='techs__text'>

@@ -1,5 +1,5 @@
 import './Main.css'
-import HeaderMain from '../HeaderMain/HeaderMain'
+import Header from '../Header/Header'
 import Promo from '../Promo/Promo'
 import AboutProject from '../AboutProject/AboutProject'
 import Techs from '../Techs/Techs'
@@ -10,7 +10,7 @@ import Portfolio from '../Portfolio/Portfolio'
 function Main() {
   return (
     <main className='main'>
-      <HeaderMain />
+      <Header />
       <Promo />
       <AboutProject />
       <Techs />

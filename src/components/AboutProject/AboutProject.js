@@ -1,10 +1,14 @@
 import './AboutProject.css'
-import MainSubtitle from '../MainSubtitle/MainSubtitle'
 
 function AboutProject() {
   return (
     <section className='about-project'>
-      <MainSubtitle subtitle='О проекте' />
+      <div className='main__subtitle'>
+        <h2 className='main__subtitle__text'>
+          <a name='about-project'>О проекте</a>
+        </h2>
+        <div className='main__subtitle__underline'></div>
+      </div>
       <div className='about-project__info-block'>
         <div className='about-project__info'>
           <h3 className='about-project__info_subtitle'>

@@ -32,4 +32,9 @@
   line-height: normal;
   margin-top: 184px;
   text-decoration: none;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.page-not-found__link:hover {
+  opacity: 0.6;
 }

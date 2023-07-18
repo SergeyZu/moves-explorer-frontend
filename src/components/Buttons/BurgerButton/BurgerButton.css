@@ -1,4 +1,9 @@
 .burger-button {
   width: 44px;
   height: 44px;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.burger-button:hover {
+  opacity: 0.6;
 }

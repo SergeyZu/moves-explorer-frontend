@@ -7,4 +7,9 @@
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.register-link:hover {
+  opacity: 0.6;
 }

@@ -34,4 +34,9 @@
   font-weight: 500;
   line-height: 18px;
   text-decoration: none;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.navigation__link:hover {
+  opacity: 0.6;
 }

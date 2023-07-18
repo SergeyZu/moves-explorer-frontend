@@ -66,6 +66,11 @@
   text-decoration: none;
   display: flex;
   justify-content: space-between;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.portfolio__link:hover {
+  opacity: 0.6;
 }
 
 .portfolio__link-text {
@@ -76,6 +81,7 @@
   line-height: 50px;
   letter-spacing: -1.2px;
 }
+
 @media screen and (max-width: 825px) {
   .portfolio__link-text {
     font-size: 28px;
@@ -104,6 +110,7 @@
   line-height: 60px;
   letter-spacing: -1.2px;
 }
+
 @media screen and (max-width: 600px) {
   .portfolio__link-symbol {
     font-size: 22px;

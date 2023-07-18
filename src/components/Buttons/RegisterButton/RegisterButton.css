@@ -9,4 +9,9 @@
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.register-button:hover {
+  opacity: 0.6;
 }

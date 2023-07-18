@@ -8,7 +8,13 @@
   font-size: 12px;
   font-weight: 500;
   line-height: normal;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
 }
+.more-button:hover {
+  opacity: 0.6;
+}
+
 @media screen and (max-width: 600px) {
   .more-button {
     width: 240px;

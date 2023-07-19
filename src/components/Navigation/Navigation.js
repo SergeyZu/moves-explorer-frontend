@@ -10,28 +10,44 @@ function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <nav className='navigation'>
-      <div className='navigation__container'>
-        <div className='navigation__box'>
-          <ul
-            className={
-              isOpen
-                ? 'navigation__list navigation__list_active'
-                : 'navigation__list'
-            }
-          >
-            <li className='navigation__list-item'>Главная</li>
-            <li className='navigation__list-item'>Фильмы</li>
-            <li className='navigation__list-item'>Сохраненные фильмы</li>
-            <li className='navigation__list-item'>Аккаунт</li>
+      {/* <div className='navigation__container'> */}
+      <div className='navigation__box'>
+        <dev
+          className={
+            isOpen
+              ? 'navigation__menu navigation__menu_active'
+              : 'navigation__menu'
+          }
+        >
+          <ul className='navigation__list'>
+            <Link to='/movies' className='navigation__link'>
+              <li className='navigation__list-item'>
+                {isOpen ? 'Главная' : ''}
+              </li>
+            </Link>
+            <Link to='/movies' className='navigation__link'>
+              <li className='navigation__list-item'>Фильмы</li>
+            </Link>
+            <Link to='/saved-movies' className='navigation__link'>
+              <li className='navigation__list-item'>Сохраненные фильмы</li>
+            </Link>
           </ul>
-          <div
-            className='navigation__burger'
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <CloseButton /> : <BurgerButton />}
-          </div>
+
+          {/* <div className='navigation__menu-item'> */}
+          <AccountButton />
+          {/* </div> */}
+        </dev>
+        <div className='navigation__burger' onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? (
+            <div className='navigation__burger_close-button'>
+              <CloseButton />
+            </div>
+          ) : (
+            <BurgerButton />
+          )}
         </div>
       </div>
+      {/* </div> */}
     </nav>
   )
 }

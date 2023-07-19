@@ -1,58 +1,70 @@
 .navigation {
   width: 100%;
-}
-
-.navigation__container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 10px;
+  padding: 0;
 }
 
 .navigation__box {
-  height: 100px;
   display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid gray;
 }
 
 .navigation__burger {
-  position: relative;
-  top: 20px;
-  right: 20px;
+  display: none;
+}
+
+.navigation__menu {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navigation__list {
-  list-style: none;
   display: flex;
-  align-items: center;
-  font-size: 22px;
-  line-height: 28px;
-  gap: 30px;
+  gap: 16px;
+  list-style: none;
+  margin: 0 28px;
+  padding: 0;
 }
 
 .navigation__list-item {
   text-decoration: none;
+  font-size: 13px;
+  line-height: 18px;
   color: #fff;
 }
 
-.navigation__list-item_hidden {
-  visibility: hidden;
+.navigation__link {
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.navigation__link:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 825px) {
   .navigation__burger {
     display: block;
     position: absolute;
-    right: 10px;
-    top: 27px;
+    right: 30px;
+    top: 15px;
     cursor: pointer;
     z-index: 1;
   }
 
-  .navigation__list {
+  .navigation__burger_close-button {
+    position: fixed;
+    top: 22px;
+    right: 22px;
+  }
+
+  .navigation__menu {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 159px 0 90px;
+    box-sizing: border-box;
     position: fixed;
     left: +110%;
     right: 0;
@@ -65,13 +77,29 @@
     transition: left 0.4s;
   }
 
-  .navigation__list_active {
+  .navigation__menu_active {
     left: calc(100% - 520px);
+  }
+
+  .navigation__list {
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .navigation__list-item {
+    text-decoration: none;
+    font-size: 18px;
+    line-height: normal;
+    color: #fff;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .navigation__list_active {
+  .navigation__menu_active {
     left: 0;
   }
 }

@@ -12,11 +12,21 @@ function ProfileSave() {
         <div className='profile__input-block'>
           <label className='profile__label'>
             Имя
-            <input className='profile__input' />
+            <input
+              className='profile__input'
+              type='text'
+              placeholder='Введите ваше имя'
+              required
+            />
           </label>
           <label className='profile__label'>
             E-mail
-            <input className='profile__input' />
+            <input
+              className='profile__input'
+              type='email'
+              placeholder='example@example.net'
+              required
+            />
           </label>
         </div>
         <span className='profile__span'>

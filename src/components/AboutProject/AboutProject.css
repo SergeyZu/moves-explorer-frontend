@@ -64,7 +64,11 @@
   }
 }
 
+<<<<<<< HEAD
 .about-project__content {
+=======
+.about-project__info-block {
+>>>>>>> f1d747a4b6ba403a553f6737da35884334deec31
   /* margin: auto; */
   /* padding-top: 70px; */
   padding: 70px 70px 0;

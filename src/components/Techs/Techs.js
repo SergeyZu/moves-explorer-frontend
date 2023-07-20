@@ -3,11 +3,11 @@ import './Techs.css'
 function Techs() {
   return (
     <section className='techs'>
-      <div className='main__subtitle'>
-        <h2 className='main__subtitle__text'>
+      <div className='techs__title'>
+        <h2 className='techs__title_text'>
           <a name='techs'>Технологии</a>
         </h2>
-        <div className='main__subtitle__underline'></div>
+        <div className='techs__title_underline'></div>
       </div>{' '}
       <div className='techs__content'>
         <h3 className='techs__subtitle'>7&nbsp;технологий</h3>

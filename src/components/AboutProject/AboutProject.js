@@ -3,11 +3,11 @@ import './AboutProject.css'
 function AboutProject() {
   return (
     <section className='about-project'>
-      <div className='main__subtitle'>
-        <h2 className='main__subtitle__text'>
+      <div className='about-project__title'>
+        <h2 className='about-project__title_text'>
           <a name='about-project'>О проекте</a>
         </h2>
-        <div className='main__subtitle__underline'></div>
+        <div className='about-project__title_underline'></div>
       </div>
       <div className='about-project__info-block'>
         <div className='about-project__info'>

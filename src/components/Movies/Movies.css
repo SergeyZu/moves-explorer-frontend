@@ -1,6 +1,13 @@
 .movies {
   max-width: 1280px;
   margin: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.movies__container {
+  flex: 1;
 }
 
 .movies__more {

@@ -4,16 +4,16 @@ import myphoto from '../../images/my-photo.jpg'
 function AboutMe() {
   return (
     <section className='about-me'>
-      <div className='main__subtitle'>
-        <h2 className='main__subtitle__text'>
+      <div className='about-me__title'>
+        <h2 className='about-me__title_text'>
           <a name='student'>Студент</a>
         </h2>
-        <div className='main__subtitle__underline'></div>
+        <div className='about-me__title_underline'></div>
       </div>{' '}
       <div className='about-me__content'>
         <div className='about-me__column'>
           <div className='about-me__text-block'>
-            <h3 className='about-me__title'>Сергей</h3>
+            <h3 className='about-me__name'>Сергей</h3>
             <h4 className='about-me__subtitle'>
               Фронтенд-разработчик, 44 года
             </h4>

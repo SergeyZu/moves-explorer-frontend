@@ -2,7 +2,8 @@
   /* border: 1px solid red; */
   max-width: 396px;
   margin: auto;
-  padding-top: 70px;
+  padding: 70px 30px 0;
+  box-sizing: border-box;
 }
 
 .register__title {
@@ -11,7 +12,7 @@
   font-size: 24px;
   font-weight: 500;
   line-height: normal;
-  text-align: left;
+  text-align: center;
 }
 
 .register__form {
@@ -30,6 +31,7 @@
 .register__form_input {
   margin: 10px 0 10px;
   padding: 0 0 0 15px;
+  box-sizing: border-box;
   width: 100%;
   max-width: 381px;
   height: 46px;

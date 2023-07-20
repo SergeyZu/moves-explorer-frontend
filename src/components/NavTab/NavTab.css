@@ -45,3 +45,6 @@ html {
   line-height: 16px;
   margin-right: 10px;
 }
+.navtab__anchor:last-of-type {
+  margin-right: 0;
+}

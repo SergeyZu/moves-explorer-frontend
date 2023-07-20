@@ -15,8 +15,8 @@ function Movies() {
         <div className='movies__more'>
           <MoreButton />
         </div>
-        <Footer />
       </div>
+      <Footer />
     </main>
   )
 }

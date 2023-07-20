@@ -3,9 +3,11 @@
   /* margin: auto; */
   /* max-width: 1280px; */
   /* height: 172px; */
+  width: 100%;
   margin: 0 auto;
   padding: 79px 70px 20px;
   box-sizing: border-box;
+  flex-shrink: 0;
 }
 @media screen and (max-width: 825px) {
   .footer {

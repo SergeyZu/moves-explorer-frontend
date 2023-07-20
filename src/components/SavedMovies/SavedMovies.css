@@ -1,8 +1,20 @@
 .saved-movies {
   max-width: 1280px;
   margin: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.saved-movies__content {
+  box-sizing: border-box;
+  flex: 1 0 auto;
 }
 
 .saved-movies__card-list {
   margin-bottom: 237px;
+}
+
+.saved-movies__footer {
+  flex: 0 0 auto;
 }

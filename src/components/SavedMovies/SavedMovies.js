@@ -7,10 +7,13 @@ import Footer from '../Footer/Footer'
 function SavedMovies() {
   return (
     <main className='saved-movies'>
-      <Header />
-      <SearchForm />
-      <div className='saved-movies__card-list'>
-        <MoviesCardList />
+      <div className='saved-movies__content'>
+        <Header />
+        <SearchForm />
+        <div className='saved-movies__card-list'>
+          <MoviesCardList />
+        </div>
+        {/* <div className='saved-movies__footer'></div> */}
       </div>
       <Footer />
     </main>

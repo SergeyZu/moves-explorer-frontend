@@ -3,27 +3,27 @@ import './AboutProject.css'
 function AboutProject() {
   return (
     <section className='about-project'>
-      <div className='main__subtitle'>
-        <h2 className='main__subtitle__text'>
+      <div className='about-project__title'>
+        <h2 className='about-project__title_text'>
           <a name='about-project'>О проекте</a>
         </h2>
-        <div className='main__subtitle__underline'></div>
+        <div className='about-project__title_underline'></div>
       </div>
-      <div className='about-project__info-block'>
-        <div className='about-project__info'>
-          <h3 className='about-project__info_subtitle'>
+      <div className='about-project__content'>
+        <div className='about-project__content_info'>
+          <h3 className='about-project__content_info_subtitle'>
             Дипломный проект включал 5&nbsp;этапов
           </h3>
-          <p className='about-project__info_text'>
+          <p className='about-project__content_info_text'>
             Составление плана, работу над бэкендом, вёрстку, добавление
             функциональности и&nbsp;финальные доработки.
           </p>
         </div>
-        <div className='about-project__info'>
-          <h3 className='about-project__info_subtitle'>
+        <div className='about-project__content_info'>
+          <h3 className='about-project__content_info_subtitle'>
             На&nbsp;выполнение диплома ушло 5&nbsp;недель
           </h3>
-          <p className='about-project__info_text'>
+          <p className='about-project__content_info_text'>
             У&nbsp;каждого этапа был мягкий и&nbsp;жёсткий дедлайн, которые
             нужно было соблюдать, чтобы успешно защититься.
           </p>

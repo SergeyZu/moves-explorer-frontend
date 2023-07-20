@@ -12,7 +12,7 @@ function Navigation() {
     <nav className='navigation'>
       {/* <div className='navigation__container'> */}
       <div className='navigation__box'>
-        <dev
+        <div
           className={
             isOpen
               ? 'navigation__menu navigation__menu_active'
@@ -33,10 +33,10 @@ function Navigation() {
             </Link>
           </ul>
 
-          {/* <div className='navigation__menu-item'> */}
-          <AccountButton />
-          {/* </div> */}
-        </dev>
+          <div className='navigation__accoutn-button'>
+            <AccountButton />
+          </div>
+        </div>
         <div className='navigation__burger' onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? (
             <div className='navigation__burger_close-button'>

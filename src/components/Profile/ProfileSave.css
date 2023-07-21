@@ -74,7 +74,23 @@
 .profile-save__button {
   width: 100%;
   margin: 20px auto;
+  max-width: 410px;
+  min-height: 45px;
+  border: none;
+  border-radius: 3px;
+  /* background-color: #4285f4; */
+  background-color: #f8f8f8;
+  color: #c2c2c2;
+  /* color: #fff; */
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  /* transition: opacity 0.3s ease;
+  cursor: pointer; */
 }
+/* .profile-save__button:hover {
+  opacity: 0.6;
+} */
 
 /* .profile-save__link {
   margin-bottom: 16px;

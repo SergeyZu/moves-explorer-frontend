@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import './ProfileSave.css'
 import Header from '../Header/Header'
-import SaveButton from '../Buttons/SaveButton/SaveButton'
 
 function ProfileSave() {
   return (
@@ -33,9 +32,8 @@ function ProfileSave() {
           <span className='profile-save__span'>
             При обновлении профиля произошла ошибка
           </span>
-          <div className='profile-save__button'>
-            <SaveButton />
-          </div>
+          <button className='profile-save__button'>Сохранить</button>
+
           {/* <div className='profile-save__links'>
           <a className='profile-save__link profile-save__link_edit'>Редактировать</a>
           <Link to='/signin' className='profile-save__link profile-save__link_logout'>

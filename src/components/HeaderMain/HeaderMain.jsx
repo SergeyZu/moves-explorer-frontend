@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import './HeaderMain.css'
-import Logo from '../Buttons/LogoButton/LogoButton'
+import Logo from '../LogoButton/LogoButton'
 
 function HeaderMain() {
   return (

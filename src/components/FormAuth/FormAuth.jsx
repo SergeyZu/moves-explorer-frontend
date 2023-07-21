@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import './FormAuth.css'
-import LogoButton from '../Buttons/LogoButton/LogoButton'
+import LogoButton from '../LogoButton/LogoButton'
 
 function FormAuth({
   title,

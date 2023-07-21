@@ -15,7 +15,7 @@
   opacity: 0.6;
 }
 
-@media screen and (max-width: 420px) {
+@media (max-width: 420px) {
   .login-main-button {
     width: 54px;
     height: 26px;

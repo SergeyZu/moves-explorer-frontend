@@ -50,7 +50,7 @@
   margin: auto;
   padding: 70px 30px;
 }
-@media screen and (max-width: 420px) {
+@media (max-width: 420px) {
   .login__container {
     align-items: center;
     padding: 56px 30px 30px;
@@ -66,7 +66,7 @@
   font-weight: 500;
   line-height: normal;
 }
-@media screen and (max-width: 420px) {
+@media (max-width: 420px) {
   .login__title {
     margin: 48px 0 70px;
     color: #fff;
@@ -135,7 +135,7 @@
   line-height: normal;
   margin: 0 6px 0 0;
 }
-@media screen and (max-width: 420px) {
+@media (max-width: 420px) {
   .login__question {
     font-size: 12px;
   }
@@ -153,7 +153,7 @@
 .login__link:hover {
   opacity: 0.6;
 }
-@media screen and (max-width: 420px) {
+@media (max-width: 420px) {
   .login__link {
     font-size: 12px;
   }

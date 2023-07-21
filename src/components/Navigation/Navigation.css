@@ -4,12 +4,12 @@
   flex: 1;
 }
 
-.navigation__box {
+.navigation__container {
   display: flex;
 }
 
-.navigation__burger {
-  display: none;
+.navigation__box {
+  display: flex;
 }
 
 .navigation__menu {
@@ -44,6 +44,9 @@
   opacity: 0.6;
 }
 
+.navigation__burger {
+  display: none;
+}
 @media screen and (max-width: 825px) {
   .navigation__burger {
     display: block;
@@ -53,7 +56,14 @@
     cursor: pointer;
     z-index: 1;
   }
+}
+@media screen and (max-width: 420px) {
+  .navigation__burger {
+    right: 14px;
+  }
+}
 
+@media screen and (max-width: 825px) {
   .navigation__burger_close-button {
     position: fixed;
     top: 22px;

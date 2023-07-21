@@ -9,9 +9,9 @@ function Header() {
       <div>
         <Logo className='header__logo' />
       </div>
-      <div className='header__navigation'>
-        <Navigation />
-      </div>
+      {/* <div className='header__navigation'> */}
+      <Navigation />
+      {/* </div> */}
     </header>
   )
 }

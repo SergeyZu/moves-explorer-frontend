@@ -6,7 +6,7 @@ import { useState } from 'react'
 function FilterCheckbox() {
   const [isOn, setIsOn] = useState(true)
   return (
-    <div className='filter-checkbox'>
+    <checkbox className='filter-checkbox'>
       <img
         className='filter-checkbox__image'
         onClick={() => setIsOn(!isOn)}
@@ -14,7 +14,7 @@ function FilterCheckbox() {
         alt='Переключатель'
       />
       <p className='filter-checkbox__text'>Короткометражки</p>
-    </div>
+    </checkbox>
   )
 }
 

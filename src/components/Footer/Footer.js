@@ -3,9 +3,9 @@ import './Footer.css'
 function Footer() {
   return (
     <footer className='footer'>
-      <p className='footer__text'>
+      <h4 className='footer__text'>
         Учебный проект Яндекс.Практикум х BeatFilm.
-      </p>
+      </h4>
       {/* <div className='footer__line'> */}
       {/* <nav className='footer__nav'> */}
       <ul className='footer__list'>

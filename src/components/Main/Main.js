@@ -9,17 +9,19 @@ import Portfolio from '../Portfolio/Portfolio'
 
 function Main() {
   return (
-    <main className='main'>
-      <div className='main__content'>
-        <Header />
-        <Promo />
-        <AboutProject />
-        <Techs />
-        <AboutMe />
-        <Portfolio />
-      </div>
+    <>
+      <Header />
+      <main className='main'>
+        <div className='main__content'>
+          <Promo />
+          <AboutProject />
+          <Techs />
+          <AboutMe />
+          <Portfolio />
+        </div>
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }
 

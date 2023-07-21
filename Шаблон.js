@@ -24,3 +24,8 @@ export default Footer
 @media (max-width: 420px) {
 
 }
+
+
+
+
+min-height: calc(100vh - 74px - 172px - 20px);

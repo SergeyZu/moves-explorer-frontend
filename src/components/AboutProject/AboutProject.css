@@ -158,7 +158,7 @@
 .about-project__scheme {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: minmax(36px auto) minmax(17px auto);
+  grid-template-rows: minmax(36px, auto) minmax(17px, auto);
   row-gap: 14px;
   /* max-width: 1280px; */
   /* width: 100%; */

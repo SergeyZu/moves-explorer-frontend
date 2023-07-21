@@ -8,13 +8,13 @@ function HeaderMain() {
   return (
     <header className='header-main'>
       <Logo />
-      <div className='header-main__auth-block'>
+      <nav className='header-main__auth-block'>
         <Link to='/signup' className='header-main__link'>
           Регистрация
         </Link>
 
         <LoginMainButton />
-      </div>
+      </nav>
     </header>
   )
 }

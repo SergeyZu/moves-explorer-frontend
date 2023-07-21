@@ -9,13 +9,13 @@ function PageNotFound() {
   }
 
   return (
-    <section className='page-not-found'>
-      <h2 className='page-not-found__err-code'>404</h2>
+    <main className='page-not-found'>
+      <h1 className='page-not-found__err-code'>404</h1>
       <p className='page-not-found__err-msg'>Страница не найдена</p>
       <a className='page-not-found__link' onClick={goBack}>
         Назад
       </a>
-    </section>
+    </main>
   )
 }
 

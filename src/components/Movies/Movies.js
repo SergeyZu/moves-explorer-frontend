@@ -7,20 +7,19 @@ import Footer from '../Footer/Footer'
 
 function Movies() {
   return (
-    <main className='movies'>
+    <>
       <Header />
-      <div className='movies__container'>
-        {/* <div> */}
-        <SearchForm />
-        {/* </div> */}
-
-        <MoviesCardList />
-        <div className='movies__more'>
-          <MoreButton />
-        </div>
-      </div>
+      <main className='movies'>
+        <section className='movies__container'>
+          <SearchForm />
+          <MoviesCardList />
+          <div className='movies__more'>
+            <MoreButton />
+          </div>
+        </section>
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }
 

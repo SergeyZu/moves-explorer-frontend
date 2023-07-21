@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import './Navigation.css'
 import LogoButton from '../Buttons/LogoButton/LogoButton'
 import AccountButton from '../Buttons/AccountButton/AccountButton'
-import BurgerButton from '../Buttons/BurgerButton/BurgerButton'
-import CloseButton from '../Buttons/CloseButton/CloseButton'
 
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -39,15 +37,12 @@ function Navigation() {
         </div>
         <div className='navigation__burger' onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? (
-            <div className='navigation__burger_close-button'>
-              <CloseButton />
-            </div>
+            <button className='navigation__close-button' />
           ) : (
-            <BurgerButton />
+            <button className='navigation__burger-button' />
           )}
         </div>
       </div>
-      {/* </div> */}
     </nav>
   )
 }

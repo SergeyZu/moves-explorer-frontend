@@ -14,10 +14,12 @@ function Movies() {
           <SearchForm />
         </div>
 
-        {/* <MoviesCardList /> */}
-        <div className='movies__more'>{/* <MoreButton /> */}</div>
+        <MoviesCardList />
+        <div className='movies__more'>
+          <MoreButton />
+        </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </main>
   )
 }

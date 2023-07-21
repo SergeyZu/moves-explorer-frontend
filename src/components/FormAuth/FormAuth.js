@@ -14,7 +14,7 @@ function FormAuth({
   return (
     <section className='form-auth'>
       <div className='form-auth__container'>
-        <div>
+        <div className='form-auth__box'>
           <div className='form-auth__logo'>
             <LogoButton />
           </div>

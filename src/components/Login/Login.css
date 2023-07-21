@@ -1,4 +1,35 @@
-.login {
+.login__form_label {
+  color: #8b8b8b;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
+  /* margin-top: 10px; */
+}
+
+.login__form_input {
+  margin: 10px auto 2px;
+  padding: 0 0 0 15px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 46px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2f2f2f;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.login__form_error {
+  color: #ee3465;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 6px;
+}
+
+/* .login {
   width: 100%;
   height: 100%;
   position: fixed;
@@ -18,7 +49,6 @@
   width: 100%;
   margin: auto;
   padding: 70px 30px;
-  /* box-sizing: border-box; */
 }
 @media screen and (max-width: 420px) {
   .login__container {
@@ -27,11 +57,6 @@
   }
 }
 
-/* @media screen and (max-width: 420px) {
-  .login__logo {
-    align-items: center;
-  }
-} */
 
 .login__title {
   text-align: left;
@@ -43,7 +68,6 @@
 }
 @media screen and (max-width: 420px) {
   .login__title {
-    /* text-align: left; */
     margin: 48px 0 70px;
     color: #fff;
     font-size: 24px;
@@ -66,11 +90,6 @@
   line-height: normal;
   margin-top: 10px;
 }
-/* @media screen and (max-width: 420px) {
-  .login__form_label {
-    margin-top: 0;
-  }
-} */
 
 .login__form_input {
   margin: 10px auto 10px;
@@ -87,9 +106,6 @@
   font-weight: 400;
   line-height: normal;
 }
-/* .login__form_input:last-of-type {
-  margin: 10px 0 10px;
-} */
 
 .login__form_error {
   height: 30px;
@@ -141,4 +157,4 @@
   .login__link {
     font-size: 12px;
   }
-}
+} */

@@ -19,39 +19,11 @@ function FormAuth({
             <LogoButton />
           </div>
           <h2 className='form-auth__title'>{title}</h2>
-          <div className='form-auth__form'>
-            {children}
-            <label className='form-auth__form_label'>
-              E-mail
-              <input
-                className='form-auth__form_input'
-                type='email'
-                placeholder='pochta@yandex.ru|'
-                required
-              />
-            </label>
-            <span className='form-auth__form_error'>
-              Что-то пошло не так...
-            </span>
-            <label className='form-auth__form_label'>
-              Пароль
-              <input
-                className='form-auth__form_input'
-                type='password'
-                placeholder='******'
-                required
-              />
-            </label>
-            <span className='form-auth__form_error'>
-              Что-то пошло не так...
-            </span>
-          </div>
+          <div className='form-auth__form'>{children}</div>
         </div>
       </div>
       <div className='form-auth__form-footer'>
-        {/* <Link to={buttonPath}> */}
         <button className='form-auth__form_button'>{buttonText}</button>
-        {/* </Link> */}
         <div className='form-auth__qa'>
           <p className='form-auth__question'>{question}</p>
           <Link to={linkPath} className='form-auth__link'>

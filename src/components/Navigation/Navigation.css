@@ -47,7 +47,7 @@
 .navigation__burger {
   display: none;
 }
-@media screen and (max-width: 825px) {
+@media (max-width: 825px) {
   .navigation__burger {
     display: block;
     position: absolute;
@@ -57,13 +57,13 @@
     z-index: 1;
   }
 }
-@media screen and (max-width: 420px) {
+@media (max-width: 420px) {
   .navigation__burger {
     right: 14px;
   }
 }
 
-@media screen and (max-width: 825px) {
+@media (max-width: 825px) {
   .navigation__burger_close-button {
     position: fixed;
     top: 22px;
@@ -109,7 +109,7 @@
   }
 }
 
-@media screen and (max-width: 520px) {
+@media (max-width: 520px) {
   .navigation__menu_active {
     left: 0;
   }

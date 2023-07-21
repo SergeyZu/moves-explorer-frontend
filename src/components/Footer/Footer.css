@@ -9,12 +9,12 @@
   box-sizing: border-box;
   flex-shrink: 0;
 }
-@media screen and (max-width: 825px) {
+@media (max-width: 825px) {
   .footer {
     padding: 79px 30px 20px;
   }
 }
-@media screen and (max-width: 420px) {
+@media (max-width: 420px) {
   .footer {
     padding: 79px 10px 20px;
     min-height: 253px;
@@ -32,7 +32,7 @@
   padding: 0 0 21px;
   border-bottom: 1px solid #424242;
 }
-@media screen and (max-width: 420px) {
+@media (max-width: 420px) {
   .footer__text {
     font-size: 12px;
   }
@@ -48,7 +48,7 @@
   grid-template-areas: 'copyright practicum github ';
   align-items: start;
 }
-@media screen and (max-width: 420px) {
+@media (max-width: 420px) {
   .footer__list {
     grid-template-columns: 1fr;
     grid-template-rows: 15px 15px 15px;
@@ -68,7 +68,7 @@
   font-weight: 400;
   line-height: 1.6;
 }
-@media screen and (max-width: 420px) {
+@media (max-width: 420px) {
   .footer__list-item {
     font-size: 12px;
     line-height: 1.4;
@@ -87,7 +87,7 @@
   margin: 0;
   grid-area: copyright;
 }
-@media screen and (max-width: 420px) {
+@media (max-width: 420px) {
   .footer__copyright {
     margin: 9px 0 0;
     grid-area: copyright;

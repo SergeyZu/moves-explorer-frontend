@@ -28,7 +28,7 @@ html {
 .navtab__button:last-of-type {
   margin-right: 0;
 }
-@media screen and (max-width: 420px) {
+@media (max-width: 420px) {
   .navtab__button {
     width: 82px;
     min-height: 26px;

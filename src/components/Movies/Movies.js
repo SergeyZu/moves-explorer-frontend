@@ -10,7 +10,9 @@ function Movies() {
     <main className='movies'>
       <Header />
       <div className='movies__container'>
-        <div>{/* <SearchForm /> */}</div>
+        <div>
+          <SearchForm />
+        </div>
 
         {/* <MoviesCardList /> */}
         <div className='movies__more'>{/* <MoreButton /> */}</div>

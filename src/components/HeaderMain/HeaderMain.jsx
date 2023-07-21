@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 
 import './HeaderMain.css'
 import Logo from '../Buttons/LogoButton/LogoButton'
-import LoginMainButton from '../Buttons/LoginMainButton/LoginMainButton'
 
 function HeaderMain() {
   return (
@@ -12,8 +11,9 @@ function HeaderMain() {
         <Link to='/signup' className='header-main__link'>
           Регистрация
         </Link>
-
-        <LoginMainButton />
+        <Link to='/signin'>
+          <button className='header-main__login-button'>Войти</button>
+        </Link>
       </nav>
     </header>
   )

@@ -46,3 +46,29 @@
     font-size: 10px;
   }
 }
+
+.header-main__login-button {
+  width: 76px;
+  min-height: 32px;
+  border: none;
+  border-radius: 3px;
+  background-color: #3ddc84;
+  color: #000;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.header-main__login-button:hover {
+  opacity: 0.6;
+}
+
+@media (max-width: 420px) {
+  .header-main__login-button {
+    width: 54px;
+    height: 26px;
+    font-size: 10px;
+    padding: 0;
+  }
+}

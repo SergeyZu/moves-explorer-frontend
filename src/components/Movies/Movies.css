@@ -31,3 +31,30 @@
   justify-content: center;
   margin: 50px auto 80px;
 }
+
+.movies__more-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto 80px;
+  width: 320px;
+  min-height: 36px;
+  border: 1px solid #424242;
+  border-radius: 6px;
+  background-color: #202020;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.movies__more-button:hover {
+  opacity: 0.6;
+}
+
+@media (max-width: 600px) {
+  .movies__more-button {
+    width: 240px;
+  }
+}

@@ -35,7 +35,7 @@
 .techs__title {
   margin: 0 auto;
   padding: 0 70px;
-  height: 50px;
+  min-height: 50px;
 }
 @media screen and (max-width: 825px) {
   .techs__title {
@@ -146,21 +146,21 @@
   list-style: none;
   display: grid;
   grid-template-columns: repeat(7, 90px);
-  grid-template-rows: 60px;
+  grid-template-rows: minmax(60px, auto);
   gap: 10px;
 }
 @media screen and (max-width: 825px) {
   .techs__list {
     margin: 83px auto 0;
     grid-template-columns: repeat(7, 84px);
-    grid-template-rows: 57px;
+    grid-template-rows: minmax(57px, auto);
   }
 }
 @media screen and (max-width: 750px) {
   .techs__list {
     margin: 60px auto 0;
     grid-template-columns: repeat(4, 84px);
-    grid-template-rows: 57px 57px;
+    grid-template-rows: repeat(2, minmax(57px, auto));
   }
 }
 @media screen and (max-width: 600px) {
@@ -172,7 +172,7 @@
   .techs__list {
     margin: 50px auto 0;
     grid-template-columns: repeat(2, 84px);
-    grid-template-rows: repeat(4, 57px);
+    grid-template-rows: repeat(4, minmax(57px, auto));
   }
 }
 

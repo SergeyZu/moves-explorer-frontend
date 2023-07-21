@@ -6,8 +6,12 @@ import AccountButton from '../Buttons/AccountButton/AccountButton'
 function Header() {
   return (
     <header className='header'>
-      <Logo />
-      <Navigation />
+      <div>
+        <Logo className='header__logo' />
+      </div>
+      <div className='header__navigation'>
+        <Navigation />
+      </div>
     </header>
   )
 }

@@ -9,7 +9,7 @@ html {
 
 .navtab__button {
   width: 96px;
-  height: 36px;
+  min-height: 36px;
   border: none;
   border-radius: 10px;
   background-color: #303030;
@@ -31,7 +31,7 @@ html {
 @media screen and (max-width: 420px) {
   .navtab__button {
     width: 82px;
-    height: 26px;
+    min-height: 26px;
     font-size: 10px;
     margin-right: 6px;
   }

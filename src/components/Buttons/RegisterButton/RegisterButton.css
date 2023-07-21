@@ -1,7 +1,7 @@
 .register-button {
   width: 100%;
   max-width: 396px;
-  height: 45px;
+  min-height: 45px;
   border: none;
   border-radius: 3px;
   background-color: #4285f4;

@@ -16,6 +16,11 @@
   font-weight: 400;
   line-height: normal;
 }
+@media screen and (max-width: 420px) {
+  .page-not-found__err-code {
+    font-size: 80px;
+  }
+}
 
 .page-not-found__err-msg {
   color: #fff;
@@ -23,6 +28,11 @@
   font-weight: 400;
   line-height: normal;
   margin: 0;
+}
+@media screen and (max-width: 420px) {
+  .page-not-found__err-msg {
+    font-size: 12px;
+  }
 }
 
 .page-not-found__link {
@@ -37,4 +47,10 @@
 }
 .page-not-found__link:hover {
   opacity: 0.6;
+}
+@media screen and (max-width: 420px) {
+  .page-not-found__link {
+    font-size: 12px;
+    margin-top: 284px;
+  }
 }

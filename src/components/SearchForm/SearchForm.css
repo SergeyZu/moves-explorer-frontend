@@ -78,3 +78,21 @@
   border-bottom: 1px;
   color: #424242;
 }
+
+.search-form__find-button {
+  width: 44px;
+  height: 44px;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+  /* position: absolute; */
+  /* top: 20px; */
+  /* right: 20px; */
+  border: none;
+  background: none;
+  background-image: url(../../images/find.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.search-form__find-button:hover {
+  opacity: 0.6;
+}

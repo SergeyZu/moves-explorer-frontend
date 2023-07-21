@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Navigation.css'
 import LogoButton from '../Buttons/LogoButton/LogoButton'
-import AccountButton from '../Buttons/AccountButton/AccountButton'
 
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -30,10 +29,9 @@ function Navigation() {
               <li className='navigation__list-item'>Сохраненные фильмы</li>
             </Link>
           </ul>
-
-          <div className='navigation__accoutn-button'>
-            <AccountButton />
-          </div>
+          <Link to='/profile'>
+            <button className='navigation__account-button'>Аккаунт</button>
+          </Link>
         </div>
         <div className='navigation__burger' onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? (

@@ -1,9 +1,0 @@
-.find-button {
-  width: 44px;
-  min-height: 44px;
-  transition: opacity 0.3s ease;
-  cursor: pointer;
-}
-.find-button:hover {
-  opacity: 0.6;
-}

@@ -86,7 +86,11 @@
   text-decoration: none;
   font-size: 13px;
   line-height: 18px;
+  font-weight: 400;
   color: #fff;
+}
+.navigation__list-item:after {
+  font-weight: 500;
 }
 @media (max-width: 825px) {
   .navigation__list-item {
@@ -94,6 +98,9 @@
     font-size: 18px;
     line-height: normal;
     color: #fff;
+  }
+  .navigation__list-item:after {
+    text-decoration: underline;
   }
 }
 

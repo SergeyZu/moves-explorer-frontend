@@ -19,6 +19,7 @@
 @media (max-width: 420px) {
   .page-not-found__err-code {
     font-size: 80px;
+    margin: 329px 0 10px;
   }
 }
 

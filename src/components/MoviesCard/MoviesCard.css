@@ -95,11 +95,6 @@
   /* position: absolute; */
   /* top: 20px; */
   /* right: 20px; */
-  border: none;
-  background: none;
-  background-image: url(../../images/like.svg);
-  background-repeat: no-repeat;
-  background-position: center;
 }
 .movies-card__like:hover {
   opacity: 0.6;

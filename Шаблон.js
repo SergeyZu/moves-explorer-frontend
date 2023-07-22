@@ -1,18 +1,3 @@
-import './Footer.css'
-
-function Footer() {
-  return (
-    <div className='footer'>
-      <div></div>
-    </div>
-  )
-}
-
-export default Footer
-
-
-
-
 .footer {
   border: 1px solid red;
   padding: 0;

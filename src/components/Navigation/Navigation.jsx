@@ -7,7 +7,6 @@ function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <nav className='navigation'>
-      {/* <div className='navigation__container'> */}
       <div className='navigation__box'>
         <div
           className={

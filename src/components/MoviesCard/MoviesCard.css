@@ -81,7 +81,7 @@
   line-height: normal;
   grid-area: title;
 }
-@media (max-width: 680px) {
+@media (max-width: 600px) {
   .movies-card__title {
     margin: 6px 0 0;
     font-size: 12px;

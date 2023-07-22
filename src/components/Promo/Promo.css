@@ -44,7 +44,7 @@
 }
 @media (max-width: 825px) {
   .promo__title {
-    max-width: 680px;
+    max-width: 600px;
     font-size: 40px;
     line-height: 52px;
     letter-spacing: -1.6px;

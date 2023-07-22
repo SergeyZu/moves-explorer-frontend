@@ -18,7 +18,7 @@ function FormAuth({
           <div className='form-auth__logo'>
             <LogoButton />
           </div>
-          <h2 className='form-auth__title'>{title}</h2>
+          <h1 className='form-auth__title'>{title}</h1>
           <div className='form-auth__form'>{children}</div>
         </div>
       </div>

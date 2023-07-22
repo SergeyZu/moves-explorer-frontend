@@ -17,7 +17,7 @@ function Navigation() {
           }
         >
           <ul className='navigation__list'>
-            <Link to='/movies' className='navigation__link'>
+            <Link to='/' className='navigation__link'>
               <li className='navigation__list-item'>
                 {isOpen ? 'Главная' : ''}
               </li>

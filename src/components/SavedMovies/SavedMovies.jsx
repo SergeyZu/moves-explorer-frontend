@@ -1,7 +1,7 @@
 import './SavedMovies.css'
 import Header from '../Header/Header'
 import SearchForm from '../SearchForm/SearchForm'
-import MoviesCardList from '../MoviesCardList/MoviesCardList'
+import SavedCardList from '../SavedCardList/SavedCardList'
 import Footer from '../Footer/Footer'
 
 function SavedMovies() {
@@ -12,7 +12,7 @@ function SavedMovies() {
         <section className='saved-movies__container'>
           <SearchForm />
           {/* <div className='saved-movies__card-list'> */}
-          <MoviesCardList />
+          <SavedCardList />
           {/* </div> */}
           {/* <div className='saved-movies__footer'></div> */}
         </section>

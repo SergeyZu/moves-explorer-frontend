@@ -5,10 +5,10 @@ function AboutMe() {
   return (
     <section className='about-me'>
       <div className='about-me__title'>
-        <h2 className='about-me__title_text'>
+        <h2 className='about-me__title-text'>
           <a name='student'>Студент</a>
         </h2>
-        <div className='about-me__title_underline'></div>
+        <div className='about-me__title-underline'></div>
       </div>{' '}
       <div className='about-me__content'>
         <div className='about-me__column'>

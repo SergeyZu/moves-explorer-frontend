@@ -53,7 +53,7 @@
   }
 }
 
-.techs__title_text {
+.techs__title-text {
   margin: 0;
   color: #fff;
   font-size: 22px;
@@ -62,20 +62,20 @@
   letter-spacing: -0.88px;
 }
 @media (max-width: 420px) {
-  .techs__title_text {
+  .techs__title-text {
     font-size: 18px;
     letter-spacing: -0.72px;
   }
 }
 
-.techs__title_underline {
+.techs__title-underline {
   border-bottom: 1px solid #dadada;
   margin-top: 23px;
   max-width: 1141px;
   width: 100%;
 }
 @media (max-width: 420px) {
-  .techs__title_underline {
+  .techs__title-underline {
     margin-top: 28px;
   }
 }

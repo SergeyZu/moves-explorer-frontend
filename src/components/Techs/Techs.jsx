@@ -4,10 +4,10 @@ function Techs() {
   return (
     <section className='techs'>
       <div className='techs__title'>
-        <h2 className='techs__title_text'>
+        <h2 className='techs__title-text'>
           <a name='techs'>Технологии</a>
         </h2>
-        <div className='techs__title_underline'></div>
+        <div className='techs__title-underline'></div>
       </div>{' '}
       <div className='techs__content'>
         <h3 className='techs__subtitle'>7&nbsp;технологий</h3>

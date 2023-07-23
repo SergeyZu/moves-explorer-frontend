@@ -29,7 +29,7 @@ function Footer() {
             Github
           </a>
         </li>
-        <li className='footer__list-item footer__copyright'>
+        <li className='footer__list-item'>
           <p className='footer__copyright'>
             © {new Date().getFullYear()} Moves Explorer
           </p>

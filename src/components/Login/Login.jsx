@@ -11,26 +11,26 @@ function Login() {
         linkPath='/signup'
         linkText='Регистрация'
       >
-        <label className='login__form_label'>
+        <label className='login__form-label'>
           E-mail
           <input
-            className='login__form_input'
+            className='login__form-input'
             type='email'
             placeholder='pochta@yandex.ru|'
             required
           />
         </label>
-        <span className='login__form_error'>Что-то пошло не так...</span>
-        <label className='login__form_label'>
+        <span className='login__form-error'>Что-то пошло не так...</span>
+        <label className='login__form-label'>
           Пароль
           <input
-            className='login__form_input'
+            className='login__form-input'
             type='password'
             placeholder='******'
             required
           />
         </label>
-        <span className='login__form_error'></span>
+        <span className='login__form-error'></span>
       </FormAuth>
     </main>
   )

@@ -23,7 +23,7 @@ function FormAuth({
         </div>
       </div>
       <div className='form-auth__form-footer'>
-        <button className='form-auth__form_button'>{buttonText}</button>
+        <button className='form-auth__form-button'>{buttonText}</button>
         <div className='form-auth__qa'>
           <p className='form-auth__question'>{question}</p>
           <Link to={linkPath} className='form-auth__link'>

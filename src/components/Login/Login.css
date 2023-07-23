@@ -1,4 +1,4 @@
-.login__form_label {
+.login__form-label {
   color: #8b8b8b;
   font-size: 10px;
   font-weight: 400;
@@ -6,7 +6,7 @@
   /* margin-top: 10px; */
 }
 
-.login__form_input {
+.login__form-input {
   margin: 10px auto 2px;
   padding: 0 0 0 15px;
   box-sizing: border-box;
@@ -21,7 +21,7 @@
   line-height: normal;
 }
 
-.login__form_error {
+.login__form-error {
   color: #ee3465;
   font-size: 10px;
   font-weight: 400;
@@ -83,7 +83,7 @@
   margin: auto;
 }
 
-.login__form_label {
+.login__form-label {
   color: #8b8b8b;
   font-size: 10px;
   font-weight: 400;
@@ -91,7 +91,7 @@
   margin-top: 10px;
 }
 
-.login__form_input {
+.login__form-input {
   margin: 10px auto 10px;
   padding: 0 0 0 15px;
   box-sizing: border-box;
@@ -107,7 +107,7 @@
   line-height: normal;
 }
 
-.login__form_error {
+.login__form-error {
   height: 30px;
   margin: 0 0 89px;
 }

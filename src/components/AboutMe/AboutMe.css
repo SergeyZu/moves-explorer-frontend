@@ -38,7 +38,7 @@
   }
 }
 
-.about-me__title_text {
+.about-me__title-text {
   margin: 0;
   color: #fff;
   font-size: 22px;
@@ -47,20 +47,20 @@
   letter-spacing: -0.88px;
 }
 @media (max-width: 420px) {
-  .about-me__title_text {
+  .about-me__title-text {
     font-size: 18px;
     letter-spacing: -0.72px;
   }
 }
 
-.about-me__title_underline {
+.about-me__title-underline {
   border-bottom: 1px solid #dadada;
   margin-top: 23px;
   max-width: 1141px;
   width: 100%;
 }
 @media (max-width: 420px) {
-  .about-me__title_underline {
+  .about-me__title-underline {
     margin-top: 28px;
   }
 }

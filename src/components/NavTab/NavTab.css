@@ -1,0 +1,62 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.navtab {
+  display: flex;
+  flex-direction: row;
+}
+
+.navtab__button {
+  width: 96px;
+  min-height: 36px;
+  border: none;
+  border-radius: 10px;
+  background-color: #303030;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  margin-right: 10px;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.navtab__button:hover {
+  opacity: 0.6;
+}
+
+.navtab__button:last-of-type {
+  margin-right: 0;
+}
+@media (max-width: 420px) {
+  .navtab__button {
+    width: 82px;
+    min-height: 26px;
+    font-size: 10px;
+    margin-right: 6px;
+  }
+}
+
+.navtab__anchor {
+  text-decoration: none;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  margin-right: 10px;
+  width: 96px;
+  min-height: 36px;
+  border: none;
+  border-radius: 10px;
+  background-color: #303030;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  margin-right: 10px;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.navtab__anchor:last-of-type {
+  margin-right: 0;
+}

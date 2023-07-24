@@ -1,0 +1,126 @@
+.portfolio {
+  margin: 0 auto 108px;
+  max-width: 1280px;
+  padding: 0 70px;
+  box-sizing: border-box;
+}
+@media (max-width: 825px) {
+  .portfolio {
+    margin: 0 auto 70px;
+    max-width: 768px;
+    padding: 0 50px;
+  }
+}
+@media (max-width: 600px) {
+  .portfolio {
+    padding: 0 30px;
+  }
+}
+@media (max-width: 420px) {
+  .portfolio {
+    margin: 0 auto 50px;
+    padding: 0 14px;
+  }
+}
+
+.portfolio__title {
+  margin: 0 0 31px;
+  color: #8b8b8b;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 20px;
+}
+@media (max-width: 420px) {
+  .portfolio__title {
+    font-size: 14px;
+    margin: 0 0 22px;
+  }
+}
+
+.portfolio__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.portfolio__list-item {
+  padding: 19px 0 20px;
+  box-sizing: border-box;
+  margin: 0;
+  border-bottom: 1px solid #424242;
+  min-height: 89px;
+}
+.portfolio__list-item:last-of-type {
+  border-bottom: none;
+}
+@media (max-width: 600px) {
+  .portfolio__list-item {
+    padding: 19px 0 20px;
+    box-sizing: border-box;
+    margin: 0;
+    min-height: 67px;
+  }
+}
+
+.portfolio__link {
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.portfolio__link:hover {
+  opacity: 0.6;
+}
+
+.portfolio__link-text {
+  margin: 0;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: -1.2px;
+}
+
+@media (max-width: 825px) {
+  .portfolio__link-text {
+    font-size: 28px;
+    letter-spacing: -1.12px;
+  }
+}
+@media (max-width: 600px) {
+  .portfolio__link-text {
+    font-size: 22px;
+    line-height: 25px;
+  }
+}
+@media (max-width: 420px) {
+  .portfolio__link-text {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.72px;
+  }
+}
+
+.portfolio__link-symbol {
+  margin: 0;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 60px;
+  letter-spacing: -1.2px;
+}
+
+@media (max-width: 600px) {
+  .portfolio__link-symbol {
+    font-size: 22px;
+    line-height: 32px;
+  }
+}
+@media (max-width: 420px) {
+  .portfolio__link-symbol {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.72px;
+  }
+}

@@ -1,3 +1,3 @@
 # moves-explorer-frontend
 
-test
+## ссылка на макет: https://disk.yandex.ru/d/7gK7wozhzz6XQg

@@ -1,0 +1,30 @@
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 39px;
+}
+
+.filter-checkbox__image {
+  width: 36px;
+  height: 20px;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.filter-checkbox__image:hover {
+  opacity: 0.6;
+}
+
+.filter-checkbox__text {
+  margin: 0 0 0 12px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+@media (max-width: 420px) {
+  .filter-checkbox__text {
+    margin: 0 0 0 13px;
+    font-size: 11px;
+  }
+}

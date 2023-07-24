@@ -1,0 +1,40 @@
+.saved-card-list {
+  /* display: flex; */
+  width: 100%;
+  margin: 70px auto 10px;
+  /* padding: 10px; */
+}
+
+.saved-card-list__list {
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* grid-template-columns: repeat(2, 300px 301px); */
+
+  gap: 37px 24px;
+  max-width: 1280px;
+  list-style: none;
+}
+@media (max-width: 825px) {
+  .saved-card-list__list {
+    /* padding: 70px 70px 30px; */
+    /* grid-template-columns: repeat(2, 1fr); */
+    gap: 30px;
+  }
+}
+@media (max-width: 600px) {
+  .saved-card-list__list {
+    /* padding: 40px 30px 26px; */
+    /* grid-template-columns: 1fr; */
+    gap: 14px;
+    /* justify-content: center; */
+    justify-items: center;
+    align-items: center;
+  }
+}
+@media (max-width: 420px) {
+  .saved-card-list__list {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}

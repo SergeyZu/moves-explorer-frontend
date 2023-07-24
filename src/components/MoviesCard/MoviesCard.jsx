@@ -13,14 +13,14 @@ function MoviesCard() {
         <img className='movies-card__image' src={words} alt='Кадр из фильма' />
         <div className='movies-card__info'>
           <h2 className='movies-card__title'>33 слова о дизайне</h2>
-          <checkbox className='movies-card__like'>
+          <div className='movies-card__like'>
             <img
               className='movies-card__like-image'
               onClick={() => setIsLiked(!isLiked)}
               src={isLiked ? like : likeoff}
               alt='Переключатель'
             />
-          </checkbox>
+          </div>
           <p className='movies-card__duration'>1ч 47м</p>
         </div>
       </li>

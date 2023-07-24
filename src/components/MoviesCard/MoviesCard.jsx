@@ -4,15 +4,15 @@ import like from '../../images/like.svg'
 import likeoff from '../../images/likeoff.svg'
 import words from '../../images/33words.png'
 
-function MoviesCard() {
+function MoviesCard({ src, title, duration }) {
   const [isLiked, setIsLiked] = useState(false)
 
   return (
     <>
       <li className='movies-card'>
-        <img className='movies-card__image' src={words} alt='Кадр из фильма' />
+        <img className='movies-card__image' src={src} alt={title} />
         <div className='movies-card__info'>
-          <h2 className='movies-card__title'>33 слова о дизайне</h2>
+          <h2 className='movies-card__title'>{title}</h2>
           <div className='movies-card__like'>
             <img
               className='movies-card__like-image'
@@ -21,7 +21,7 @@ function MoviesCard() {
               alt='Переключатель'
             />
           </div>
-          <p className='movies-card__duration'>1ч 47м</p>
+          <p className='movies-card__duration'>{duration}</p>
         </div>
       </li>
     </>

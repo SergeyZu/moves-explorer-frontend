@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './Movies.css'
 import Header from '../Header/Header'
 import SearchForm from '../SearchForm/SearchForm'
-// import MoviesCardList from '../MoviesCardList/MoviesCardList'
+import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Footer from '../Footer/Footer'
 import { moviesApi } from '../../utils/MoviesApi'
 import MoviesCard from '../MoviesCard/MoviesCard'
@@ -23,7 +23,7 @@ function Movies() {
         })),
       )
     })
-  }, [movies])
+  }, [])
 
   return (
     <>

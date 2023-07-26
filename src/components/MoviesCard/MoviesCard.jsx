@@ -2,9 +2,9 @@ import { useState } from 'react'
 import './MoviesCard.css'
 import like from '../../images/like.svg'
 import likeoff from '../../images/likeoff.svg'
-import words from '../../images/33words.png'
 
-function MoviesCard({ src, title, duration }) {
+function MoviesCard(movieData) {
+  const { src, title, duration } = movieData
   // function MoviesCard({ movie }) {
   const [isLiked, setIsLiked] = useState(false)
 

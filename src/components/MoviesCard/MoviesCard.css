@@ -89,15 +89,38 @@
 }
 
 .movies-card__like {
-  width: 30px;
-  height: 30px;
+  /* width: 30px;
+  height: 30px; */
   grid-area: heart;
+  transition: opacity 0.3s ease;
+
   /* position: absolute; */
   /* top: 20px; */
   /* right: 20px; */
 }
 .movies-card__like:hover {
   opacity: 0.6;
+}
+
+.movies-card__like-button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: none;
+  background-image: url(../../images/likeoff.svg);
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.movies-card__like-button_clicked {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: none;
+  background-image: url(../../images/like.svg);
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .movies-card__duration {

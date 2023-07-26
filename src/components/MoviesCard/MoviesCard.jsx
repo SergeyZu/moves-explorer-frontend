@@ -12,7 +12,11 @@ function MoviesCard({ src, title, duration }) {
     <>
       <li className='movies-card'>
         {/* <img className='movies-card__image' src={movie.src} alt={movie.title} /> */}
-        <img className='movies-card__image' src={src} alt={title} />
+        <img
+          className='movies-card__image'
+          src={`https://api.nomoreparties.co${src}`}
+          alt={title}
+        />
 
         <div className='movies-card__info'>
           {/* <h2 className='movies-card__title'>{movie.title}</h2> */}

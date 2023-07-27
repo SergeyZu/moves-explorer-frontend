@@ -11,11 +11,11 @@ function MoviesCardList({ movies, isLoading }) {
         ) : (
           movies.map((movie) => (
             <MoviesCard
-              key={movie.id}
-              src={movie.image.url}
-              title={movie.nameRU}
-              duration={movie.duration}
-              trailerLink={movie.trailerLink}
+              key={movie?.id}
+              src={movie?.image?.url}
+              title={movie?.nameRU}
+              duration={movie?.duration}
+              trailerLink={movie?.trailerLink}
             />
           ))
         )}

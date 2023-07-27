@@ -5,7 +5,7 @@
 //   })
 
 class MoviesApi {
-  getCards() {
+  getAllMovies() {
     return fetch('https://api.nomoreparties.co/beatfilm-movies').then((res) => {
       if (res.ok) {
         return res.json()
@@ -17,4 +17,4 @@ class MoviesApi {
 
 const moviesApi = new MoviesApi()
 
-export { moviesApi }
+export default moviesApi

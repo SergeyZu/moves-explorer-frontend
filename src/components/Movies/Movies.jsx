@@ -4,39 +4,37 @@ import Header from '../Header/Header'
 import SearchForm from '../SearchForm/SearchForm'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Footer from '../Footer/Footer'
-import { moviesApi } from '../../utils/MoviesApi'
-import MoviesCard from '../MoviesCard/MoviesCard'
+import moviesApi from '../../utils/MoviesApi'
 
 function Movies() {
-  const [movies, setMovies] = useState([])
+  const [searchRequest, setSearchRequest] = useState('')
+  const [foundMovies, setFoundMovies] = useState([])
 
   useEffect(() => {
-    moviesApi.getCards().then((data) => {
-      // console.log(data)
-      // setMovies(data)
-      setMovies(
-        data.map((item) => ({
-          id: item.id,
-          src: item.image.url,
-          title: item.nameRU,
-          duration: item.duration,
-        })),
-      )
-    })
-  }, [])
+    moviesApi
+      .getAllMovies(searchRequest)
+      .then((data) => {
+        setFoundMovies(data)
+        // console.log(foundMovies)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [searchRequest])
 
   return (
     <>
       <Header />
       <main className='movies'>
         <section className='movies__container'>
-          <SearchForm />
-          <div>
-            {movies.map(({ id, ...props }) => (
-              <MoviesCard key={id} {...props} />
-            ))}
-          </div>
-          {/* <MoviesCardList data={movies} /> */}
+          <SearchForm
+            handleChange={(evt) => console.log(evt.target.value)}
+            handleClick={(evt) => {
+              evt.preventDefault()
+              setSearchRequest('а')
+            }}
+          />
+          <MoviesCardList movies={foundMovies} />
           <button className='movies__more-button'>Ещё</button>
         </section>
       </main>

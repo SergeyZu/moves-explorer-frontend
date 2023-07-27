@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import './MoviesCard.css'
+import convertDuration from '../../utils/convertDuration'
 
 function MoviesCard({ src, title, duration }) {
   const [isLiked, setIsLiked] = useState(false)
+
+  const convertedDuration = convertDuration(duration)
 
   return (
     <>
@@ -25,7 +28,7 @@ function MoviesCard({ src, title, duration }) {
               onClick={() => setIsLiked(!isLiked)}
             />
           </div>
-          <p className='movies-card__duration'>{duration}</p>
+          <p className='movies-card__duration'>{convertedDuration}</p>
         </div>
       </li>
     </>

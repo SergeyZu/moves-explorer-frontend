@@ -11,22 +11,53 @@ function Movies() {
   const [foundMovies, setFoundMovies] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
-  useEffect(() => {
-    setIsLoading(true)
+  // useEffect(() => {
+  //   setIsLoading(true)
 
-    moviesApi
-      .getAllMovies(searchRequest)
-      .then((data) => {
-        setFoundMovies(data)
-        // console.log(foundMovies)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
-  }, [searchRequest])
+  //   moviesApi
+  //     .getAllMovies(searchRequest)
+  //     .then((data) => {
+  //       setFoundMovies(data)
+  //       // console.log(foundMovies)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  //     .finally(() => {
+  //       setIsLoading(false)
+  //     })
+  // }, [searchRequest])
+
+  useEffect(() => {
+    handleRequest()
+  }, [])
+
+  const handleRequest = () => {
+    if (searchRequest !== '') {
+      setIsLoading(true)
+      moviesApi
+        .getAllMovies(searchRequest)
+        .then((data) => {
+          setFoundMovies(data)
+          // console.log(foundMovies)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+        .finally(() => {
+          setIsLoading(false)
+        })
+    }
+  }
+
+  const handleFormSubmit = (evt) => {
+    evt.preventDefault()
+    handleRequest()
+  }
+
+  const handleInputChange = (request) => {
+    setSearchRequest(request.target.value)
+  }
 
   return (
     <>
@@ -34,11 +65,15 @@ function Movies() {
       <main className='movies'>
         <section className='movies__container'>
           <SearchForm
-            handleChange={(evt) => console.log(evt.target.value)}
-            handleClick={(evt) => {
-              evt.preventDefault()
-              setSearchRequest('а')
-            }}
+            onInputChange={handleInputChange}
+            // onInputChange={(evt) => console.log(evt.target.value)}
+
+            onFormSubmit={handleFormSubmit}
+
+            // onFormSubmit={(evt) => {
+            //   evt.preventDefault()
+            //   setSearchRequest('а')
+            // }}
           />
           <MoviesCardList movies={foundMovies} isLoading={isLoading} />
           <button className='movies__more-button'>Ещё</button>

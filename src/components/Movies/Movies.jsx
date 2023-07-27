@@ -9,8 +9,11 @@ import moviesApi from '../../utils/MoviesApi'
 function Movies() {
   const [searchRequest, setSearchRequest] = useState('')
   const [foundMovies, setFoundMovies] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
+    setIsLoading(true)
+
     moviesApi
       .getAllMovies(searchRequest)
       .then((data) => {
@@ -19,6 +22,9 @@ function Movies() {
       })
       .catch((err) => {
         console.log(err)
+      })
+      .finally(() => {
+        setIsLoading(false)
       })
   }, [searchRequest])
 
@@ -34,7 +40,7 @@ function Movies() {
               setSearchRequest('а')
             }}
           />
-          <MoviesCardList movies={foundMovies} />
+          <MoviesCardList movies={foundMovies} isLoading={isLoading} />
           <button className='movies__more-button'>Ещё</button>
         </section>
       </main>

@@ -15,6 +15,7 @@ function MoviesCardList({ movies, isLoading }) {
               src={movie.image.url}
               title={movie.nameRU}
               duration={movie.duration}
+              trailerLink={movie.trailerLink}
             />
           ))
         )}

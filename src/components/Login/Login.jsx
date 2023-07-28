@@ -1,21 +1,27 @@
-import { useState } from 'react'
+// import { useState } from 'react'
+import useForm from '../../hooks/useForm'
 import FormAuth from '../FormAuth/FormAuth'
 import './Login.css'
 
 function Login({ loginUser, errorMessage }) {
-  const [form, setForm] = useState({
+  const { form, errors, hadleChange } = useForm({
     email: '',
     password: '',
   })
 
-  const hadleChange = (evt) => {
-    const input = evt.target
+  // const [form, setForm] = useState({
+  //   email: '',
+  //   password: '',
+  // })
 
-    setForm({
-      ...form,
-      [input.name]: input.value,
-    })
-  }
+  // const hadleChange = (evt) => {
+  //   const input = evt.target
+
+  //   setForm({
+  //     ...form,
+  //     [input.name]: input.value,
+  //   })
+  // }
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
@@ -60,7 +66,7 @@ function Login({ loginUser, errorMessage }) {
             required
           />
         </label>
-        <span className='login__form-error'></span>
+        <span className='login__form-error'>{errorMessage}</span>
       </FormAuth>
     </main>
   )

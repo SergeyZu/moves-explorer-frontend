@@ -1,22 +1,29 @@
 import { useState } from 'react'
+import useForm from '../../hooks/useForm'
 import FormAuth from '../FormAuth/FormAuth'
 import './Register.css'
 
 function Register({ registerUser, errorMessage }) {
-  const [form, setForm] = useState({
+  const { form, hadleChange } = useForm({
     name: '',
     email: '',
     password: '',
   })
 
-  const hadleChange = (evt) => {
-    const input = evt.target
+  // const [form, setForm] = useState({
+  //   name: '',
+  //   email: '',
+  //   password: '',
+  // })
 
-    setForm({
-      ...form,
-      [input.name]: input.value,
-    })
-  }
+  // const hadleChange = (evt) => {
+  //   const input = evt.target
+
+  //   setForm({
+  //     ...form,
+  //     [input.name]: input.value,
+  //   })
+  // }
 
   const handleSubmit = (evt) => {
     evt.preventDefault()

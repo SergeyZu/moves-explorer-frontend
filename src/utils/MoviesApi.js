@@ -1,9 +1,3 @@
-// fetch('https://api.nomoreparties.co/beatfilm-movies')
-//   .then((res) => res.json)
-//   .then((data) => {
-//     console.log(data)
-//   })
-
 class MoviesApi {
   getAllMovies() {
     return fetch('https://api.nomoreparties.co/beatfilm-movies').then((res) => {

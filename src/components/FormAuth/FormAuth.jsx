@@ -10,9 +10,10 @@ function FormAuth({
   linkPath,
   linkText,
   children,
+  onSubmit,
 }) {
   return (
-    <section className='form-auth'>
+    <form className='form-auth' onSubmit={onSubmit}>
       <div className='form-auth__container'>
         <div className='form-auth__box'>
           <div className='form-auth__logo'>
@@ -31,7 +32,7 @@ function FormAuth({
           </Link>
         </div>
       </div>
-    </section>
+    </form>
   )
 }
 

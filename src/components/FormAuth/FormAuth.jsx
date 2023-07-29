@@ -9,8 +9,9 @@ function FormAuth({
   question,
   linkPath,
   linkText,
-  children,
   onSubmit,
+  errorMessage,
+  children,
 }) {
   return (
     <form className='form-auth' onSubmit={onSubmit}>
@@ -24,6 +25,7 @@ function FormAuth({
         </div>
       </div>
       <div className='form-auth__form-footer'>
+        <span>{errorMessage}</span>
         <button className='form-auth__form-button'>{buttonText}</button>
         <div className='form-auth__qa'>
           <p className='form-auth__question'>{question}</p>

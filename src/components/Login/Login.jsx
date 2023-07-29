@@ -9,20 +9,6 @@ function Login({ loginUser, errorMessage }) {
     password: '',
   })
 
-  // const [form, setForm] = useState({
-  //   email: '',
-  //   password: '',
-  // })
-
-  // const hadleChange = (evt) => {
-  //   const input = evt.target
-
-  //   setForm({
-  //     ...form,
-  //     [input.name]: input.value,
-  //   })
-  // }
-
   const handleSubmit = (evt) => {
     evt.preventDefault()
     // loginUser(form)
@@ -38,6 +24,7 @@ function Login({ loginUser, errorMessage }) {
         linkPath='/signup'
         linkText='Регистрация'
         onSubmit={handleSubmit}
+        errorMessage={errorMessage}
       >
         <label className='login__form-label'>
           E-mail
@@ -52,7 +39,7 @@ function Login({ loginUser, errorMessage }) {
             required
           />
         </label>
-        <span className='login__form-error'>{errorMessage}</span>
+        <span className='login__input-error'>{errors.email}</span>
         <label className='login__form-label'>
           Пароль
           <input
@@ -66,7 +53,7 @@ function Login({ loginUser, errorMessage }) {
             required
           />
         </label>
-        <span className='login__form-error'>{errorMessage}</span>
+        <span className='login__input-error'>{errors.password}</span>
       </FormAuth>
     </main>
   )

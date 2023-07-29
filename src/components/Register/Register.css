@@ -21,7 +21,7 @@
   line-height: normal;
 }
 
-.register__form-error {
+.register__input-error {
   color: #ee3465;
   font-size: 10px;
   font-weight: 400;

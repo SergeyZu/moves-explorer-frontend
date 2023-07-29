@@ -4,26 +4,11 @@ import FormAuth from '../FormAuth/FormAuth'
 import './Register.css'
 
 function Register({ registerUser, errorMessage }) {
-  const { form, hadleChange } = useForm({
-    name: '',
+  const { form, errors, hadleChange } = useForm({
+    username: '',
     email: '',
     password: '',
   })
-
-  // const [form, setForm] = useState({
-  //   name: '',
-  //   email: '',
-  //   password: '',
-  // })
-
-  // const hadleChange = (evt) => {
-  //   const input = evt.target
-
-  //   setForm({
-  //     ...form,
-  //     [input.name]: input.value,
-  //   })
-  // }
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
@@ -40,21 +25,24 @@ function Register({ registerUser, errorMessage }) {
         linkPath='/signin'
         linkText='Войти'
         onSubmit={handleSubmit}
+        errorMessage={errorMessage}
       >
         <label className='register__form-label'>
           Имя
           <input
             className='register__form-input'
             type='text'
-            id='name'
-            name='name'
-            value={form.name}
+            id='username'
+            name='username'
+            value={form.username}
             onChange={hadleChange}
-            placeholder='Виталий'
+            placeholder='Введите ваше имя'
+            minlength={2}
+            maxlength={30}
             required
           />
         </label>
-        <span className='register__form-error'>{errorMessage}</span>
+        <span className='register__input-error'>{errors.username}</span>
         <label className='register__form-label'>
           E-mail
           <input
@@ -68,7 +56,7 @@ function Register({ registerUser, errorMessage }) {
             required
           />
         </label>
-        <span className='register__form-error'>{errorMessage}</span>
+        <span className='register__input-error'>{errors.email}</span>
         <label className='register__form-label'>
           Пароль
           <input
@@ -79,10 +67,11 @@ function Register({ registerUser, errorMessage }) {
             value={form.password}
             onChange={hadleChange}
             placeholder='******'
+            minLength={6}
             required
           />
         </label>
-        <span className='register__form-error'>{errorMessage}</span>
+        <span className='register__input-error'>{errors.password}</span>
       </FormAuth>
     </main>
   )

@@ -12,8 +12,7 @@ function Register({ registerUser, errorMessage }) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    // registerUser(form)
-    console.log(form)
+    registerUser(form)
   }
 
   return (
@@ -37,8 +36,8 @@ function Register({ registerUser, errorMessage }) {
             value={form.username}
             onChange={hadleChange}
             placeholder='Введите ваше имя'
-            minlength={2}
-            maxlength={30}
+            minLength={2}
+            maxLength={30}
             required
           />
         </label>
@@ -67,7 +66,7 @@ function Register({ registerUser, errorMessage }) {
             value={form.password}
             onChange={hadleChange}
             placeholder='******'
-            minLength={6}
+            minLength={3}
             required
           />
         </label>

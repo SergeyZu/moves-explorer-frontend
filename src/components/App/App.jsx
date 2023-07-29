@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
-
+import { useState } from 'react'
 import './App.css'
+import { mainApi } from '../../utils/MainApi'
 import Main from '../Main/Main'
 import Movies from '../Movies/Movies'
 import SavedMovies from '../SavedMovies/SavedMovies'
@@ -10,6 +11,27 @@ import Login from '../Login/Login'
 import PageNotFound from '../PageNotFound/PageNotFound'
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [token, setToken] = useState('')
+  const [registrationError, setRegistrationError] = useState('')
+  const [loginError, setloginError] = useState('')
+  const [userData, setUserData] = useState({
+    username: '',
+    email: '',
+  })
+
+  const registerUser = ({ username, email, password }) => {
+    mainApi
+      .register({ username, email, password })
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+        setRegistrationError('Ошибка регистрации')
+      })
+  }
+
   return (
     <div className='app'>
       <Routes>
@@ -18,7 +40,15 @@ function App() {
         <Route path='/saved-movies' element={<SavedMovies />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/signin' element={<Login />} />
-        <Route path='/signup' element={<Register />} />
+        <Route
+          path='/signup'
+          element={
+            <Register
+              registerUser={registerUser}
+              errorMessage={registrationError}
+            />
+          }
+        />
         <Route path='/*' element={<PageNotFound />} />
       </Routes>
     </div>

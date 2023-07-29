@@ -11,8 +11,7 @@ function Login({ loginUser, errorMessage }) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    // loginUser(form)
-    console.log(form)
+    loginUser(form)
   }
 
   return (

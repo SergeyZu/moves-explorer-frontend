@@ -25,7 +25,7 @@ function FormAuth({
         </div>
       </div>
       <div className='form-auth__form-footer'>
-        <span>{errorMessage}</span>
+        <span className='form-auth__error-message'>{errorMessage}</span>
         <button className='form-auth__form-button'>{buttonText}</button>
         <div className='form-auth__qa'>
           <p className='form-auth__question'>{question}</p>

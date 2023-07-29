@@ -1,6 +1,8 @@
+import { MOVIES_URL } from '../constants/constants'
+
 class MoviesApi {
   getAllMovies() {
-    return fetch('https://api.nomoreparties.co/beatfilm-movies').then((res) => {
+    return fetch(MOVIES_URL).then((res) => {
       if (res.ok) {
         return res.json()
       }

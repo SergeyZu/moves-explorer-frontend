@@ -11,23 +11,6 @@ function Movies() {
   const [foundMovies, setFoundMovies] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
-  // useEffect(() => {
-  //   setIsLoading(true)
-
-  //   moviesApi
-  //     .getAllMovies(searchRequest)
-  //     .then((data) => {
-  //       setFoundMovies(data)
-  //       // console.log(foundMovies)
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false)
-  //     })
-  // }, [searchRequest])
-
   useEffect(() => {
     handleRequest()
   }, [])

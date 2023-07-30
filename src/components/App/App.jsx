@@ -1,7 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import './App.css'
-import { mainApi } from '../../utils/MainApi'
+// import { mainApi } from '../../utils/MainApi'
+import * as auth from '../../utils/auth'
 import Main from '../Main/Main'
 import Movies from '../Movies/Movies'
 import SavedMovies from '../SavedMovies/SavedMovies'
@@ -16,13 +17,13 @@ function App() {
   const [registrationError, setRegistrationError] = useState('')
   const [loginError, setloginError] = useState('')
   const [userData, setUserData] = useState({
-    username: '',
+    name: '',
     email: '',
   })
 
-  const registerUser = ({ username, email, password }) => {
-    mainApi
-      .register({ username, email, password })
+  const registerUser = ({ name, email, password }) => {
+    auth
+      .register(name, email, password)
       .then((res) => {
         console.log(res)
       })

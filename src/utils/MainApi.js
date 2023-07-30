@@ -17,13 +17,15 @@ class MainApi {
     return Promise.reject(`Ошибка: ${res.status}`)
   }
 
-  register({ username, email, password }) {
-    return this._request(`${this._baseUrl}/signup`, {
-      method: 'POST',
-      headers: this._headers,
-      body: JSON.stringify({ username, email, password }),
-    })
-  }
+  // register({ name, email, password }) {
+
+  // register(name, email, password) {
+  //   return this._request(`${this._baseUrl}/signup`, {
+  //     method: 'POST',
+  //     headers: this._headers,
+  //     body: JSON.stringify({ name, email, password }),
+  //   })
+  // }
 }
 
 const apiConfig = {

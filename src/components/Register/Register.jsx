@@ -5,7 +5,7 @@ import './Register.css'
 
 function Register({ registerUser, errorMessage }) {
   const { form, errors, hadleChange } = useForm({
-    username: '',
+    name: '',
     email: '',
     password: '',
   })
@@ -31,9 +31,9 @@ function Register({ registerUser, errorMessage }) {
           <input
             className='register__form-input'
             type='text'
-            id='username'
-            name='username'
-            value={form.username}
+            id='name'
+            name='name'
+            value={form.name}
             onChange={hadleChange}
             placeholder='Введите ваше имя'
             minLength={2}
@@ -41,7 +41,7 @@ function Register({ registerUser, errorMessage }) {
             required
           />
         </label>
-        <span className='register__input-error'>{errors.username}</span>
+        <span className='register__input-error'>{errors.name}</span>
         <label className='register__form-label'>
           E-mail
           <input

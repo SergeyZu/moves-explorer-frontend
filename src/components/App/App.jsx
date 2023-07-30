@@ -10,6 +10,7 @@ import Profile from '../Profile/Profile'
 import Register from '../Register/Register'
 import Login from '../Login/Login'
 import PageNotFound from '../PageNotFound/PageNotFound'
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -37,9 +38,24 @@ function App() {
     <div className='app'>
       <Routes>
         <Route path='/' element={<Main />} />
-        <Route path='/movies' element={<Movies />} />
-        <Route path='/saved-movies' element={<SavedMovies />} />
-        <Route path='/profile' element={<Profile />} />
+        {/* <Route path='/movies' element={<Movies />} /> */}
+        <Route
+          path='/movies'
+          element={<ProtectedRoute component={Movies} LoggedIn={isLoggedIn} />}
+        />
+        {/* <Route path='/saved-movies' element={<SavedMovies />} /> */}
+        <Route
+          path='/saved-movies'
+          element={
+            <ProtectedRoute component={SavedMovies} LoggedIn={isLoggedIn} />
+          }
+        />
+        {/* <Route path='/profile' element={<Profile />} /> */}
+        <Route
+          path='/profile'
+          element={<ProtectedRoute component={Profile} LoggedIn={isLoggedIn} />}
+        />
+
         <Route path='/signin' element={<Login />} />
         <Route
           path='/signup'

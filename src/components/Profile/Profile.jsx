@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './Profile.css'
 import Header from '../Header/Header'
 
-function Profile() {
+function Profile({ userData }) {
   const [isEditPushed, setisEditPushed] = useState(false)
 
   const handleEditButtonClick = () => {
@@ -14,17 +14,17 @@ function Profile() {
       <Header />
       <main className='profile'>
         <section className='profile__form'>
-          <h2 className='profile__title'>Привет, Виталий!{}</h2>
+          <h2 className='profile__title'>Привет, {userData.user.name}!</h2>
           {!isEditPushed ? (
             <>
               <div className='profile__input-block'>
                 <label className='profile__label'>
                   Имя
-                  <p className='profile__input'>Виталий</p>
+                  <p className='profile__input'>{userData.user.name}</p>
                 </label>
                 <label className='profile__label'>
                   E-mail
-                  <p className='profile__input'>pochta@yandex.ru</p>
+                  <p className='profile__input'>{userData.user.email}</p>
                 </label>
               </div>
 

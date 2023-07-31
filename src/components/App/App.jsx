@@ -28,21 +28,21 @@ function App() {
   //   setToken(jwt)
   // }, [token])
 
-  // useEffect(() => {
-  //   if (!token) {
-  //     return
-  //   }
-  //   auth
-  //     .getUserData(token)
-  //     .then((user) => {
-  //       setUserData(user)
-  //       // setToken(token)
-  //       setIsLoggedIn(true)
-  //       // navigate('/movies')
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
+  useEffect(() => {
+    if (!token) {
+      return
+    }
+    auth.getUserData(token).then((user) => {
+      console.log(user)
+      setUserData({ user })
+      //       // setToken(token)
+      setIsLoggedIn(true)
+      //       // navigate('/movies')
+    })
+    //     .catch((err) => {
+    //       console.log(err)
+    //     })
+  }, [token])
   // }, [token, navigate])
 
   const registerUser = ({ name, email, password }) => {
@@ -94,7 +94,7 @@ function App() {
           element={
             <ProtectedRoute
               component={Profile}
-              // userData={userData}
+              userData={userData}
               loggedIn={isLoggedIn}
             />
           }

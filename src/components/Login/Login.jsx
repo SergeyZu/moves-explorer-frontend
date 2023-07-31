@@ -34,7 +34,7 @@ function Login({ loginUser, errorMessage }) {
             name='email'
             value={form.email}
             onChange={hadleChange}
-            placeholder='pochta@yandex.ru|'
+            placeholder='pochta@yandex.ru'
             required
           />
         </label>

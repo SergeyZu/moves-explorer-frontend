@@ -1,5 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
-import { useState } from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import './App.css'
 // import { mainApi } from '../../utils/MainApi'
 import * as auth from '../../utils/auth'
@@ -21,12 +21,38 @@ function App() {
     name: '',
     email: '',
   })
+  const navigate = useNavigate()
+
+  // useEffect(() => {
+  //   const jwt = localStorage.getItem('jwt')
+  //   setToken(jwt)
+  // }, [token])
+
+  // useEffect(() => {
+  //   if (!token) {
+  //     return
+  //   }
+  //   auth
+  //     .getUserData(token)
+  //     .then((user) => {
+  //       setUserData(user)
+  //       // setToken(token)
+  //       setIsLoggedIn(true)
+  //       // navigate('/movies')
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  // }, [token, navigate])
 
   const registerUser = ({ name, email, password }) => {
     auth
       .register(name, email, password)
       .then((res) => {
         console.log(res)
+        // loginUser({ email, password })
+        // setIsLoggedIn(true)
+        // navigate('/movies', { replace: true })
       })
       .catch((err) => {
         console.log(err)
@@ -34,29 +60,53 @@ function App() {
       })
   }
 
+  // const loginUser = ({ email, password }) => {
+  //   auth
+  //     .authorize(email, password)
+  //     .then((res) => {
+  //       localStorage.setItem('jwt', res.token)
+  //       setToken(res.token)
+  //       navigate('/movies')
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //       setloginError('Неправильный пользователь или пароль')
+  //     })
+  // }
+
   return (
     <div className='app'>
       <Routes>
         <Route path='/' element={<Main />} />
-        {/* <Route path='/movies' element={<Movies />} /> */}
         <Route
           path='/movies'
           element={<ProtectedRoute component={Movies} LoggedIn={isLoggedIn} />}
         />
-        {/* <Route path='/saved-movies' element={<SavedMovies />} /> */}
         <Route
           path='/saved-movies'
           element={
             <ProtectedRoute component={SavedMovies} LoggedIn={isLoggedIn} />
           }
         />
-        {/* <Route path='/profile' element={<Profile />} /> */}
         <Route
           path='/profile'
-          element={<ProtectedRoute component={Profile} LoggedIn={isLoggedIn} />}
+          element={
+            <ProtectedRoute
+              component={Profile}
+              // userData={userData}
+              LoggedIn={isLoggedIn}
+            />
+          }
         />
-
-        <Route path='/signin' element={<Login />} />
+        <Route
+          path='/signin'
+          element={
+            <Login
+            // loginUser={loginUser}
+            // errorMessage={loginError}
+            />
+          }
+        />
         <Route
           path='/signup'
           element={

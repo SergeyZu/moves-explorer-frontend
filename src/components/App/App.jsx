@@ -50,8 +50,8 @@ function App() {
       .register(name, email, password)
       .then((res) => {
         console.log(res)
-        // loginUser({ email, password })
-        // setIsLoggedIn(true)
+        loginUser({ email, password })
+        setIsLoggedIn(true)
         // navigate('/movies', { replace: true })
       })
       .catch((err) => {
@@ -60,19 +60,20 @@ function App() {
       })
   }
 
-  // const loginUser = ({ email, password }) => {
-  //   auth
-  //     .authorize(email, password)
-  //     .then((res) => {
-  //       localStorage.setItem('jwt', res.token)
-  //       setToken(res.token)
-  //       navigate('/movies')
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //       setloginError('Неправильный пользователь или пароль')
-  //     })
-  // }
+  const loginUser = ({ email, password }) => {
+    auth
+      .authorize(email, password)
+      .then((res) => {
+        localStorage.setItem('jwt', res.token)
+        setToken(res.token)
+        setIsLoggedIn(true)
+        navigate('/movies')
+      })
+      .catch((err) => {
+        console.log(err)
+        setloginError('Неправильный email или пароль')
+      })
+  }
 
   return (
     <div className='app'>
@@ -80,12 +81,12 @@ function App() {
         <Route path='/' element={<Main />} />
         <Route
           path='/movies'
-          element={<ProtectedRoute component={Movies} LoggedIn={isLoggedIn} />}
+          element={<ProtectedRoute component={Movies} loggedIn={isLoggedIn} />}
         />
         <Route
           path='/saved-movies'
           element={
-            <ProtectedRoute component={SavedMovies} LoggedIn={isLoggedIn} />
+            <ProtectedRoute component={SavedMovies} loggedIn={isLoggedIn} />
           }
         />
         <Route
@@ -94,18 +95,13 @@ function App() {
             <ProtectedRoute
               component={Profile}
               // userData={userData}
-              LoggedIn={isLoggedIn}
+              loggedIn={isLoggedIn}
             />
           }
         />
         <Route
           path='/signin'
-          element={
-            <Login
-            // loginUser={loginUser}
-            // errorMessage={loginError}
-            />
-          }
+          element={<Login loginUser={loginUser} errorMessage={loginError} />}
         />
         <Route
           path='/signup'

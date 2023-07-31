@@ -38,4 +38,8 @@ const getUserData = (token) => {
   return makeRequest('/users/me', 'GET', null, token)
 }
 
-export { register, authorize, getUserData }
+const updateUserData = (email, password) => {
+  return makeRequest('/users/me', 'GET', { email, password }, null)
+}
+
+export { register, authorize, getUserData, updateUserData }

@@ -4,13 +4,13 @@ import checkboxoff from '../../images/checkboxoff.svg'
 import { useState } from 'react'
 
 function FilterCheckbox() {
-  const [isOn, setIsOn] = useState(true)
+  const [isChecked, setIsChecked] = useState(false)
   return (
-    <div className='filter-checkbox' type={checkbox}>
+    <div className='filter-checkbox'>
       <img
         className='filter-checkbox__image'
-        onClick={() => setIsOn(!isOn)}
-        src={isOn ? checkbox : checkboxoff}
+        onClick={() => setIsChecked(!isChecked)}
+        src={isChecked ? checkbox : checkboxoff}
         alt='Переключатель'
       />
       <p className='filter-checkbox__text'>Короткометражки</p>

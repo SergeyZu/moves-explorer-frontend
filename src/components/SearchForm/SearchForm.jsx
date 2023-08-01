@@ -1,9 +1,9 @@
 import './SearchForm.css'
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 
-function SearchForm({ onChange, onFormSubmit, isFilterOn }) {
+function SearchForm({ onChange, onSubmit }) {
   return (
-    <form className='search-form' onSubmit={onFormSubmit}>
+    <form className='search-form' onSubmit={onSubmit}>
       <div className='search-form__row'>
         <input
           className='search-form__input'
@@ -13,7 +13,7 @@ function SearchForm({ onChange, onFormSubmit, isFilterOn }) {
         />
         <button className='search-form__find-button' />
       </div>
-      <FilterCheckbox isFilterOn={isFilterOn} />
+      <FilterCheckbox />
     </form>
   )
 }

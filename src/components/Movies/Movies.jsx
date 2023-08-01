@@ -10,30 +10,53 @@ function Movies({ isLoggedIn }) {
   const [searchRequest, setSearchRequest] = useState('')
   const [foundMovies, setFoundMovies] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  const [isFilterOn, setIsFilterOn] = useState(false)
 
-  useEffect(() => {
-    handleRequest()
-  }, [])
+  // useEffect(() => {
+  //   handleRequest()
+  // }, [])
+
+  const getMoviesFromServer = () => {
+    setIsLoading(true)
+    moviesApi
+      .getAllMovies()
+      .then((data) => {
+        const moviesArr = JSON.stringify(data)
+        localStorage.setItem('allMovies', moviesArr)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
+  }
 
   const handleRequest = () => {
     if (searchRequest !== '') {
       localStorage.setItem('searchRequest', searchRequest)
-      setIsLoading(true)
-      moviesApi
-        .getAllMovies(searchRequest)
-        .then((data) => {
-          setFoundMovies(data)
-          // console.log(foundMovies)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-        .finally(() => {
-          setIsLoading(false)
-        })
+      localStorage.getItem('allMovies') === null && getMoviesFromServer()
+      // : console.log('Думай дальше, Серега')
     }
   }
+
+  // const handleRequest = () => {
+  //   if (searchRequest !== '') {
+  //     localStorage.setItem('searchRequest', searchRequest)
+  //     setIsLoading(true)
+  //     moviesApi
+  //       .getAllMovies(searchRequest)
+  //       .then((data) => {
+  //         setFoundMovies(data)
+  //         // console.log(foundMovies)
+  //       })
+  //       .catch((err) => {
+  //         console.log(err)
+  //       })
+  //       .finally(() => {
+  //         setIsLoading(false)
+  //       })
+  //   }
+  // }
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault()
@@ -51,8 +74,7 @@ function Movies({ isLoggedIn }) {
         <section className='movies__container'>
           <SearchForm
             onChange={handleInputChange}
-            onFormSubmit={handleFormSubmit}
-            isFilterOn={isFilterOn}
+            onSubmit={handleFormSubmit}
           />
           <MoviesCardList movies={foundMovies} isLoading={isLoading} />
           <button className='movies__more-button'>Ещё</button>

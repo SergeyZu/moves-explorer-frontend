@@ -78,6 +78,14 @@
   margin: 0;
 }
 
+.profile__input-error {
+  color: #ee3465;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 6px;
+}
+
 .profile__links {
   /* margin-top: 204px; */
   display: flex;

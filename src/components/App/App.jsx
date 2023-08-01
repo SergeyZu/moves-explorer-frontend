@@ -11,39 +11,60 @@ import Register from '../Register/Register'
 import Login from '../Login/Login'
 import PageNotFound from '../PageNotFound/PageNotFound'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import Preloader from '../Preloader/Preloader'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [token, setToken] = useState('')
   const [registrationError, setRegistrationError] = useState('')
   const [loginError, setloginError] = useState('')
+  const [profileError, setProfileError] = useState('')
   const [userData, setUserData] = useState({
     name: '',
     email: '',
   })
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   const jwt = localStorage.getItem('jwt')
-  //   setToken(jwt)
-  // }, [token])
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt')
+    setToken(jwt)
+  }, [])
 
   useEffect(() => {
     if (!token) {
+      // setIsLoading(false)
       return
     }
-    auth.getUserData(token).then((user) => {
-      console.log(user)
-      setUserData({ user })
-      //       // setToken(token)
-      setIsLoggedIn(true)
-      //       // navigate('/movies')
-    })
-    //     .catch((err) => {
-    //       console.log(err)
-    //     })
+    auth
+      .getUserData(token)
+      .then((user) => {
+        setUserData({ user })
+        setIsLoggedIn(true)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => {
+        // setIsLoading(false)
+      })
   }, [token])
-  // }, [token, navigate])
+
+  const updateUserInfo = (userData) => {
+    auth
+      .updateUserData(userData)
+      .then((user) => {
+        setUserData({ user })
+        setIsLoggedIn(true)
+      })
+      .catch((err) => {
+        console.log(err)
+        setProfileError('При обновлении профиля произошла ошибка')
+      })
+      .finally(() => {
+        // setIsLoading(false)
+      })
+  }
 
   const registerUser = ({ name, email, password }) => {
     auth
@@ -61,8 +82,10 @@ function App() {
   }
 
   const loginUser = ({ email, password }) => {
+    setIsLoading(true)
     auth
       .authorize(email, password)
+      // .then((res) => res.json())
       .then((res) => {
         localStorage.setItem('jwt', res.token)
         setToken(res.token)
@@ -73,47 +96,72 @@ function App() {
         console.log(err)
         setloginError('Неправильный email или пароль')
       })
+      .finally(() => {
+        setIsLoading(false)
+      })
+  }
+
+  const logOut = () => {
+    localStorage.removeItem('jwt')
+    setIsLoggedIn(false)
+    setToken('')
+    setUserData({
+      name: '',
+      email: '',
+    })
+    navigate('/')
   }
 
   return (
     <div className='app'>
-      <Routes>
-        <Route path='/' element={<Main />} />
-        <Route
-          path='/movies'
-          element={<ProtectedRoute component={Movies} loggedIn={isLoggedIn} />}
-        />
-        <Route
-          path='/saved-movies'
-          element={
-            <ProtectedRoute component={SavedMovies} loggedIn={isLoggedIn} />
-          }
-        />
-        <Route
-          path='/profile'
-          element={
-            <ProtectedRoute
-              component={Profile}
-              userData={userData}
-              loggedIn={isLoggedIn}
-            />
-          }
-        />
-        <Route
-          path='/signin'
-          element={<Login loginUser={loginUser} errorMessage={loginError} />}
-        />
-        <Route
-          path='/signup'
-          element={
-            <Register
-              registerUser={registerUser}
-              errorMessage={registrationError}
-            />
-          }
-        />
-        <Route path='/*' element={<PageNotFound />} />
-      </Routes>
+      {isLoading ? (
+        <div className='app-preloader'>
+          <Preloader />
+        </div>
+      ) : (
+        <Routes>
+          <Route path='/' element={<Main />} />
+          <Route
+            path='/movies'
+            element={
+              <ProtectedRoute component={Movies} loggedIn={isLoggedIn} />
+            }
+          />
+          <Route
+            path='/saved-movies'
+            element={
+              <ProtectedRoute component={SavedMovies} loggedIn={isLoggedIn} />
+            }
+          />
+          <Route
+            path='/profile'
+            element={
+              <ProtectedRoute
+                component={Profile}
+                userData={userData}
+                loggedIn={isLoggedIn}
+                logOut={logOut}
+                updateUserInfo={updateUserInfo}
+                errorMessage={profileError}
+              />
+            }
+          />
+          <Route
+            path='/signin'
+            element={<Login loginUser={loginUser} errorMessage={loginError} />}
+          />
+          <Route
+            path='/signup'
+            element={
+              <Register
+                registerUser={registerUser}
+                errorMessage={registrationError}
+              />
+            }
+          />
+          <Route path='/*' element={<PageNotFound />} />
+        </Routes>
+      )}
     </div>
   )
 }

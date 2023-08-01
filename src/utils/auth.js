@@ -39,7 +39,7 @@ const getUserData = (token) => {
 }
 
 const updateUserData = (email, password) => {
-  return makeRequest('/users/me', 'GET', { email, password }, null)
+  return makeRequest('/users/me', 'PATCH', { email, password }, null)
 }
 
 export { register, authorize, getUserData, updateUserData }

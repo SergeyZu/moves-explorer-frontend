@@ -10,6 +10,7 @@ function Movies({ isLoggedIn }) {
   const [searchRequest, setSearchRequest] = useState('')
   const [foundMovies, setFoundMovies] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [isFilterOn, setIsFilterOn] = useState(false)
 
   useEffect(() => {
     handleRequest()
@@ -17,6 +18,7 @@ function Movies({ isLoggedIn }) {
 
   const handleRequest = () => {
     if (searchRequest !== '') {
+      localStorage.setItem('searchRequest', searchRequest)
       setIsLoading(true)
       moviesApi
         .getAllMovies(searchRequest)
@@ -48,15 +50,9 @@ function Movies({ isLoggedIn }) {
       <main className='movies'>
         <section className='movies__container'>
           <SearchForm
-            onInputChange={handleInputChange}
-            // onInputChange={(evt) => console.log(evt.target.value)}
-
+            onChange={handleInputChange}
             onFormSubmit={handleFormSubmit}
-
-            // onFormSubmit={(evt) => {
-            //   evt.preventDefault()
-            //   setSearchRequest('а')
-            // }}
+            isFilterOn={isFilterOn}
           />
           <MoviesCardList movies={foundMovies} isLoading={isLoading} />
           <button className='movies__more-button'>Ещё</button>

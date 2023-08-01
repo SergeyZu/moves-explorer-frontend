@@ -4,10 +4,10 @@ import SearchForm from '../SearchForm/SearchForm'
 import SavedCardList from '../SavedCardList/SavedCardList'
 import Footer from '../Footer/Footer'
 
-function SavedMovies() {
+function SavedMovies({ isLoggedIn }) {
   return (
     <>
-      <Header />
+      <Header isLoggedIn={isLoggedIn} />
       <main className='saved-movies'>
         <section className='saved-movies__container'>
           <SearchForm />

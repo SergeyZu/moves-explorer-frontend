@@ -4,7 +4,13 @@ import './Profile.css'
 import useForm from '../../hooks/useForm'
 import Header from '../Header/Header'
 
-function Profile({ userData, updateUserInfo, errorMessage, logOut }) {
+function Profile({
+  userData,
+  updateUserInfo,
+  errorMessage,
+  logOut,
+  isLoggedIn,
+}) {
   const { form, errors, hadleChange } = useForm({
     name: '',
     email: '',
@@ -22,7 +28,7 @@ function Profile({ userData, updateUserInfo, errorMessage, logOut }) {
   }
   return (
     <>
-      <Header />
+      <Header isLoggedIn={isLoggedIn} />
       <main className='profile'>
         <section className='profile__form'>
           <h2 className='profile__title'>Привет, {userData.user.name}!</h2>

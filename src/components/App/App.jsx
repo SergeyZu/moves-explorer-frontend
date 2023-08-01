@@ -120,17 +120,17 @@ function App() {
         </div>
       ) : (
         <Routes>
-          <Route path='/' element={<Main />} />
+          <Route path='/' element={<Main isLoggedIn={isLoggedIn} />} />
           <Route
             path='/movies'
             element={
-              <ProtectedRoute component={Movies} loggedIn={isLoggedIn} />
+              <ProtectedRoute component={Movies} isLoggedIn={isLoggedIn} />
             }
           />
           <Route
             path='/saved-movies'
             element={
-              <ProtectedRoute component={SavedMovies} loggedIn={isLoggedIn} />
+              <ProtectedRoute component={SavedMovies} isLoggedIn={isLoggedIn} />
             }
           />
           <Route
@@ -139,7 +139,7 @@ function App() {
               <ProtectedRoute
                 component={Profile}
                 userData={userData}
-                loggedIn={isLoggedIn}
+                isLoggedIn={isLoggedIn}
                 logOut={logOut}
                 updateUserInfo={updateUserInfo}
                 errorMessage={profileError}

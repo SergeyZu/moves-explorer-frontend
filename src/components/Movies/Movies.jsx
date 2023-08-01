@@ -6,7 +6,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Footer from '../Footer/Footer'
 import moviesApi from '../../utils/MoviesApi'
 
-function Movies() {
+function Movies({ isLoggedIn }) {
   const [searchRequest, setSearchRequest] = useState('')
   const [foundMovies, setFoundMovies] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -44,7 +44,7 @@ function Movies() {
 
   return (
     <>
-      <Header />
+      <Header isLoggedIn={isLoggedIn} />
       <main className='movies'>
         <section className='movies__container'>
           <SearchForm

@@ -102,7 +102,8 @@ function App() {
   }
 
   const logOut = () => {
-    localStorage.removeItem('jwt')
+    // localStorage.removeItem('jwt')
+    localStorage.clear()
     setIsLoggedIn(false)
     setToken('')
     setUserData({

@@ -5,6 +5,7 @@ import SearchForm from '../SearchForm/SearchForm'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Footer from '../Footer/Footer'
 import moviesApi from '../../utils/MoviesApi'
+import searchRequestHandler from '../../utils/searchRequestHandler'
 
 function Movies({ isLoggedIn }) {
   const [searchRequest, setSearchRequest] = useState('')
@@ -22,6 +23,7 @@ function Movies({ isLoggedIn }) {
       .then((data) => {
         const moviesArr = JSON.stringify(data)
         localStorage.setItem('allMovies', moviesArr)
+        // setFoundMovies(data)
       })
       .catch((err) => {
         console.log(err)
@@ -35,7 +37,7 @@ function Movies({ isLoggedIn }) {
     if (searchRequest !== '') {
       localStorage.setItem('searchRequest', searchRequest)
       localStorage.getItem('allMovies') === null && getMoviesFromServer()
-      // : console.log('Думай дальше, Серега')
+      setFoundMovies(searchRequestHandler(searchRequest))
     }
   }
 

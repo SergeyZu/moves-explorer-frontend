@@ -1,16 +1,11 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import './Profile.css'
 import useForm from '../../hooks/useForm'
 import Header from '../Header/Header'
+import CurrentUserContext from '../../contexts/CurrentUserContext'
+import { useContext } from 'react'
 
-function Profile({
-  userData,
-  updateUserInfo,
-  errorMessage,
-  logOut,
-  isLoggedIn,
-}) {
+function Profile({ updateUserInfo, errorMessage, logOut, isLoggedIn }) {
   const { form, errors, hadleChange } = useForm({
     name: '',
     email: '',
@@ -26,22 +21,25 @@ function Profile({
   const handleEditButtonClick = () => {
     setisEditPushed({ isEditPushed: true })
   }
+
+  const currentUser = useContext(CurrentUserContext)
+
   return (
     <>
       <Header isLoggedIn={isLoggedIn} />
       <main className='profile'>
         <section className='profile__form'>
-          <h2 className='profile__title'>Привет, {userData.user.name}!</h2>
+          <h2 className='profile__title'>Привет, {currentUser.user.name}!</h2>
           {!isEditPushed ? (
             <>
               <div className='profile__input-block'>
                 <label className='profile__label'>
                   Имя
-                  <p className='profile__input'>{userData.user.name}</p>
+                  <p className='profile__input'>{currentUser.user.name}</p>
                 </label>
                 <label className='profile__label'>
                   E-mail
-                  <p className='profile__input'>{userData.user.email}</p>
+                  <p className='profile__input'>{currentUser.user.email}</p>
                 </label>
               </div>
 
@@ -53,18 +51,11 @@ function Profile({
                 >
                   Редактировать
                 </button>
-                {/* <Link
-                  to='/'
-                  className='profile__link profile__link_logout '
-                  logOut={logOut}
-                >
-                  Выйти из аккаунта{' '}
-                </Link> */}
                 <p
                   className='profile__link profile__link_logout '
                   onClick={logOut}
                 >
-                  Выйти из аккаунта{' '}
+                  Выйти из аккаунта
                 </p>
               </div>
             </>

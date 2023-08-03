@@ -11,7 +11,6 @@ const searchRequestHandler = (searchRequest) => {
     )
   })
 
-  // console.log(selectedMovies)
   localStorage.setItem('foundMovies', JSON.stringify(selectedMovies))
   return selectedMovies
 }

@@ -33,11 +33,16 @@ function Movies({ isLoggedIn }) {
       })
   }
 
-  const handleRequest = () => {
-    if (searchRequest !== '') {
-      localStorage.setItem('searchRequest', searchRequest)
-      localStorage.getItem('allMovies') === null && getMoviesFromServer()
-      setFoundMovies(searchRequestHandler(searchRequest))
+  async function handleRequest() {
+    try {
+      if (searchRequest !== '') {
+        localStorage.setItem('searchRequest', searchRequest)
+        localStorage.getItem('allMovies') === null &&
+          (await getMoviesFromServer())
+        setFoundMovies(searchRequestHandler(searchRequest))
+      }
+    } catch (err) {
+      console.log(err)
     }
   }
 

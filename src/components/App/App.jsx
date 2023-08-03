@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 // import { mainApi } from '../../utils/MainApi'
 import * as auth from '../../utils/auth'
+import CurrentUserContext from '../../contexts/CurrentUserContext'
 import Main from '../Main/Main'
 import Movies from '../Movies/Movies'
 import SavedMovies from '../SavedMovies/SavedMovies'
@@ -19,7 +20,7 @@ function App() {
   const [registrationError, setRegistrationError] = useState('')
   const [loginError, setloginError] = useState('')
   const [profileError, setProfileError] = useState('')
-  const [userData, setUserData] = useState({
+  const [currentUser, setCurrentUser] = useState({
     name: '',
     email: '',
   })
@@ -39,7 +40,7 @@ function App() {
     auth
       .getUserData(token)
       .then((user) => {
-        setUserData({ user })
+        setCurrentUser({ user })
         setIsLoggedIn(true)
       })
       .catch((err) => {
@@ -54,7 +55,7 @@ function App() {
     auth
       .updateUserData(userData)
       .then((user) => {
-        setUserData({ user })
+        setCurrentUser({ user })
         setIsLoggedIn(true)
       })
       .catch((err) => {
@@ -106,7 +107,7 @@ function App() {
     localStorage.clear()
     setIsLoggedIn(false)
     setToken('')
-    setUserData({
+    setCurrentUser({
       name: '',
       email: '',
     })
@@ -120,48 +121,55 @@ function App() {
           <Preloader />
         </div>
       ) : (
-        <Routes>
-          <Route path='/' element={<Main isLoggedIn={isLoggedIn} />} />
-          <Route
-            path='/movies'
-            element={
-              <ProtectedRoute component={Movies} isLoggedIn={isLoggedIn} />
-            }
-          />
-          <Route
-            path='/saved-movies'
-            element={
-              <ProtectedRoute component={SavedMovies} isLoggedIn={isLoggedIn} />
-            }
-          />
-          <Route
-            path='/profile'
-            element={
-              <ProtectedRoute
-                component={Profile}
-                userData={userData}
-                isLoggedIn={isLoggedIn}
-                logOut={logOut}
-                updateUserInfo={updateUserInfo}
-                errorMessage={profileError}
-              />
-            }
-          />
-          <Route
-            path='/signin'
-            element={<Login loginUser={loginUser} errorMessage={loginError} />}
-          />
-          <Route
-            path='/signup'
-            element={
-              <Register
-                registerUser={registerUser}
-                errorMessage={registrationError}
-              />
-            }
-          />
-          <Route path='/*' element={<PageNotFound />} />
-        </Routes>
+        <CurrentUserContext.Provider value={currentUser}>
+          <Routes>
+            <Route path='/' element={<Main isLoggedIn={isLoggedIn} />} />
+            <Route
+              path='/movies'
+              element={
+                <ProtectedRoute component={Movies} isLoggedIn={isLoggedIn} />
+              }
+            />
+            <Route
+              path='/saved-movies'
+              element={
+                <ProtectedRoute
+                  component={SavedMovies}
+                  isLoggedIn={isLoggedIn}
+                />
+              }
+            />
+            <Route
+              path='/profile'
+              element={
+                <ProtectedRoute
+                  component={Profile}
+                  // currentUser={currentUser}
+                  isLoggedIn={isLoggedIn}
+                  logOut={logOut}
+                  updateUserInfo={updateUserInfo}
+                  errorMessage={profileError}
+                />
+              }
+            />
+            <Route
+              path='/signin'
+              element={
+                <Login loginUser={loginUser} errorMessage={loginError} />
+              }
+            />
+            <Route
+              path='/signup'
+              element={
+                <Register
+                  registerUser={registerUser}
+                  errorMessage={registrationError}
+                />
+              }
+            />
+            <Route path='/*' element={<PageNotFound />} />
+          </Routes>
+        </CurrentUserContext.Provider>
       )}
     </div>
   )

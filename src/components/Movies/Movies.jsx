@@ -9,12 +9,27 @@ import searchRequestHandler from '../../utils/searchRequestHandler'
 
 function Movies({ isLoggedIn }) {
   const [searchRequest, setSearchRequest] = useState('')
-  const [foundMovies, setFoundMovies] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [foundMovies, setFoundMovies] = useState([])
+  const [shortMovies, setShortMovies] = useState([])
+  const [isFilterOn, setIsFilterOn] = useState(false)
+
+  localStorage.setItem('isShortFilm', isFilterOn)
+  // const [isShortFilm, setIsShortFilm] = useState(
+  //   JSON.parse(localStorage.getItem('isShortFilm')),
+  // )
+
+  // console.log('isShortFilm', isFilterOn)
+  // const [allMovies, setAllMovies] = useState(localStorage.getItem('allMovies'))
 
   // useEffect(() => {
   //   handleRequest()
   // }, [])
+
+  // useEffect(() => {
+  //   handleRequest()
+  //   filterShortMoviesHandler()
+  // }, [isFilterOn])
 
   const getMoviesFromServer = () => {
     setIsLoading(true)
@@ -44,6 +59,16 @@ function Movies({ isLoggedIn }) {
     } catch (err) {
       console.log(err)
     }
+  }
+
+  const filterShortMovies = (movies) => {
+    return movies.filter((movie) => {
+      return movie.duration <= 40
+    })
+  }
+
+  const filterShortMoviesHandler = () => {
+    setShortMovies(filterShortMovies(foundMovies))
   }
 
   // const handleRequest = () => {
@@ -82,6 +107,8 @@ function Movies({ isLoggedIn }) {
           <SearchForm
             onChange={handleInputChange}
             onSubmit={handleFormSubmit}
+            isFilterOn={isFilterOn}
+            setIsFilterOn={setIsFilterOn}
           />
           <MoviesCardList movies={foundMovies} isLoading={isLoading} />
           <button className='movies__more-button'>Ещё</button>

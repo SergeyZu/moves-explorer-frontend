@@ -18,6 +18,22 @@
     justify-content: center;
   }
 }
+.movies-card:nth-child(n + 13) {
+  display: none;
+}
+@media (max-width: 1027px) {
+  .movies-card:nth-child(n + 9) {
+    display: none;
+  }
+}
+@media (max-width: 649px) {
+  .movies-card:nth-child(n + 6) {
+    display: none;
+  }
+}
+.movies-card.is-visble {
+  display: block;
+}
 
 .movies-card__image {
   width: 100%;

@@ -6,6 +6,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Footer from '../Footer/Footer'
 import moviesApi from '../../utils/MoviesApi'
 import searchRequestHandler from '../../utils/searchRequestHandler'
+import ShowMoreButton from '../ShowMoreButton/ShowMoreButton'
 
 function Movies({ isLoggedIn }) {
   const [searchRequest, setSearchRequest] = useState('')
@@ -111,7 +112,7 @@ function Movies({ isLoggedIn }) {
             setIsFilterOn={setIsFilterOn}
           />
           <MoviesCardList movies={foundMovies} isLoading={isLoading} />
-          <button className='movies__more-button'>Ещё</button>
+          <ShowMoreButton movies={foundMovies} />
         </section>
       </main>
       <Footer />

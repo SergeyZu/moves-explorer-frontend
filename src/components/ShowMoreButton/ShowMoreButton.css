@@ -24,3 +24,7 @@
     width: 240px;
   }
 }
+
+.show-more-button_hide {
+  display: none;
+}

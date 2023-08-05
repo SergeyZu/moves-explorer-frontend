@@ -18,7 +18,7 @@
     justify-content: center;
   }
 }
-.movies-card:nth-child(n + 13) {
+/* .movies-card:nth-child(n + 13) {
   display: none;
 }
 @media (max-width: 1027px) {
@@ -31,9 +31,9 @@
     display: none;
   }
 }
-.movies-card.is-visble {
+.movies-card.is-visible {
   display: block;
-}
+} */
 
 .movies-card__image {
   width: 100%;

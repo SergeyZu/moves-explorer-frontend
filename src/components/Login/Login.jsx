@@ -1,9 +1,10 @@
 // import { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import useForm from '../../hooks/useForm'
 import FormAuth from '../FormAuth/FormAuth'
 import './Login.css'
 
-function Login({ loginUser, errorMessage }) {
+function Login({ loginUser, errorMessage, isLoggedIn }) {
   const { form, errors, hadleChange } = useForm({
     email: '',
     password: '',
@@ -14,7 +15,9 @@ function Login({ loginUser, errorMessage }) {
     loginUser(form)
   }
 
-  return (
+  return isLoggedIn ? (
+    <Navigate to='/' replace />
+  ) : (
     <main className='login'>
       <FormAuth
         title='Рады видеть!'

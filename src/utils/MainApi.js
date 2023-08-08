@@ -29,8 +29,8 @@ class MainApi {
 }
 
 const apiConfig = {
-  baseUrl: 'http://localhost:3000',
-  // baseUrl: BASE_URL,
+  // baseUrl: 'http://localhost:3000',
+  baseUrl: BASE_URL,
   headers: {
     // authorization: `Bearer ${localStorage.getItem('token')}`,
     'Content-Type': 'application/json',

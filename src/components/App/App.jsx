@@ -17,13 +17,13 @@ import Preloader from '../Preloader/Preloader'
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [token, setToken] = useState('')
-  const [registrationError, setRegistrationError] = useState('')
-  const [loginError, setloginError] = useState('')
-  const [profileError, setProfileError] = useState('')
   const [currentUser, setCurrentUser] = useState({
     name: '',
     email: '',
   })
+  const [registrationError, setRegistrationError] = useState('')
+  const [loginError, setloginError] = useState('')
+  const [profileError, setProfileError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
@@ -155,7 +155,11 @@ function App() {
             <Route
               path='/signin'
               element={
-                <Login loginUser={loginUser} errorMessage={loginError} />
+                <Login
+                  loginUser={loginUser}
+                  errorMessage={loginError}
+                  isLoggedIn={isLoggedIn}
+                />
               }
             />
             <Route
@@ -164,6 +168,7 @@ function App() {
                 <Register
                   registerUser={registerUser}
                   errorMessage={registrationError}
+                  isLoggedIn={isLoggedIn}
                 />
               }
             />

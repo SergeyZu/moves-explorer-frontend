@@ -13,19 +13,40 @@ function Movies({ isLoggedIn }) {
   const [foundMovies, setFoundMovies] = useState([])
   const [shortMovies, setShortMovies] = useState([])
   const [isFilterOn, setIsFilterOn] = useState(false)
-  let [renderedCardQty, setRenderedCardQty] = useState(12)
+
+  const computeRenderedCardQty = () => {
+    if (window.innerWidth > 1027) {
+      return 12
+    } else if (window.innerWidth <= 1027 && window.innerWidth > 649) {
+      return 8
+    } else {
+      return 5
+    }
+  }
+
+  const [renderedCardQty, setRenderedCardQty] = useState(
+    computeRenderedCardQty(),
+  )
+
+  localStorage.setItem('renderedCardQty', renderedCardQty)
 
   localStorage.setItem('isShortFilm', isFilterOn)
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault()
     handleRequest()
+    filterFoundMovies()
   }
+
+  useEffect(() => {
+    handleRequest()
+  }, [])
 
   function handleRequest() {
     !localStorage.getItem('allMovies')
       ? getMoviesFromServer()
       : handleSearchRequest()
+    // filterFoundMovies()
   }
 
   const getMoviesFromServer = () => {
@@ -54,9 +75,41 @@ function Movies({ isLoggedIn }) {
     }
   }
 
+  const filteredMovies = () => {
+    foundMovies.filter((movie) => {
+      return movie.duration <= 40
+    })
+  }
+
+  const filterFoundMovies = () => {
+    // if (localStorage.isShortFilm === true) {
+    localStorage.isShortFilm && filteredMovies()
+
+    return filteredMovies
+  }
+
+  // const filterFoundMovies = () => {
+  //   // const foundMoviesLS = parse.localStorage.foundMovies
+  //   const foundMoviesLS = JSON.parse(localStorage.getItem('foundMovies'))
+  //   if (localStorage.isShortFilm === true) {
+  //     const filteredMovies = () =>
+  //       foundMoviesLS.filter((movie) => {
+  //         // [localStorage.foundMovies].filter((movie) => {
+  //         return movie.duration <= 40
+  //       })
+
+  //     return filteredMovies
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   searchRequestHandler(searchRequest)
+  // }, [foundMovies])
+
   const searchRequestHandler = (searchRequest) => {
     const initialMovies = JSON.parse(localStorage.getItem('allMovies'))
     const resultSearchRequest = searchRequest.toLowerCase()
+
     const selectedMovies = initialMovies.filter((movie) => {
       const ruTitleToLowerCase = movie.nameRU.toLowerCase()
       const enTitleToLowerCase = movie.nameEN.toLowerCase()
@@ -65,24 +118,15 @@ function Movies({ isLoggedIn }) {
         enTitleToLowerCase.includes(resultSearchRequest)
       )
     })
+
     localStorage.setItem('foundMovies', JSON.stringify(selectedMovies))
     return selectedMovies
+    // return selectedMovies.slice(0, renderedCardQty)
   }
 
   // const [isShortFilm, setIsShortFilm] = useState(
   //   JSON.parse(localStorage.getItem('isShortFilm')),
   // )
-
-  //     if (searchRequest !== '') {
-  //       localStorage.setItem('searchRequest', searchRequest)
-  //       localStorage.getItem('allMovies') === null &&
-  //         (await )
-  //       setFoundMovies(searchRequestHandler(searchRequest))
-  //     }
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
 
   // const filterShortMovies = (movies) => {
   //   return movies.filter((movie) => {
@@ -99,8 +143,12 @@ function Movies({ isLoggedIn }) {
   }
 
   const showMoreCards = () => {
-    setRenderedCardQty((renderedCardQty += 3))
+    setRenderedCardQty(renderedCardQty + 3)
   }
+
+  // const showMoreCards = useEffect(() => {
+  //   setRenderedCardQty((renderedCardQty += 3))
+  // }, [])
 
   return (
     <>
@@ -108,6 +156,7 @@ function Movies({ isLoggedIn }) {
       <main className='movies'>
         <section className='movies__container'>
           <SearchForm
+            searchRequest={searchRequest}
             onChange={handleInputChange}
             onSubmit={handleFormSubmit}
             isFilterOn={isFilterOn}

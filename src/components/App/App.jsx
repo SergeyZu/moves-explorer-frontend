@@ -52,9 +52,9 @@ function App() {
       })
   }, [token])
 
-  const updateUserInfo = (userData) => {
+  const updateUserInfo = ({ email, name }) => {
     auth
-      .updateUserData(userData)
+      .updateUserData(email, name, token)
       .then((user) => {
         setCurrentUser({ user })
         setIsLoggedIn(true)

@@ -12,8 +12,8 @@ const getUserData = (token) => {
   return makeRequest('/users/me', 'GET', null, token)
 }
 
-const updateUserData = (email, password) => {
-  return makeRequest('/users/me', 'PATCH', { email, password }, null)
+const updateUserData = (email, name, token) => {
+  return makeRequest('/users/me', 'PATCH', { email, name }, token)
 }
 
 export { register, authorize, getUserData, updateUserData }

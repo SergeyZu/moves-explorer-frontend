@@ -7,9 +7,9 @@ import Footer from '../Footer/Footer'
 import moviesApi from '../../utils/MoviesApi'
 // import ShowMoreButton from '../ShowMoreButton/ShowMoreButton'
 
-function Movies({ isLoggedIn }) {
+function Movies({ isLoggedIn, isLoading, setIsLoading }) {
   const [searchRequest, setSearchRequest] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+  // const [isLoading, setIsLoading] = useState(false)
   const [foundMovies, setFoundMovies] = useState([])
   const [shortMovies, setShortMovies] = useState([])
   const [isFilterOn, setIsFilterOn] = useState(false)

@@ -37,6 +37,7 @@ function App() {
       // setIsLoading(false)
       return
     }
+    setIsLoading(true)
     auth
       .getUserData(token)
       .then((user) => {
@@ -47,7 +48,7 @@ function App() {
         console.log(err)
       })
       .finally(() => {
-        // setIsLoading(false)
+        setIsLoading(false)
       })
   }, [token])
 
@@ -68,6 +69,7 @@ function App() {
   }
 
   const registerUser = ({ name, email, password }) => {
+    setIsLoading(true)
     auth
       .register(name, email, password)
       .then((res) => {
@@ -79,6 +81,9 @@ function App() {
       .catch((err) => {
         console.log(err)
         setRegistrationError('Ошибка регистрации')
+      })
+      .finally(() => {
+        setIsLoading(false)
       })
   }
 
@@ -103,7 +108,6 @@ function App() {
   }
 
   const logOut = () => {
-    // localStorage.removeItem('jwt')
     localStorage.clear()
     setIsLoggedIn(false)
     setToken('')
@@ -127,7 +131,12 @@ function App() {
             <Route
               path='/movies'
               element={
-                <ProtectedRoute component={Movies} isLoggedIn={isLoggedIn} />
+                <ProtectedRoute
+                  component={Movies}
+                  isLoggedIn={isLoggedIn}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
+                />
               }
             />
             <Route

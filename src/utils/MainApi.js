@@ -1,85 +1,37 @@
-import { BASE_URL } from '../constants/constants'
+import makeRequest from './makeRequest'
 
-class MainApi {
-  constructor(config) {
-    this._baseUrl = config.baseUrl
-    this._headers = config.headers
-  }
-
-  _request(url, options) {
-    return fetch(url, options).then(this._handleResponse)
-  }
-
-  _handleResponse(res) {
-    if (res.ok) {
-      return res.json()
-    }
-    return Promise.reject(`Ошибка: ${res.status}`)
-  }
-
-  // register({ name, email, password }) {
-
-  // register(name, email, password) {
-  //   return this._request(`${this._baseUrl}/signup`, {
-  //     method: 'POST',
-  //     headers: this._headers,
-  //     body: JSON.stringify({ name, email, password }),
-  //   })
-  // }
+const getMovies = () => {
+  return makeRequest('/movies', 'GET', null, null)
 }
 
-const apiConfig = {
-  // baseUrl: 'http://localhost:3000',
-  baseUrl: BASE_URL,
-  headers: {
-    // authorization: `Bearer ${localStorage.getItem('token')}`,
-    'Content-Type': 'application/json',
-  },
+const createMovieCard = (card) => {
+  return makeRequest('/movies', 'POST', { ...card }, null)
 }
 
-const mainApi = new MainApi(apiConfig)
+const deleteMovieCard = (cardId) => {
+  return makeRequest(`/movies/${cardId}`, 'DELETE', null, null)
+}
 
-export { mainApi }
+export { getMovies, createMovieCard, deleteMovieCard }
 
-//   // setToken(token) {
-//   //   this._headers.Authorization = `Bearer ${token}`;
-//   // }
+// import { BASE_URL } from '../constants/constants'
 
-//   // // Запрос на получение данных пользователя
-//   // getUserData() {
-//   //   return this._request(`${this._baseUrl}/users/me`, {
-//   //     headers: this._headers,
-//   //   });
-//   // }
+// class MainApi {
+//   constructor(config) {
+//     this._baseUrl = config.baseUrl
+//     this._headers = config.headers
+//   }
 
-//   // // Запрос на изменение данных пользователя
-//   // setUserData(inputValues) {
-//   //   return this._request(`${this._baseUrl}/users/me`, {
-//   //     method: 'PATCH',
-//   //     headers: this._headers,
-//   //     body: JSON.stringify(inputValues),
-//   //   });
-//   // }
+//   _request(url, options) {
+//     return fetch(url, options).then(this._handleResponse)
+//   }
 
-//   // // Запрос на добавление карточки
-//   // addCard(data) {
-//   //   return this._request(`${this._baseUrl}/cards`, {
-//   //     method: 'POST',
-//   //     headers: this._headers,
-//   //     body: JSON.stringify({
-//   //       name: data.name,
-//   //       link: data.link,
-//   //     }),
-//   //   });
-//   // }
-
-//   // // Запрос на удаление карточки
-//   // deleteCard(cardId) {
-//   //   return this._request(`${this._baseUrl}/cards/${cardId}`, {
-//   //     method: 'DELETE',
-//   //     headers: this._headers,
-//   //   });
-//   // }
+//   _handleResponse(res) {
+//     if (res.ok) {
+//       return res.json()
+//     }
+//     return Promise.reject(`Ошибка: ${res.status}`)
+//   }
 // }
 
 // const apiConfig = {
@@ -93,4 +45,4 @@ export { mainApi }
 
 // const mainApi = new MainApi(apiConfig)
 
-//
+// export { mainApi }

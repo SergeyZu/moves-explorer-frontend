@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 // import { mainApi } from '../../utils/MainApi'
 import * as auth from '../../utils/auth'
+import * as mainApi from '../../utils/MainApi'
 import CurrentUserContext from '../../contexts/CurrentUserContext'
 import Main from '../Main/Main'
 import Movies from '../Movies/Movies'
@@ -16,16 +17,19 @@ import Preloader from '../Preloader/Preloader'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [token, setToken] = useState('')
   const [currentUser, setCurrentUser] = useState({
     name: '',
     email: '',
   })
+  const [likedMovies, setLikedMovies] = useState([])
   const [registrationError, setRegistrationError] = useState('')
   const [loginError, setloginError] = useState('')
   const [profileError, setProfileError] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
+
+  localStorage.setItem('likedMovies', JSON.stringify(likedMovies))
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt')
@@ -116,6 +120,33 @@ function App() {
       email: '',
     })
     navigate('/')
+  }
+
+  const handleCreateCard = (card) => {
+    setIsLoading(true)
+    const likedMovieCard = mainApi
+      .createMovieCard({
+        country: card.country,
+        director: card.director,
+        duration: card.duration,
+        year: card.year,
+        description: card.description,
+        image: `https://api.nomoreparties.co${card.image.url}`,
+        trailerLink: card.trailerLink,
+        thumbnail: `https://api.nomoreparties.co${card.image.formats.thumbnail.url}`,
+        movieId: card.movieId,
+        nameRU: card.nameRU,
+        nameEN: card.nameEN,
+      })
+      .then(() => {
+        setLikedMovies(likedMovies.push(likedMovieCard))
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }
 
   return (

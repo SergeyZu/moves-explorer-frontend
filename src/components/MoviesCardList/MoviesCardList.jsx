@@ -2,7 +2,7 @@ import './MoviesCardList.css'
 import MoviesCard from '../MoviesCard/MoviesCard'
 import Preloader from '../Preloader/Preloader'
 
-function MoviesCardList({ movies, isLoading }) {
+function MoviesCardList({ movies, isLoading, handleCreateCard }) {
   return (
     <section className='movies-card-list'>
       <ul className='movies-card-list__list'>
@@ -16,6 +16,7 @@ function MoviesCardList({ movies, isLoading }) {
               title={movie?.nameRU}
               duration={movie?.duration}
               trailerLink={movie?.trailerLink}
+              handleCreateCard={handleCreateCard}
             />
           ))
         )}

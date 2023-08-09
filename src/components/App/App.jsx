@@ -167,6 +167,7 @@ function App() {
                   isLoggedIn={isLoggedIn}
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}
+                  handleCreateCard={handleCreateCard}
                 />
               }
             />

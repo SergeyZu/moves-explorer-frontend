@@ -7,7 +7,7 @@ import Footer from '../Footer/Footer'
 import moviesApi from '../../utils/MoviesApi'
 // import ShowMoreButton from '../ShowMoreButton/ShowMoreButton'
 
-function Movies({ isLoggedIn, isLoading, setIsLoading }) {
+function Movies({ isLoggedIn, isLoading, setIsLoading, handleCreateCard }) {
   const [searchRequest, setSearchRequest] = useState('')
   // const [isLoading, setIsLoading] = useState(false)
   const [foundMovies, setFoundMovies] = useState([])
@@ -162,7 +162,11 @@ function Movies({ isLoggedIn, isLoading, setIsLoading }) {
             isFilterOn={isFilterOn}
             setIsFilterOn={setIsFilterOn}
           />
-          <MoviesCardList movies={foundMovies} isLoading={isLoading} />
+          <MoviesCardList
+            movies={foundMovies}
+            isLoading={isLoading}
+            handleCreateCard={handleCreateCard}
+          />
           {/* <ShowMoreButton movies={foundMovies} /> */}
           <button
             // className={

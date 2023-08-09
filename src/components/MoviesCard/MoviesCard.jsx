@@ -8,6 +8,19 @@ function MoviesCard({ src, title, duration, trailerLink }) {
 
   const convertedDuration = convertDuration(duration)
 
+  // const handleLikeClick = () => {
+  //   !isLiked ? addCardToLiked() : removeCardFromLiked()
+  //   // setIsLiked(!isLiked)
+  // }
+
+  const addCardToLiked = () => {
+    setIsLiked(true)
+  }
+
+  const removeCardFromLiked = () => {
+    setIsLiked(false)
+  }
+
   return (
     <>
       <li className='movies-card'>
@@ -22,15 +35,31 @@ function MoviesCard({ src, title, duration, trailerLink }) {
         <div className='movies-card__info'>
           <h2 className='movies-card__title'>{title}</h2>
           <div className='movies-card__like'>
-            <button
+            {isLiked ? (
+              <button
+                className='movies-card__like-button_clicked'
+                type='button'
+                onClick={removeCardFromLiked}
+              />
+            ) : (
+              <button
+                className='movies-card__like-button'
+                type='button'
+                onClick={addCardToLiked}
+              />
+            )}
+            {/* <button
               className={
                 isLiked
                   ? 'movies-card__like-button_clicked'
                   : 'movies-card__like-button'
               }
               type='button'
-              onClick={() => setIsLiked(!isLiked)}
-            />
+              onClick={
+                handleLikeClick()
+                // () => setIsLiked(!isLiked)
+              }
+            /> */}
           </div>
           <p className='movies-card__duration'>{convertedDuration}</p>
         </div>

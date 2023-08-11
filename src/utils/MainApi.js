@@ -1,45 +1,7 @@
 import makeRequest from './makeRequest'
 
-// const createMovieCard = ({ ...card }) => {
-//   return makeRequest('/movies', 'POST', {
-//      ...card
-//     }, null)
-// }
-
-const createMovieCard = (
-  {
-    country,
-    director,
-    duration,
-    year,
-    description,
-    image,
-    trailerLink,
-    thumbnail,
-    movieId,
-    nameRU,
-    nameEN,
-  },
-  token,
-) => {
-  return makeRequest(
-    '/movies',
-    'POST',
-    {
-      country,
-      director,
-      duration,
-      year,
-      description,
-      image,
-      trailerLink,
-      thumbnail,
-      movieId,
-      nameRU,
-      nameEN,
-    },
-    token,
-  )
+const createMovieCard = ({ ...card }, token) => {
+  return makeRequest('/movies', 'POST', { ...card }, token)
 }
 
 const deleteMovieCard = (cardId, token) => {

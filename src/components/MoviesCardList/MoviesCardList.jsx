@@ -2,7 +2,16 @@ import './MoviesCardList.css'
 import MoviesCard from '../MoviesCard/MoviesCard'
 import Preloader from '../Preloader/Preloader'
 
-function MoviesCardList({ movies, isLoading, handleCreateCard }) {
+function MoviesCardList({
+  movies,
+  isLoading,
+  handleCreateCard,
+  handleDeleteCard,
+}) {
+  // const addCardToLikedMovies = () => {}
+
+  // const removeCardFromLikedMovies = () => {}
+
   return (
     <section className='movies-card-list'>
       <ul className='movies-card-list__list'>
@@ -16,7 +25,9 @@ function MoviesCardList({ movies, isLoading, handleCreateCard }) {
               title={movie?.nameRU}
               duration={movie?.duration}
               trailerLink={movie?.trailerLink}
+              movie={movie}
               handleCreateCard={handleCreateCard}
+              handleDeleteCard={handleDeleteCard}
             />
           ))
         )}

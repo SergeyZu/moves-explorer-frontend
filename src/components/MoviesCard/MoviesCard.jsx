@@ -3,22 +3,27 @@ import { Link } from 'react-router-dom'
 import './MoviesCard.css'
 import convertDuration from '../../utils/convertDuration'
 
-function MoviesCard({ src, title, duration, trailerLink }) {
+function MoviesCard({
+  src,
+  title,
+  duration,
+  trailerLink,
+  movie,
+  handleCreateCard,
+  handleDeleteCard,
+}) {
   const [isLiked, setIsLiked] = useState(false)
 
   const convertedDuration = convertDuration(duration)
 
-  // const handleLikeClick = () => {
-  //   !isLiked ? addCardToLiked() : removeCardFromLiked()
-  //   // setIsLiked(!isLiked)
-  // }
-
-  const addCardToLiked = () => {
+  const hadleUnlikedCardClick = () => {
     setIsLiked(true)
+    handleCreateCard(movie)
   }
 
-  const removeCardFromLiked = () => {
+  const hadleLikedCardClick = () => {
     setIsLiked(false)
+    handleDeleteCard(movie)
   }
 
   return (
@@ -39,13 +44,13 @@ function MoviesCard({ src, title, duration, trailerLink }) {
               <button
                 className='movies-card__like-button_clicked'
                 type='button'
-                onClick={removeCardFromLiked}
+                onClick={hadleLikedCardClick}
               />
             ) : (
               <button
                 className='movies-card__like-button'
                 type='button'
-                onClick={addCardToLiked}
+                onClick={hadleUnlikedCardClick}
               />
             )}
             {/* <button

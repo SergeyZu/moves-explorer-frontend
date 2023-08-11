@@ -29,7 +29,7 @@ function App() {
   const [profileError, setProfileError] = useState('')
   const navigate = useNavigate()
 
-  localStorage.setItem('likedMovies', JSON.stringify(likedMovies))
+  // localStorage.setItem('likedMovies', JSON.stringify(likedMovies))
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt')
@@ -122,31 +122,83 @@ function App() {
     navigate('/')
   }
 
-  const handleCreateCard = (card) => {
-    setIsLoading(true)
-    const likedMovieCard = mainApi
-      .createMovieCard({
-        country: card.country,
-        director: card.director,
-        duration: card.duration,
-        year: card.year,
-        description: card.description,
-        image: `https://api.nomoreparties.co${card.image.url}`,
-        trailerLink: card.trailerLink,
-        thumbnail: `https://api.nomoreparties.co${card.image.formats.thumbnail.url}`,
-        movieId: card.movieId,
-        nameRU: card.nameRU,
-        nameEN: card.nameEN,
-      })
-      .then(() => {
-        setLikedMovies(likedMovies.push(likedMovieCard))
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
+  // const handleCreateCard = (card) => {
+  //   // setIsLoading(true)
+  //   const likedMovieCard = mainApi
+  //     .createMovieCard(
+  //       {
+  //         country: card.country,
+  //         director: card.director,
+  //         duration: card.duration,
+  //         year: card.year,
+  //         description: card.description,
+  //         image: `https://api.nomoreparties.co${card.image.url}`,
+  //         trailerLink: card.trailerLink,
+  //         thumbnail: `https://api.nomoreparties.co${card.image.formats.thumbnail.url}`,
+  //         movieId: card.id,
+  //         nameRU: card.nameRU,
+  //         nameEN: card.nameEN,
+  //       },
+  //       token,
+  //     )
+  //     // return likedMovieCard
+  //     .then(() => {
+  //       // if (likedMovieCard) {
+  //       // setLikedMovies(likedMovies.push(likedMovieCard))
+  //       setLikedMovies([...likedMovies, likedMovieCard])
+  //       // }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  //   // .finally(() => {
+  //   // setIsLoading(false)
+  //   // })
+  // }
+
+  const handleCreateCard = async (card) => {
+    try {
+      const likedMovieCard = await mainApi.createMovieCard(
+        {
+          country: card.country,
+          director: card.director,
+          duration: card.duration,
+          year: card.year,
+          description: card.description,
+          image: `https://api.nomoreparties.co${card.image.url}`,
+          trailerLink: card.trailerLink,
+          thumbnail: `https://api.nomoreparties.co${card.image.formats.thumbnail.url}`,
+          movieId: card.id,
+          nameRU: card.nameRU,
+          nameEN: card.nameEN,
+        },
+        token,
+      )
+      // return likedMovieCard
+      // if (likedMovieCard) {
+      setLikedMovies([...likedMovies, likedMovieCard])
+      localStorage.setItem('likedMovies', JSON.stringify(likedMovies))
+      // }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleDeleteCard = async (card) => {
+    try {
+      const cardToDeleted = likedMovies.find(
+        (cardToDel) => cardToDel.movieId === (card.id || card.movieId),
+      )
+      await mainApi.deleteMovieCard(cardToDeleted._id, token)
+      const refreshedLikedMovies = likedMovies.filter(
+        // (card) => card.id !== cardToDeleted.movieId,
+        (card) => card._id !== cardToDeleted._id,
+      )
+      setLikedMovies(refreshedLikedMovies)
+      localStorage.setItem('likedMovies', JSON.stringify(likedMovies))
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -168,6 +220,7 @@ function App() {
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}
                   handleCreateCard={handleCreateCard}
+                  handleDeleteCard={handleDeleteCard}
                 />
               }
             />

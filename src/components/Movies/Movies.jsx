@@ -11,10 +11,12 @@ function Movies({
   isLoggedIn,
   isLoading,
   setIsLoading,
+  searchRequest,
+  handleInputChange,
+  // handleSearchFormSubmit,
   handleCreateCard,
   handleDeleteCard,
 }) {
-  const [searchRequest, setSearchRequest] = useState('')
   // const [isLoading, setIsLoading] = useState(false)
   const [foundMovies, setFoundMovies] = useState([])
   const [shortMovies, setShortMovies] = useState([])
@@ -38,7 +40,7 @@ function Movies({
 
   localStorage.setItem('isShortFilm', isFilterOn)
 
-  const handleFormSubmit = (evt) => {
+  const handleSearchFormSubmit = (evt) => {
     evt.preventDefault()
     handleRequest()
     filterFoundMovies()
@@ -144,10 +146,6 @@ function Movies({
   //   setShortMovies(filterShortMovies(foundMovies))
   // }
 
-  const handleInputChange = (request) => {
-    setSearchRequest(request.target.value)
-  }
-
   const showMoreCards = () => {
     setRenderedCardQty(renderedCardQty + 3)
   }
@@ -164,7 +162,7 @@ function Movies({
           <SearchForm
             searchRequest={searchRequest}
             onChange={handleInputChange}
-            onSubmit={handleFormSubmit}
+            onSubmit={handleSearchFormSubmit}
             isFilterOn={isFilterOn}
             setIsFilterOn={setIsFilterOn}
           />

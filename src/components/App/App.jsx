@@ -28,6 +28,7 @@ function App() {
   const [loginError, setloginError] = useState('')
   const [profileError, setProfileError] = useState('')
   const navigate = useNavigate()
+  const [searchRequest, setSearchRequest] = useState('')
 
   // localStorage.setItem('likedMovies', JSON.stringify(likedMovies))
 
@@ -155,6 +156,9 @@ function App() {
   //   // setIsLoading(false)
   //   // })
   // }
+  const handleInputChange = (request) => {
+    setSearchRequest(request.target.value)
+  }
 
   const handleCreateCard = async (card) => {
     try {
@@ -219,6 +223,8 @@ function App() {
                   isLoggedIn={isLoggedIn}
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}
+                  searchRequest={searchRequest}
+                  handleInputChange={handleInputChange}
                   handleCreateCard={handleCreateCard}
                   handleDeleteCard={handleDeleteCard}
                 />

@@ -1,7 +1,7 @@
 import './SavedMovies.css'
 import Header from '../Header/Header'
 import SearchForm from '../SearchForm/SearchForm'
-// import SavedCardList from '../SavedCardList/SavedCardList'
+// import SavedMoviesCardList from '../SavedMoviesCardList/SavedMoviesCardList'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Footer from '../Footer/Footer'
 
@@ -26,7 +26,7 @@ function SavedMovies({
             // isFilterOn={isFilterOn}
             // setIsFilterOn={setIsFilterOn}
           />
-          {/* <SavedCardList /> */}
+          {/* <SavedMoviesCardList /> */}
           <MoviesCardList
             movies={likedMovies}
             isLoading={isLoading}

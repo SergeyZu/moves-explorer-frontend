@@ -1,7 +1,6 @@
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './App.css'
-// import { mainApi } from '../../utils/MainApi'
 import * as auth from '../../utils/auth'
 import * as mainApi from '../../utils/MainApi'
 import CurrentUserContext from '../../contexts/CurrentUserContext'
@@ -30,8 +29,6 @@ function App() {
   const navigate = useNavigate()
   const [searchRequest, setSearchRequest] = useState('')
 
-  // localStorage.setItem('likedMovies', JSON.stringify(likedMovies))
-
   useEffect(() => {
     const jwt = localStorage.getItem('jwt')
     setToken(jwt)
@@ -39,7 +36,6 @@ function App() {
 
   useEffect(() => {
     if (!token) {
-      // setIsLoading(false)
       return
     }
     setIsLoading(true)
@@ -68,9 +64,6 @@ function App() {
         console.log(err)
         setProfileError('При обновлении профиля произошла ошибка')
       })
-      .finally(() => {
-        // setIsLoading(false)
-      })
   }
 
   const registerUser = ({ name, email, password }) => {
@@ -81,7 +74,6 @@ function App() {
         console.log(res)
         loginUser({ email, password })
         setIsLoggedIn(true)
-        // navigate('/movies', { replace: true })
       })
       .catch((err) => {
         console.log(err)
@@ -96,7 +88,6 @@ function App() {
     setIsLoading(true)
     auth
       .authorize(email, password)
-      // .then((res) => res.json())
       .then((res) => {
         localStorage.setItem('jwt', res.token)
         setToken(res.token)
@@ -123,39 +114,6 @@ function App() {
     navigate('/')
   }
 
-  // const handleCreateCard = (card) => {
-  //   // setIsLoading(true)
-  //   const likedMovieCard = mainApi
-  //     .createMovieCard(
-  //       {
-  //         country: card.country,
-  //         director: card.director,
-  //         duration: card.duration,
-  //         year: card.year,
-  //         description: card.description,
-  //         image: `https://api.nomoreparties.co${card.image.url}`,
-  //         trailerLink: card.trailerLink,
-  //         thumbnail: `https://api.nomoreparties.co${card.image.formats.thumbnail.url}`,
-  //         movieId: card.id,
-  //         nameRU: card.nameRU,
-  //         nameEN: card.nameEN,
-  //       },
-  //       token,
-  //     )
-  //     // return likedMovieCard
-  //     .then(() => {
-  //       // if (likedMovieCard) {
-  //       // setLikedMovies(likedMovies.push(likedMovieCard))
-  //       setLikedMovies([...likedMovies, likedMovieCard])
-  //       // }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-  //   // .finally(() => {
-  //   // setIsLoading(false)
-  //   // })
-  // }
   const handleInputChange = (request) => {
     setSearchRequest(request.target.value)
   }
@@ -178,11 +136,8 @@ function App() {
         },
         token,
       )
-      // return likedMovieCard
-      // if (likedMovieCard) {
       setLikedMovies([...likedMovies, likedMovieCard])
       localStorage.setItem('likedMovies', JSON.stringify(likedMovies))
-      // }
     } catch (err) {
       console.log(err)
     }
@@ -195,7 +150,6 @@ function App() {
       )
       await mainApi.deleteMovieCard(cardToDeleted._id, token)
       const refreshedLikedMovies = likedMovies.filter(
-        // (card) => card.id !== cardToDeleted.movieId,
         (card) => card._id !== cardToDeleted._id,
       )
       setLikedMovies(refreshedLikedMovies)
@@ -244,7 +198,6 @@ function App() {
               element={
                 <ProtectedRoute
                   component={Profile}
-                  // currentUser={currentUser}
                   isLoggedIn={isLoggedIn}
                   logOut={logOut}
                   updateUserInfo={updateUserInfo}

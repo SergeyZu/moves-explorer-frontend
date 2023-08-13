@@ -21,10 +21,7 @@ function Movies({
   const [foundMovies, setFoundMovies] = useState([])
   const [shortMovies, setShortMovies] = useState([])
   const [isFilterOn, setIsFilterOn] = useState(false)
-
-  useEffect(() => {
-    setRenderedCardQty(computeRenderedCardQty())
-  }, [searchRequest])
+  const [isMoreButtonVisible, setIsMoreButtonVisible] = useState(true)
 
   const computeRenderedCardQty = () => {
     if (window.innerWidth > 1027) {
@@ -36,17 +33,13 @@ function Movies({
     }
   }
 
-  const addedCardQty = () => {
-    if (window.innerWidth > 1027) {
-      return 3
-    } else {
-      return 2
-    }
-  }
-
   const [renderedCardQty, setRenderedCardQty] = useState(
     computeRenderedCardQty(),
   )
+
+  useEffect(() => {
+    setRenderedCardQty(computeRenderedCardQty())
+  }, [searchRequest])
 
   localStorage.setItem('renderedCardQty', renderedCardQty)
 
@@ -93,8 +86,13 @@ function Movies({
     if (searchRequest !== '') {
       localStorage.setItem('searchRequest', searchRequest)
       setFoundMovies(searchRequestHandler(searchRequest))
+      console.log(foundMovies.length)
     }
   }
+
+  useEffect(() => {
+    handleSearchRequest()
+  }, [])
 
   const filteredMovies = () => {
     foundMovies.filter((movie) => {
@@ -142,7 +140,6 @@ function Movies({
 
     localStorage.setItem('foundMovies', JSON.stringify(selectedMovies))
     return selectedMovies
-    // return selectedMovies.slice(0, renderedCardQty)
   }
 
   // const [isShortFilm, setIsShortFilm] = useState(
@@ -159,19 +156,11 @@ function Movies({
   //   setShortMovies(filterShortMovies(foundMovies))
   // }
 
-  // const showMoreCards = () => {
-  //   setRenderedCardQty(renderedCardQty + 3)
-  // }
-
   const showMoreCards = () => {
     window.innerWidth > 1027
       ? setRenderedCardQty(renderedCardQty + 3)
       : setRenderedCardQty(renderedCardQty + 2)
   }
-
-  // const showMoreCards = useEffect(() => {
-  //   setRenderedCardQty((renderedCardQty += 3))
-  // }, [])
 
   return (
     <>
@@ -192,19 +181,22 @@ function Movies({
             handleCreateCard={handleCreateCard}
             handleDeleteCard={handleDeleteCard}
           />
-          {/* <ShowMoreButton movies={foundMovies} /> */}
+          {/* {renderedCardQty < foundMovies.lehgth && ( */}
           <button
-            // className={
-            //   visibleCardsLength === moviesLength
-            //     ? 'show-more-button_hide'
-            //     : 'show-more-button'
-            // }
-            className='movies__more-button'
+            className={
+              foundMovies.length > renderedCardQty
+                ? 'movies__more-button'
+                : 'hidden'
+            }
+            // className='movies__more-button'
             type='button'
             onClick={showMoreCards}
           >
             Ещё
           </button>
+          {/* )} */}
+
+          {/* )} */}
         </section>
       </main>
       <Footer />

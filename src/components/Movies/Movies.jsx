@@ -22,6 +22,10 @@ function Movies({
   const [shortMovies, setShortMovies] = useState([])
   const [isFilterOn, setIsFilterOn] = useState(false)
 
+  useEffect(() => {
+    setRenderedCardQty(computeRenderedCardQty())
+  }, [searchRequest])
+
   const computeRenderedCardQty = () => {
     if (window.innerWidth > 1027) {
       return 12
@@ -50,6 +54,7 @@ function Movies({
 
   const handleSearchFormSubmit = (evt) => {
     evt.preventDefault()
+
     handleRequest()
     filterFoundMovies()
   }

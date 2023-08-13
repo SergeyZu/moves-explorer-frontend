@@ -32,6 +32,14 @@ function Movies({
     }
   }
 
+  const addedCardQty = () => {
+    if (window.innerWidth > 1027) {
+      return 3
+    } else {
+      return 2
+    }
+  }
+
   const [renderedCardQty, setRenderedCardQty] = useState(
     computeRenderedCardQty(),
   )
@@ -146,8 +154,14 @@ function Movies({
   //   setShortMovies(filterShortMovies(foundMovies))
   // }
 
+  // const showMoreCards = () => {
+  //   setRenderedCardQty(renderedCardQty + 3)
+  // }
+
   const showMoreCards = () => {
-    setRenderedCardQty(renderedCardQty + 3)
+    window.innerWidth > 1027
+      ? setRenderedCardQty(renderedCardQty + 3)
+      : setRenderedCardQty(renderedCardQty + 2)
   }
 
   // const showMoreCards = useEffect(() => {
@@ -169,6 +183,7 @@ function Movies({
           <MoviesCardList
             movies={foundMovies}
             isLoading={isLoading}
+            renderedCardQty={renderedCardQty}
             handleCreateCard={handleCreateCard}
             handleDeleteCard={handleDeleteCard}
           />

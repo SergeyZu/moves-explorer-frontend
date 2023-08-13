@@ -7,6 +7,7 @@ function MoviesCardList({
   isLoading,
   handleCreateCard,
   handleDeleteCard,
+  renderedCardQty,
 }) {
   return (
     <section className='movies-card-list'>
@@ -14,18 +15,21 @@ function MoviesCardList({
         {isLoading ? (
           <Preloader />
         ) : (
-          movies.map((movie) => (
-            <MoviesCard
-              key={movie?.id}
-              src={movie?.image?.url}
-              title={movie?.nameRU}
-              duration={movie?.duration}
-              trailerLink={movie?.trailerLink}
-              movie={movie}
-              handleCreateCard={handleCreateCard}
-              handleDeleteCard={handleDeleteCard}
-            />
-          ))
+          movies &&
+          movies
+            .slice(0, renderedCardQty)
+            .map((movie) => (
+              <MoviesCard
+                key={movie?.id}
+                src={movie?.image?.url}
+                title={movie?.nameRU}
+                duration={movie?.duration}
+                trailerLink={movie?.trailerLink}
+                movie={movie}
+                handleCreateCard={handleCreateCard}
+                handleDeleteCard={handleDeleteCard}
+              />
+            ))
         )}
       </ul>
     </section>

@@ -6,7 +6,8 @@ function SearchForm({
   onChange,
   onSubmit,
   isFilterOn,
-  setIsFilterOn,
+  // setIsFilterOn,
+  onChangeShortFilmToggle,
 }) {
   return (
     <form className='search-form' onSubmit={onSubmit}>
@@ -20,7 +21,11 @@ function SearchForm({
         />
         <button className='search-form__find-button' />
       </div>
-      <FilterCheckbox isFilterOn={isFilterOn} setIsFilterOn={setIsFilterOn} />
+      {/* <FilterCheckbox isFilterOn={isFilterOn} setIsFilterOn={setIsFilterOn} /> */}
+      <FilterCheckbox
+        isFilterOn={isFilterOn}
+        onChangeShortFilmToggle={onChangeShortFilmToggle}
+      />
     </form>
   )
 }

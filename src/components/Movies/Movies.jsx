@@ -17,11 +17,10 @@ function Movies({
   handleCreateCard,
   handleDeleteCard,
 }) {
-  // const [isLoading, setIsLoading] = useState(false)
-  const [foundMovies, setFoundMovies] = useState([])
-  const [shortMovies, setShortMovies] = useState([])
-  const [isFilterOn, setIsFilterOn] = useState(false)
-  const [isMoreButtonVisible, setIsMoreButtonVisible] = useState(true)
+  const [foundMovies, setFoundMovies] = useState([]) // массив фильмов по запросу
+  const [shortMovies, setShortMovies] = useState([]) // массив короткометражек
+  const [isFilterOn, setIsFilterOn] = useState(false) // состояние чекбокса короткометражек
+  // const [isMoreButtonVisible, setIsMoreButtonVisible] = useState(true) // состояние кнопки [Ещё]
 
   const computeRenderedCardQty = () => {
     if (window.innerWidth > 1027) {
@@ -86,7 +85,6 @@ function Movies({
     if (searchRequest !== '') {
       localStorage.setItem('searchRequest', searchRequest)
       setFoundMovies(searchRequestHandler(searchRequest))
-      console.log(foundMovies.length)
     }
   }
 
@@ -145,16 +143,20 @@ function Movies({
   // const [isShortFilm, setIsShortFilm] = useState(
   //   JSON.parse(localStorage.getItem('isShortFilm')),
   // )
-
-  // const filterShortMovies = (movies) => {
-  //   return movies.filter((movie) => {
-  //     return movie.duration <= 40
-  //   })
+  // const onChangeShortFilmToggle = () => {
+  //   setIsFilterOn(!isFilterOn)
   // }
 
-  // const filterShortMoviesHandler = () => {
-  //   setShortMovies(filterShortMovies(foundMovies))
-  // }
+  const filterShortMovies = (movies) => {
+    return movies.filter((movie) => movie.duration <= 40)
+  }
+
+  const filterShortMoviesHandler = () => {
+    setIsFilterOn(!isFilterOn)
+    isFilterOn && setShortMovies(filterShortMovies(foundMovies))
+    // : setShortMovies(foundMovies)
+    console.log(shortMovies)
+  }
 
   const showMoreCards = () => {
     window.innerWidth > 1027
@@ -172,7 +174,8 @@ function Movies({
             onChange={handleInputChange}
             onSubmit={handleSearchFormSubmit}
             isFilterOn={isFilterOn}
-            setIsFilterOn={setIsFilterOn}
+            // setIsFilterOn={setIsFilterOn}
+            onChangeShortFilmToggle={filterShortMoviesHandler}
           />
           <MoviesCardList
             movies={foundMovies}

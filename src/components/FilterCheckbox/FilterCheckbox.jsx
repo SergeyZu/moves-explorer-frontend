@@ -1,16 +1,16 @@
 import './FilterCheckbox.css'
 import checkbox from '../../images/checkbox.svg'
 import checkboxoff from '../../images/checkboxoff.svg'
-// import { useState } from 'react'
 
-function FilterCheckbox({ isFilterOn, setIsFilterOn }) {
-  // // const [isFilterOn, setIsFilterOn] = useState(false)
-  // localStorage.setItem('isShortFilm', isFilterOn)
+// function FilterCheckbox({ isFilterOn, setIsFilterOn }) {
+
+function FilterCheckbox({ isFilterOn, onChangeShortFilmToggle }) {
   return (
     <div className='filter-checkbox'>
       <img
         className='filter-checkbox__image'
-        onClick={() => setIsFilterOn(!isFilterOn)}
+        // onClick={() => setIsFilterOn(!isFilterOn)}
+        onClick={onChangeShortFilmToggle}
         src={isFilterOn ? checkbox : checkboxoff}
         alt='Переключатель'
       />

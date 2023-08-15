@@ -5,7 +5,14 @@ import SearchForm from '../SearchForm/SearchForm'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Footer from '../Footer/Footer'
 import moviesApi from '../../utils/MoviesApi'
-// import ShowMoreButton from '../ShowMoreButton/ShowMoreButton'
+import { MAX_WIDTH } from '../../constants/constants'
+import { MIDDLE_WIDTH } from '../../constants/constants'
+import { MAX_WIDTH_CARD_QTY } from '../../constants/constants'
+import { MIDDLE_WIDTH_CARD_QTY } from '../../constants/constants'
+import { MIN_WIDTH_CARD_QTY } from '../../constants/constants'
+import { MAX_WIDTH_ADDED_CARD_QTY } from '../../constants/constants'
+import { MIN_WIDTH_ADDED_CARD_QTY } from '../../constants/constants'
+import { SHORT_FILM_DURATION } from '../../constants/constants'
 
 function Movies({
   isLoggedIn,
@@ -23,12 +30,15 @@ function Movies({
   // const [isMoreButtonVisible, setIsMoreButtonVisible] = useState(true) // состояние кнопки [Ещё]
 
   const computeRenderedCardQty = () => {
-    if (window.innerWidth > 1027) {
-      return 12
-    } else if (window.innerWidth <= 1027 && window.innerWidth > 649) {
-      return 8
+    if (window.innerWidth > MAX_WIDTH) {
+      return MAX_WIDTH_CARD_QTY
+    } else if (
+      window.innerWidth <= MAX_WIDTH &&
+      window.innerWidth > MIDDLE_WIDTH
+    ) {
+      return MIDDLE_WIDTH_CARD_QTY
     } else {
-      return 5
+      return MIN_WIDTH_CARD_QTY
     }
   }
 
@@ -48,7 +58,7 @@ function Movies({
     evt.preventDefault()
 
     handleRequest()
-    filterFoundMovies()
+    // filterFoundMovies()
   }
 
   useEffect(() => {
@@ -92,18 +102,17 @@ function Movies({
     handleSearchRequest()
   }, [])
 
-  const filteredMovies = () => {
-    foundMovies.filter((movie) => {
-      return movie.duration <= 40
-    })
-  }
+  // const filteredMovies = () => {
+  //   foundMovies.filter((movie) => {
+  //     return movie.duration <= 40
+  //   })
+  // }
 
-  const filterFoundMovies = () => {
-    // if (localStorage.isShortFilm === true) {
-    localStorage.isShortFilm && filteredMovies()
-
-    return filteredMovies
-  }
+  // const filterFoundMovies = () => {
+  //   // if (localStorage.isShortFilm === true) {
+  //   localStorage.isShortFilm && filteredMovies()
+  //   return filteredMovies
+  // }
 
   // const filterFoundMovies = () => {
   //   // const foundMoviesLS = parse.localStorage.foundMovies
@@ -148,7 +157,7 @@ function Movies({
   // }
 
   const filterShortMovies = (movies) => {
-    return movies.filter((movie) => movie.duration <= 40)
+    return movies.filter((movie) => movie.duration <= SHORT_FILM_DURATION)
   }
 
   const filterShortMoviesHandler = () => {
@@ -159,9 +168,9 @@ function Movies({
   }
 
   const showMoreCards = () => {
-    window.innerWidth > 1027
-      ? setRenderedCardQty(renderedCardQty + 3)
-      : setRenderedCardQty(renderedCardQty + 2)
+    window.innerWidth > MAX_WIDTH
+      ? setRenderedCardQty(renderedCardQty + MAX_WIDTH_ADDED_CARD_QTY)
+      : setRenderedCardQty(renderedCardQty + MIN_WIDTH_ADDED_CARD_QTY)
   }
 
   return (

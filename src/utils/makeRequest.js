@@ -1,5 +1,5 @@
-// const BASE_URL = 'http://localhost:3000'
-import { BASE_URL } from '../constants/constants'
+// import { BASE_URL } from '../constants/constants'
+const BASE_URL = 'http://localhost:3000'
 
 const makeRequest = (url, method, body, token) => {
   const options = {

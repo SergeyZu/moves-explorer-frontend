@@ -8,6 +8,7 @@ function SearchForm({
   isFilterOn,
   // setIsFilterOn,
   onChangeShortFilmToggle,
+  requestError,
 }) {
   return (
     <form className='search-form' onSubmit={onSubmit}>
@@ -26,6 +27,7 @@ function SearchForm({
         isFilterOn={isFilterOn}
         onChangeShortFilmToggle={onChangeShortFilmToggle}
       />
+      <span className='search-form__error'>{requestError}</span>
     </form>
   )
 }

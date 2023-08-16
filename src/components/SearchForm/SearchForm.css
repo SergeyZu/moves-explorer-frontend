@@ -96,3 +96,12 @@
 .search-form__find-button:hover {
   opacity: 0.6;
 }
+
+.search-form__error {
+  color: #ee3465;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  display: block;
+  text-align: center;
+}

@@ -26,6 +26,7 @@ function Movies({
   const [foundMovies, setFoundMovies] = useState([]) // массив фильмов по запросу
   const [shortMovies, setShortMovies] = useState([]) // массив короткометражек
   const [isFilterOn, setIsFilterOn] = useState(false) // состояние чекбокса короткометражек
+  const [requestError, setRequestError] = useState('')
 
   // количество изначально отрисовываемых карточек
   const computeRenderedCardQty = () => {
@@ -60,6 +61,9 @@ function Movies({
   // обработчик отправки формы поиска
   const handleSearchFormSubmit = (evt) => {
     evt.preventDefault()
+    !searchRequest
+      ? setRequestError('Нужно ввести ключевое слово')
+      : setRequestError('')
     handleRequest()
     // filterFoundMovies()
   }
@@ -195,6 +199,7 @@ function Movies({
             isFilterOn={isFilterOn}
             // setIsFilterOn={setIsFilterOn}
             onChangeShortFilmToggle={filterShortMoviesHandler}
+            requestError={requestError}
           />
           <MoviesCardList
             movies={foundMovies}

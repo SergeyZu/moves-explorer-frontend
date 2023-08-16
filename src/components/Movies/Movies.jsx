@@ -20,15 +20,14 @@ function Movies({
   setIsLoading,
   searchRequest,
   handleInputChange,
-  // handleSearchFormSubmit,
   handleCreateCard,
   handleDeleteCard,
 }) {
   const [foundMovies, setFoundMovies] = useState([]) // массив фильмов по запросу
   const [shortMovies, setShortMovies] = useState([]) // массив короткометражек
   const [isFilterOn, setIsFilterOn] = useState(false) // состояние чекбокса короткометражек
-  // const [isMoreButtonVisible, setIsMoreButtonVisible] = useState(true) // состояние кнопки [Ещё]
 
+  // количество изначально отрисовываемых карточек
   const computeRenderedCardQty = () => {
     if (window.innerWidth > MAX_WIDTH) {
       return MAX_WIDTH_CARD_QTY
@@ -42,21 +41,25 @@ function Movies({
     }
   }
 
+  // стейт количества отрисовываемых карточек
   const [renderedCardQty, setRenderedCardQty] = useState(
     computeRenderedCardQty(),
   )
 
+  // установка количества отрисовываемых карточек при изменении поискового запроса
   useEffect(() => {
     setRenderedCardQty(computeRenderedCardQty())
   }, [searchRequest])
 
+  // количество отрисовываемых карточек
   localStorage.setItem('renderedCardQty', renderedCardQty)
 
+  // состояние переключателя "Короткометражки"
   localStorage.setItem('isShortFilm', isFilterOn)
 
+  // обработчик отправки формы поиска
   const handleSearchFormSubmit = (evt) => {
     evt.preventDefault()
-
     handleRequest()
     // filterFoundMovies()
   }
@@ -65,6 +68,7 @@ function Movies({
     handleRequest()
   }, [])
 
+  // обработчик поискового запроса (в зависимости от наличия массива фильмов)
   function handleRequest() {
     !localStorage.getItem('allMovies')
       ? getMoviesFromServer()
@@ -72,6 +76,7 @@ function Movies({
     // filterFoundMovies()
   }
 
+  // получение списка фильмов со стороннего сервера
   const getMoviesFromServer = () => {
     setIsLoading(true)
     moviesApi
@@ -91,6 +96,7 @@ function Movies({
       })
   }
 
+  // обработка поискового запроса
   const handleSearchRequest = () => {
     if (searchRequest !== '') {
       localStorage.setItem('searchRequest', searchRequest)
@@ -132,6 +138,7 @@ function Movies({
   //   searchRequestHandler(searchRequest)
   // }, [foundMovies])
 
+  // фильтрация начального массива фильмов, подходящих под поисковый запрос
   const searchRequestHandler = (searchRequest) => {
     const initialMovies = JSON.parse(localStorage.getItem('allMovies'))
     const resultSearchRequest = searchRequest.toLowerCase()
@@ -156,10 +163,12 @@ function Movies({
   //   setIsFilterOn(!isFilterOn)
   // }
 
+  // фильтрация массива фильмов по длительности
   const filterShortMovies = (movies) => {
     return movies.filter((movie) => movie.duration <= SHORT_FILM_DURATION)
   }
 
+  // обработчик переключателя "Короткометражки"
   const filterShortMoviesHandler = () => {
     setIsFilterOn(!isFilterOn)
     isFilterOn && setShortMovies(filterShortMovies(foundMovies))
@@ -167,6 +176,7 @@ function Movies({
     console.log(shortMovies)
   }
 
+  // обработчик клика по кнопке [Ещё]
   const showMoreCards = () => {
     window.innerWidth > MAX_WIDTH
       ? setRenderedCardQty(renderedCardQty + MAX_WIDTH_ADDED_CARD_QTY)

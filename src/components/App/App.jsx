@@ -26,6 +26,7 @@ function App() {
   const [registrationError, setRegistrationError] = useState('')
   const [loginError, setloginError] = useState('')
   const [profileError, setProfileError] = useState('')
+  const [profileSuccessMessage, setProfileSuccessMessage] = useState('')
   const navigate = useNavigate()
   const [searchRequest, setSearchRequest] = useState('')
 
@@ -59,6 +60,7 @@ function App() {
       .then((user) => {
         setCurrentUser({ user })
         setIsLoggedIn(true)
+        setProfileSuccessMessage('Данные профиля успешно обновлены')
       })
       .catch((err) => {
         console.log(err)
@@ -202,6 +204,7 @@ function App() {
                   logOut={logOut}
                   updateUserInfo={updateUserInfo}
                   errorMessage={profileError}
+                  profileSuccessMessage={profileSuccessMessage}
                 />
               }
             />

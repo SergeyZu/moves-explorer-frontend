@@ -5,7 +5,13 @@ import Header from '../Header/Header'
 import CurrentUserContext from '../../contexts/CurrentUserContext'
 import { useContext } from 'react'
 
-function Profile({ updateUserInfo, errorMessage, logOut, isLoggedIn }) {
+function Profile({
+  updateUserInfo,
+  errorMessage,
+  profileSuccessMessage,
+  logOut,
+  isLoggedIn,
+}) {
   const { form, errors, hadleChange } = useForm({
     name: '',
     email: '',
@@ -93,6 +99,9 @@ function Profile({ updateUserInfo, errorMessage, logOut, isLoggedIn }) {
               </div>
               <span className='profile__span'>{errorMessage}</span>
               <button className='profile__save-button'>Сохранить</button>
+              <span className='profile__span_success'>
+                {profileSuccessMessage}
+              </span>
             </form>
           )}
         </section>

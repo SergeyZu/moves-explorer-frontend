@@ -27,6 +27,7 @@ function Movies({
   const [shortMovies, setShortMovies] = useState([]) // массив короткометражек
   const [isFilterOn, setIsFilterOn] = useState(false) // состояние чекбокса короткометражек
   const [requestError, setRequestError] = useState('')
+  const [moviesNotFoundMessage, setMoviesNotFoundMessage] = useState('')
 
   // количество изначально отрисовываемых карточек
   const computeRenderedCardQty = () => {
@@ -47,7 +48,7 @@ function Movies({
     computeRenderedCardQty(),
   )
 
-  // установка количества отрисовываемых карточек при изменении поискового запроса
+  // сброс стейта количества отрисовываемых карточек при изменении поискового запроса
   useEffect(() => {
     setRenderedCardQty(computeRenderedCardQty())
   }, [searchRequest])
@@ -105,12 +106,28 @@ function Movies({
     if (searchRequest !== '') {
       localStorage.setItem('searchRequest', searchRequest)
       setFoundMovies(searchRequestHandler(searchRequest))
+      checkFoundMoviesLength()
+      // localStorage.foundMovies === []
+      // foundMovies.length === 0
+      //   ? setMoviesNotFoundMessage('Ничего не найдено')
+      //   : setMoviesNotFoundMessage('')
     }
   }
 
   useEffect(() => {
     handleSearchRequest()
   }, [])
+
+  // проверка массива найденных фильмов (найдено что-то или нет)
+  const checkFoundMoviesLength = () => {
+    foundMovies.length === 0
+      ? setMoviesNotFoundMessage('Ничего не найдено')
+      : setMoviesNotFoundMessage('')
+  }
+
+  useEffect(() => {
+    checkFoundMoviesLength()
+  }, [foundMovies])
 
   // const filteredMovies = () => {
   //   foundMovies.filter((movie) => {
@@ -177,7 +194,7 @@ function Movies({
     setIsFilterOn(!isFilterOn)
     isFilterOn && setShortMovies(filterShortMovies(foundMovies))
     // : setShortMovies(foundMovies)
-    console.log(shortMovies)
+    // console.log(shortMovies)
   }
 
   // обработчик клика по кнопке [Ещё]
@@ -197,25 +214,29 @@ function Movies({
             onChange={handleInputChange}
             onSubmit={handleSearchFormSubmit}
             isFilterOn={isFilterOn}
-            // setIsFilterOn={setIsFilterOn}
             onChangeShortFilmToggle={filterShortMoviesHandler}
             requestError={requestError}
           />
+          <span className='movies__message'>{moviesNotFoundMessage}</span>
           <MoviesCardList
-            movies={foundMovies}
+            foundMovies={foundMovies}
+            shortMovies={shortMovies}
             isLoading={isLoading}
+            isFilterOn={isFilterOn}
             renderedCardQty={renderedCardQty}
             handleCreateCard={handleCreateCard}
             handleDeleteCard={handleDeleteCard}
           />
-          {/* {renderedCardQty < foundMovies.lehgth && ( */}
           <button
             className={
-              foundMovies.length > renderedCardQty
+              !isFilterOn
+                ? foundMovies.length > renderedCardQty
+                  ? 'movies__more-button'
+                  : 'hidden'
+                : shortMovies.length > renderedCardQty
                 ? 'movies__more-button'
                 : 'hidden'
             }
-            // className='movies__more-button'
             type='button'
             onClick={showMoreCards}
           >

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import './MoviesCard.css'
 import convertDuration from '../../utils/convertDuration'
 
@@ -13,6 +13,7 @@ function MoviesCard({
   handleDeleteCard,
 }) {
   const [isLiked, setIsLiked] = useState(false)
+  const location = useLocation()
 
   const convertedDuration = convertDuration(duration)
 
@@ -39,33 +40,32 @@ function MoviesCard({
 
         <div className='movies-card__info'>
           <h2 className='movies-card__title'>{title}</h2>
-          <div className='movies-card__like'>
-            {isLiked ? (
+          {location.pathname === '/movies' ? (
+            <div className='movies-card__like'>
+              {isLiked ? (
+                <button
+                  className='movies-card__like-button_clicked'
+                  type='button'
+                  onClick={hadleLikedCardClick}
+                />
+              ) : (
+                <button
+                  className='movies-card__like-button'
+                  type='button'
+                  onClick={hadleUnlikedCardClick}
+                />
+              )}
+            </div>
+          ) : (
+            <div className='movies-card__like'>
               <button
-                className='movies-card__like-button_clicked'
+                className='movies-card__delete-btn'
                 type='button'
                 onClick={hadleLikedCardClick}
               />
-            ) : (
-              <button
-                className='movies-card__like-button'
-                type='button'
-                onClick={hadleUnlikedCardClick}
-              />
-            )}
-            {/* <button
-              className={
-                isLiked
-                  ? 'movies-card__like-button_clicked'
-                  : 'movies-card__like-button'
-              }
-              type='button'
-              onClick={
-                handleLikeClick()
-                // () => setIsLiked(!isLiked)
-              }
-            /> */}
-          </div>
+            </div>
+          )}
+
           <p className='movies-card__duration'>{convertedDuration}</p>
         </div>
       </li>

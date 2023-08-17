@@ -192,6 +192,10 @@ function App() {
                 <ProtectedRoute
                   component={SavedMovies}
                   isLoggedIn={isLoggedIn}
+                  likedMovies={likedMovies}
+                  searchRequest={searchRequest}
+                  handleInputChange={handleInputChange}
+                  handleDeleteCard={handleDeleteCard}
                 />
               }
             />

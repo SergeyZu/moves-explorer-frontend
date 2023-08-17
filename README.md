@@ -6,4 +6,4 @@
 
 ## бэкенд: api.zinchenko.nomoredomains.work
 
-## ссылка на пул реквест https://github.com/SergeyZu/moves-explorer-frontend/compare/main...level-3
+## ссылка на пул реквест https://github.com/SergeyZu/moves-explorer-frontend/pull/2

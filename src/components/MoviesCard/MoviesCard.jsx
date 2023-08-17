@@ -17,13 +17,21 @@ function MoviesCard({
 
   const convertedDuration = convertDuration(duration)
 
-  const hadleUnlikedCardClick = () => {
+  const makeCardLiked = () => {
     setIsLiked(true)
+  }
+
+  const hadleUnlikedCardClick = () => {
+    makeCardLiked()
     handleCreateCard(movie)
   }
 
-  const hadleLikedCardClick = () => {
+  const makeCardUnliked = () => {
     setIsLiked(false)
+  }
+
+  const hadleLikedCardClick = () => {
+    makeCardUnliked()
     handleDeleteCard(movie)
   }
 

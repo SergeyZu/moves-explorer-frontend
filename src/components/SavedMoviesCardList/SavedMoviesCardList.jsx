@@ -1,13 +1,23 @@
 import './SavedMoviesCardList.css'
-import SavedMoviesCard from '../SavedMoviesCard/SavedMoviesCard'
+import MoviesCard from '../MoviesCard/MoviesCard'
 
-function SavedMoviesCardList() {
+function SavedMoviesCardList({ likedMovies, isLoading, handleDeleteCard }) {
   return (
     <section className='saved-movies-card-list'>
       <ul className='saved-movies-card-list__list'>
-        <SavedMoviesCard />
-        <SavedMoviesCard />
-        <SavedMoviesCard />
+        {likedMovies &&
+          likedMovies.map((movie) => (
+            <MoviesCard
+              key={movie?._id}
+              src={movie?.image.slice(28)}
+              title={movie?.nameRU}
+              duration={movie?.duration}
+              trailerLink={movie?.trailerLink}
+              movie={movie}
+              handleDeleteCard={handleDeleteCard}
+            />
+          ))}
+        {console.log(likedMovies)}
       </ul>
     </section>
   )

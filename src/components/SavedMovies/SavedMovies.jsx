@@ -1,8 +1,8 @@
 import './SavedMovies.css'
 import Header from '../Header/Header'
 import SearchForm from '../SearchForm/SearchForm'
-// import SavedMoviesCardList from '../SavedMoviesCardList/SavedMoviesCardList'
-import MoviesCardList from '../MoviesCardList/MoviesCardList'
+import SavedMoviesCardList from '../SavedMoviesCardList/SavedMoviesCardList'
+// import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Footer from '../Footer/Footer'
 
 function SavedMovies({
@@ -24,14 +24,13 @@ function SavedMovies({
             onChange={handleInputChange}
             onSubmit={handleSearchFormSubmit}
             // isFilterOn={isFilterOn}
-            // setIsFilterOn={setIsFilterOn}
           />
-          {/* <SavedMoviesCardList /> */}
-          <MoviesCardList
-            movies={likedMovies}
+          <SavedMoviesCardList
+            likedMovies={likedMovies}
             isLoading={isLoading}
             handleDeleteCard={handleDeleteCard}
-          />{' '}
+          />
+          {/* <MoviesCardList /> */}
         </section>
       </main>
       <Footer />

@@ -5,7 +5,7 @@ import FormAuth from '../FormAuth/FormAuth'
 import './Register.css'
 
 function Register({ registerUser, errorMessage, isLoggedIn }) {
-  const { form, errors, hadleChange } = useForm({
+  const { form, errors, hadleChange, isFormValid } = useForm({
     name: '',
     email: '',
     password: '',
@@ -28,6 +28,7 @@ function Register({ registerUser, errorMessage, isLoggedIn }) {
         linkText='Войти'
         onSubmit={handleSubmit}
         errorMessage={errorMessage}
+        isFormValid={isFormValid}
       >
         <label className='register__form-label'>
           Имя

@@ -12,7 +12,7 @@ function Profile({
   logOut,
   isLoggedIn,
 }) {
-  const { form, errors, hadleChange } = useForm({
+  const { form, errors, hadleChange, isFormValid } = useForm({
     name: '',
     email: '',
   })
@@ -98,7 +98,17 @@ function Profile({
                 <span className='profile__input-error'>{errors.email}</span>
               </div>
               <span className='profile__span'>{errorMessage}</span>
-              <button className='profile__save-button'>Сохранить</button>
+              {isFormValid ? (
+                <button className='profile__save-button'>Сохранить</button>
+              ) : (
+                <button
+                  className='profile__save-button profile__save-button_disabled'
+                  disabled
+                >
+                  Сохранить
+                </button>
+              )}
+
               <span className='profile__span_success'>
                 {profileSuccessMessage}
               </span>

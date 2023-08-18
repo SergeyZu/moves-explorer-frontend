@@ -12,6 +12,7 @@ function FormAuth({
   onSubmit,
   errorMessage,
   children,
+  isFormValid,
 }) {
   return (
     <form className='form-auth' onSubmit={onSubmit}>
@@ -26,7 +27,18 @@ function FormAuth({
       </div>
       <div className='form-auth__form-footer'>
         <span className='form-auth__error-message'>{errorMessage}</span>
-        <button className='form-auth__form-button'>{buttonText}</button>
+        {isFormValid ? (
+          <button className='form-auth__form-button'>{buttonText}</button>
+        ) : (
+          <button
+            className='form-auth__form-button
+          form-auth__form-button_disabled'
+            disabled
+          >
+            {buttonText}
+          </button>
+        )}
+
         <div className='form-auth__qa'>
           <p className='form-auth__question'>{question}</p>
           <Link to={linkPath} className='form-auth__link'>

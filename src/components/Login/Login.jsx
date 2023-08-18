@@ -5,7 +5,7 @@ import FormAuth from '../FormAuth/FormAuth'
 import './Login.css'
 
 function Login({ loginUser, errorMessage, isLoggedIn }) {
-  const { form, errors, hadleChange } = useForm({
+  const { form, errors, hadleChange, isFormValid } = useForm({
     email: '',
     password: '',
   })
@@ -27,6 +27,7 @@ function Login({ loginUser, errorMessage, isLoggedIn }) {
         linkText='Регистрация'
         onSubmit={handleSubmit}
         errorMessage={errorMessage}
+        isFormValid={isFormValid}
       >
         <label className='login__form-label'>
           E-mail

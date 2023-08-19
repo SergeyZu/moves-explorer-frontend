@@ -172,3 +172,6 @@
   color: #c2c2c2;
   cursor: auto;
 }
+.profile__save-button_disabled:hover {
+  opacity: 1;
+}

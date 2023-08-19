@@ -12,9 +12,11 @@ function Profile({
   logOut,
   isLoggedIn,
 }) {
+  const currentUser = useContext(CurrentUserContext)
+
   const { form, errors, hadleChange, isFormValid } = useForm({
-    name: '',
-    email: '',
+    name: currentUser.user.name,
+    email: currentUser.user.email,
   })
 
   const handleSubmit = (evt) => {
@@ -27,8 +29,6 @@ function Profile({
   const handleEditButtonClick = () => {
     setisEditPushed({ isEditPushed: true })
   }
-
-  const currentUser = useContext(CurrentUserContext)
 
   return (
     <>
@@ -78,6 +78,8 @@ function Profile({
                     value={form.name}
                     onChange={hadleChange}
                     placeholder='Введите ваше имя'
+                    minLength={2}
+                    maxLength={30}
                     required
                   />
                 </label>
@@ -98,7 +100,9 @@ function Profile({
                 <span className='profile__input-error'>{errors.email}</span>
               </div>
               <span className='profile__span'>{errorMessage}</span>
-              {isFormValid ? (
+              {isFormValid &&
+              (currentUser.user.name !== form.name ||
+                currentUser.user.email !== form.email) ? (
                 <button className='profile__save-button'>Сохранить</button>
               ) : (
                 <button

@@ -19,13 +19,16 @@ function Movies({
   isLoading,
   setIsLoading,
   searchRequest,
+  setSearchRequest,
   handleInputChange,
   handleCreateCard,
   handleDeleteCard,
 }) {
+  const [allMovies, setAllMovies] = useState([]) // массив фильмов с Beatfilm
   const [foundMovies, setFoundMovies] = useState([]) // массив фильмов по запросу
-  const [shortMovies, setShortMovies] = useState([]) // массив короткометражек
-  const [isFilterOn, setIsFilterOn] = useState(false) // состояние чекбокса короткометражек
+  // const [shortMovies, setShortMovies] = useState([]) // массив короткометражек
+  // const [isFilterOn, setIsFilterOn] = useState(false) // состояние чекбокса короткометражек
+  const [isShortFilm, setIsShortFilm] = useState(false) // состояние чекбокса короткометражек
   const [requestError, setRequestError] = useState('')
   const [moviesNotFoundMessage, setMoviesNotFoundMessage] = useState('')
 
@@ -57,41 +60,46 @@ function Movies({
   localStorage.setItem('renderedCardQty', renderedCardQty)
 
   // состояние переключателя "Короткометражки"
-  localStorage.setItem('isShortFilm', isFilterOn)
+  // localStorage.setItem('isShortFilm', isFilterOn)
+  localStorage.setItem('isShortFilm', isShortFilm)
 
   // обработчик отправки формы поиска
   const handleSearchFormSubmit = (evt) => {
     evt.preventDefault()
+    handleRequest()
     !searchRequest
       ? setRequestError('Нужно ввести ключевое слово')
       : setRequestError('')
-    handleRequest()
-    // filterFoundMovies()
   }
-
-  useEffect(() => {
-    handleRequest()
-  }, [])
 
   // обработчик поискового запроса (в зависимости от наличия массива фильмов)
   function handleRequest() {
-    !localStorage.getItem('allMovies')
-      ? getMoviesFromServer()
-      : handleSearchRequest()
+    !searchRequest
+      ? setRequestError('Нужно ввести ключевое слово')
+      : getMovies()
+    // : setRequestError('')
+    // !localStorage.getItem('allMovies')
+    // !localStorage.getItem('dataForRender')
+    // !localStorage.dataForRender
+    //   ? getMovies()
+    //   : // : filterMovies(allMovies)
+    //     handleSearchRequest()
     // filterFoundMovies()
   }
 
-  // получение списка фильмов со стороннего сервера
-  const getMoviesFromServer = () => {
+  // получение списка фильмов с Beatfilm
+  const getMovies = () => {
     setIsLoading(true)
+
     moviesApi
       .getAllMovies()
-      .then((data) => {
-        const moviesArr = JSON.stringify(data)
-        localStorage.setItem('allMovies', moviesArr)
+      .then((movies) => {
+        setAllMovies(movies)
+        return filterMovies(movies)
       })
-      .then(() => {
-        handleSearchRequest()
+      .then((filteredMovies) => {
+        const dataForRender = { filteredMovies, searchRequest, isShortFilm }
+        localStorage.setItem('dataForRender', JSON.stringify(dataForRender))
       })
       .catch((err) => {
         console.log(err)
@@ -101,98 +109,107 @@ function Movies({
       })
   }
 
-  // обработка поискового запроса
-  const handleSearchRequest = () => {
-    if (searchRequest !== '') {
-      localStorage.setItem('searchRequest', searchRequest)
-      setFoundMovies(searchRequestHandler(searchRequest))
-      checkFoundMoviesLength()
-      // localStorage.foundMovies === []
-      // foundMovies.length === 0
-      //   ? setMoviesNotFoundMessage('Ничего не найдено')
-      //   : setMoviesNotFoundMessage('')
-    }
-  }
-
-  useEffect(() => {
-    handleSearchRequest()
-  }, [])
-
-  // проверка массива найденных фильмов (найдено что-то или нет)
-  const checkFoundMoviesLength = () => {
-    foundMovies.length === 0
-      ? setMoviesNotFoundMessage('Ничего не найдено')
-      : setMoviesNotFoundMessage('')
-  }
-
-  useEffect(() => {
-    checkFoundMoviesLength()
-  }, [foundMovies])
-
-  // const filteredMovies = () => {
-  //   foundMovies.filter((movie) => {
-  //     return movie.duration <= 40
-  //   })
-  // }
-
-  // const filterFoundMovies = () => {
-  //   // if (localStorage.isShortFilm === true) {
-  //   localStorage.isShortFilm && filteredMovies()
-  //   return filteredMovies
-  // }
-
-  // const filterFoundMovies = () => {
-  //   // const foundMoviesLS = parse.localStorage.foundMovies
-  //   const foundMoviesLS = JSON.parse(localStorage.getItem('foundMovies'))
-  //   if (localStorage.isShortFilm === true) {
-  //     const filteredMovies = () =>
-  //       foundMoviesLS.filter((movie) => {
-  //         // [localStorage.foundMovies].filter((movie) => {
-  //         return movie.duration <= 40
-  //       })
-
-  //     return filteredMovies
-  //   }
-  // }
-
   // useEffect(() => {
-  //   searchRequestHandler(searchRequest)
-  // }, [foundMovies])
+  //   getMovies()
+  // }, [isShortFilm])
 
-  // фильтрация начального массива фильмов, подходящих под поисковый запрос
-  const searchRequestHandler = (searchRequest) => {
-    const initialMovies = JSON.parse(localStorage.getItem('allMovies'))
-    const resultSearchRequest = searchRequest.toLowerCase()
+  // // фильтрация начального массива фильмов по поисковому запросу
+  // const searchRequestHandler = (searchRequest) => {
+  //   const initialMovies = JSON.parse(localStorage.getItem('allMovies'))
+  //   const resultSearchRequest = searchRequest.toLowerCase()
 
-    const selectedMovies = initialMovies.filter((movie) => {
-      const ruTitleToLowerCase = movie.nameRU.toLowerCase()
-      const enTitleToLowerCase = movie.nameEN.toLowerCase()
-      return (
-        ruTitleToLowerCase.includes(resultSearchRequest) ||
-        enTitleToLowerCase.includes(resultSearchRequest)
-      )
-    })
+  //   const selectedMovies = initialMovies.filter((movie) => {
+  //     const ruTitleToLowerCase = movie.nameRU.toLowerCase()
+  //     const enTitleToLowerCase = movie.nameEN.toLowerCase()
+  //     return (
+  //       ruTitleToLowerCase.includes(resultSearchRequest) ||
+  //       enTitleToLowerCase.includes(resultSearchRequest)
+  //     )
+  //   })
 
-    localStorage.setItem('foundMovies', JSON.stringify(selectedMovies))
-    return selectedMovies
-  }
+  //   localStorage.setItem('foundMovies', JSON.stringify(selectedMovies))
+  //   return selectedMovies
+  // }
 
   // const [isShortFilm, setIsShortFilm] = useState(
   //   JSON.parse(localStorage.getItem('isShortFilm')),
   // )
-  // const onChangeShortFilmToggle = () => {
-  //   setIsFilterOn(!isFilterOn)
+
+  // // фильтрация массива фильмов по длительности
+  // const filterShortMovies = (movies) => {
+  //   return movies.filter((movie) => movie.duration <= SHORT_FILM_DURATION)
   // }
 
-  // фильтрация массива фильмов по длительности
-  const filterShortMovies = (movies) => {
-    return movies.filter((movie) => movie.duration <= SHORT_FILM_DURATION)
+  // const filterMovies = (movies, searchRequest, isShortFilm) => {
+  const filterMovies = (movies) => {
+    const filterMoviesbyRequest = () => {
+      const filteredMoviesbyRequest = movies.filter((movie) => {
+        // movies.filter((movie) => {
+        const ruTitleToLowerCase = movie.nameRU.toLowerCase()
+        const enTitleToLowerCase = movie.nameEN.toLowerCase()
+        const resultSearchRequest = searchRequest.toLowerCase()
+        return (
+          ruTitleToLowerCase.includes(resultSearchRequest) ||
+          enTitleToLowerCase.includes(resultSearchRequest)
+        )
+      })
+      return filteredMoviesbyRequest
+    }
+
+    const filterMoviesbyDuration = () => {
+      return filterMoviesbyRequest().filter(
+        (movie) => movie.duration <= SHORT_FILM_DURATION,
+      )
+    }
+
+    return !isShortFilm
+      ? filterMoviesbyRequest()
+      : filterMoviesbyDuration(filterMoviesbyRequest())
   }
+
+  // получение данных для рендеринга из localStorage
+  useEffect(() => {
+    const dataForRender = localStorage.getItem('dataForRender')
+    if (dataForRender) {
+      const { filteredMovies } = JSON.parse(dataForRender)
+      setFoundMovies(filteredMovies)
+      setSearchRequest(searchRequest)
+      setIsShortFilm(isShortFilm)
+    }
+  }, [])
+
+  // // обработка поискового запроса
+  // const handleSearchRequest = () => {
+  //   if (searchRequest !== '') {
+  //     localStorage.setItem('searchRequest', searchRequest)
+  //     // setFoundMovies(searchRequestHandler(searchRequest))
+  //     setFoundMovies(filterMovies(allMovies))
+  //     checkFoundMoviesLength()
+  //   }
+  // }
+
+  //// проверка массива найденных фильмов (найдено что-то или нет)
+  // const checkFilteredMoviesLength = () => {
+  //   foundMovies.length === 0
+  //     ? setMoviesNotFoundMessage('Ничего не найдено')
+  //     : setMoviesNotFoundMessage('')
+  // }
+
+  useEffect(() => {
+    if (searchRequest === '') return
+    foundMovies.length === 0
+      ? setMoviesNotFoundMessage('Ничего не найдено')
+      : setMoviesNotFoundMessage('')
+  }, [foundMovies])
+
+  // useEffect(() => {
+  //   checkFoundMoviesLength()
+  // }, [foundMovies])
 
   // обработчик переключателя "Короткометражки"
   const filterShortMoviesHandler = () => {
-    setIsFilterOn(!isFilterOn)
-    isFilterOn && setShortMovies(filterShortMovies(foundMovies))
+    setIsShortFilm(!isShortFilm)
+    // isShortFilm && setShortMovies(filterShortMovies(foundMovies))
     // : setShortMovies(foundMovies)
     // console.log(shortMovies)
   }
@@ -213,30 +230,36 @@ function Movies({
             searchRequest={searchRequest}
             onChange={handleInputChange}
             onSubmit={handleSearchFormSubmit}
-            isFilterOn={isFilterOn}
+            isFilterOn={isShortFilm}
             onChangeShortFilmToggle={filterShortMoviesHandler}
             requestError={requestError}
           />
           <span className='movies__message'>{moviesNotFoundMessage}</span>
           <MoviesCardList
+            // foundMovies={foundMovies}
             foundMovies={foundMovies}
-            shortMovies={shortMovies}
+            // shortMovies={shortMovies}
             isLoading={isLoading}
-            isFilterOn={isFilterOn}
+            isFilterOn={isShortFilm}
             renderedCardQty={renderedCardQty}
             handleCreateCard={handleCreateCard}
             handleDeleteCard={handleDeleteCard}
           />
           <button
             className={
-              !isFilterOn
-                ? foundMovies.length > renderedCardQty
-                  ? 'movies__more-button'
-                  : 'hidden'
-                : shortMovies.length > renderedCardQty
+              foundMovies.length > renderedCardQty
                 ? 'movies__more-button'
                 : 'hidden'
             }
+            // className={
+            //   !isShortFilm
+            //     ? foundMovies.length > renderedCardQty
+            //       ? 'movies__more-button'
+            //       : 'hidden'
+            //     : shortMovies.length > renderedCardQty
+            //     ? 'movies__more-button'
+            //     : 'hidden'
+            // }
             type='button'
             onClick={showMoreCards}
           >

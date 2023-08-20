@@ -37,6 +37,11 @@
   background-position: center;
   opacity: 0;
 }
+@media (max-width: 600px) {
+  .movies-card__delete-btn {
+    opacity: 1;
+  }
+}
 
 .movies-card__image {
   width: 100%;

@@ -180,6 +180,7 @@ function App() {
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}
                   searchRequest={searchRequest}
+                  setSearchRequest={setSearchRequest}
                   handleInputChange={handleInputChange}
                   handleCreateCard={handleCreateCard}
                   handleDeleteCard={handleDeleteCard}

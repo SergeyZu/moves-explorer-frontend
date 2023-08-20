@@ -17,7 +17,6 @@ function SavedMoviesCardList({ likedMovies, isLoading, handleDeleteCard }) {
               handleDeleteCard={handleDeleteCard}
             />
           ))}
-        {console.log(likedMovies)}
       </ul>
     </section>
   )

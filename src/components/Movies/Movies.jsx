@@ -5,6 +5,7 @@ import SearchForm from '../SearchForm/SearchForm'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Footer from '../Footer/Footer'
 import moviesApi from '../../utils/MoviesApi'
+import filterMovies from '../../utils/filterMovies'
 import { MAX_WIDTH } from '../../constants/constants'
 import { MIDDLE_WIDTH } from '../../constants/constants'
 import { MAX_WIDTH_CARD_QTY } from '../../constants/constants'
@@ -86,7 +87,7 @@ function Movies({
       .getAllMovies()
       .then((movies) => {
         // setAllMovies(movies)
-        return filterMovies(movies)
+        return filterMovies(movies, searchRequest, isShortFilm)
       })
       .then((filteredMovies) => {
         const dataForRender = { filteredMovies, searchRequest, isShortFilm }
@@ -132,31 +133,30 @@ function Movies({
   // }
 
   // const filterMovies = (movies, searchRequest, isShortFilm) => {
-  const filterMovies = (movies) => {
-    const filterMoviesbyRequest = () => {
-      const filteredMoviesbyRequest = movies.filter((movie) => {
-        // movies.filter((movie) => {
-        const ruTitleToLowerCase = movie.nameRU.toLowerCase()
-        const enTitleToLowerCase = movie.nameEN.toLowerCase()
-        const resultSearchRequest = searchRequest.toLowerCase()
-        return (
-          ruTitleToLowerCase.includes(resultSearchRequest) ||
-          enTitleToLowerCase.includes(resultSearchRequest)
-        )
-      })
-      return filteredMoviesbyRequest
-    }
+  //   // const filterMovies = (movies) => {
+  //   const filterMoviesbyRequest = () => {
+  //     const filteredMoviesbyRequest = movies.filter((movie) => {
+  //       const ruTitleToLowerCase = movie.nameRU.toLowerCase()
+  //       const enTitleToLowerCase = movie.nameEN.toLowerCase()
+  //       const resultSearchRequest = searchRequest.toLowerCase()
+  //       return (
+  //         ruTitleToLowerCase.includes(resultSearchRequest) ||
+  //         enTitleToLowerCase.includes(resultSearchRequest)
+  //       )
+  //     })
+  //     return filteredMoviesbyRequest
+  //   }
 
-    const filterMoviesbyDuration = () => {
-      return filterMoviesbyRequest().filter(
-        (movie) => movie.duration <= SHORT_FILM_DURATION,
-      )
-    }
+  //   const filterMoviesbyDuration = () => {
+  //     return filterMoviesbyRequest().filter(
+  //       (movie) => movie.duration <= SHORT_FILM_DURATION,
+  //     )
+  //   }
 
-    return !isShortFilm
-      ? filterMoviesbyRequest()
-      : filterMoviesbyDuration(filterMoviesbyRequest())
-  }
+  //   return !isShortFilm
+  //     ? filterMoviesbyRequest()
+  //     : filterMoviesbyDuration(filterMoviesbyRequest())
+  // }
 
   // получение данных для рендеринга из localStorage
   useEffect(() => {
@@ -226,7 +226,6 @@ function Movies({
           />
           <span className='movies__message'>{moviesNotFoundMessage}</span>
           <MoviesCardList
-            // foundMovies={foundMovies}
             foundMovies={foundMovies}
             isLoading={isLoading}
             isFilterOn={isShortFilm}
@@ -240,23 +239,11 @@ function Movies({
                 ? 'movies__more-button'
                 : 'hidden'
             }
-            // className={
-            //   !isShortFilm
-            //     ? foundMovies.length > renderedCardQty
-            //       ? 'movies__more-button'
-            //       : 'hidden'
-            //     : shortMovies.length > renderedCardQty
-            //     ? 'movies__more-button'
-            //     : 'hidden'
-            // }
             type='button'
             onClick={showMoreCards}
           >
             Ещё
           </button>
-          {/* )} */}
-
-          {/* )} */}
         </section>
       </main>
       <Footer />

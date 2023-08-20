@@ -148,15 +148,18 @@ function App() {
 
   const deleteCard = async (card) => {
     try {
-      const cardToDeleted = likedMovies.find(
+      // const cardToDeleted = likedMovies.find(
+      const cardToDeleted = savedMovies.find(
         (cardToDel) => cardToDel.movieId === (card.id || card.movieId),
       )
       await mainApi.deleteMovieCard(cardToDeleted._id, token)
-      const refreshedLikedMovies = likedMovies.filter(
+      // const refreshedLikedMovies = likedMovies.filter(
+      const updatedSavedMovies = savedMovies.filter(
         (card) => card._id !== cardToDeleted._id,
       )
-      setLikedMovies(refreshedLikedMovies)
-      localStorage.setItem('likedMovies', JSON.stringify(likedMovies))
+      // setLikedMovies(updatedSavedMovies)
+      setSavedMovies(updatedSavedMovies)
+      // localStorage.setItem('likedMovies', JSON.stringify(likedMovies))
     } catch (error) {
       console.log(error)
     }

@@ -4,9 +4,7 @@ import Preloader from '../Preloader/Preloader'
 
 function MoviesCardList({
   foundMovies,
-  shortMovies,
   isLoading,
-  isFilterOn,
   createCard,
   deleteCard,
   renderedCardQty,
@@ -15,6 +13,25 @@ function MoviesCardList({
     <section className='movies-card-list'>
       <ul className='movies-card-list__list'>
         {isLoading ? (
+          <Preloader />
+        ) : (
+          foundMovies
+            .slice(0, renderedCardQty)
+            .map((movie) => (
+              <MoviesCard
+                key={movie?.id}
+                src={movie?.image?.url}
+                title={movie?.nameRU}
+                duration={movie?.duration}
+                trailerLink={movie?.trailerLink}
+                movie={movie}
+                createCard={createCard}
+                deleteCard={deleteCard}
+              />
+            ))
+        )}
+
+        {/* {isLoading ? (
           <Preloader />
         ) : !isFilterOn ? (
           foundMovies &&
@@ -48,7 +65,7 @@ function MoviesCardList({
                 deleteCard={deleteCard}
               />
             ))
-        )}
+        )} */}
       </ul>
     </section>
   )

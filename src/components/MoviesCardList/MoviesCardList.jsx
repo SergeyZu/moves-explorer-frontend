@@ -7,8 +7,8 @@ function MoviesCardList({
   shortMovies,
   isLoading,
   isFilterOn,
-  handleCreateCard,
-  handleDeleteCard,
+  createCard,
+  deleteCard,
   renderedCardQty,
 }) {
   return (
@@ -28,8 +28,8 @@ function MoviesCardList({
                 duration={movie?.duration}
                 trailerLink={movie?.trailerLink}
                 movie={movie}
-                handleCreateCard={handleCreateCard}
-                handleDeleteCard={handleDeleteCard}
+                createCard={createCard}
+                deleteCard={deleteCard}
               />
             ))
         ) : (
@@ -44,8 +44,8 @@ function MoviesCardList({
                 duration={movie?.duration}
                 trailerLink={movie?.trailerLink}
                 movie={movie}
-                handleCreateCard={handleCreateCard}
-                handleDeleteCard={handleDeleteCard}
+                createCard={createCard}
+                deleteCard={deleteCard}
               />
             ))
         )}

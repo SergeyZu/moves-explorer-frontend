@@ -1,7 +1,7 @@
 import './SavedMoviesCardList.css'
 import MoviesCard from '../MoviesCard/MoviesCard'
 
-function SavedMoviesCardList({ likedMovies, isLoading, handleDeleteCard }) {
+function SavedMoviesCardList({ likedMovies, isLoading, deleteCard }) {
   return (
     <section className='saved-movies-card-list'>
       <ul className='saved-movies-card-list__list'>
@@ -14,7 +14,7 @@ function SavedMoviesCardList({ likedMovies, isLoading, handleDeleteCard }) {
               duration={movie?.duration}
               trailerLink={movie?.trailerLink}
               movie={movie}
-              handleDeleteCard={handleDeleteCard}
+              deleteCard={deleteCard}
             />
           ))}
       </ul>

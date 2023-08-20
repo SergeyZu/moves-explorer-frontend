@@ -29,6 +29,7 @@ function App() {
   const [profileSuccessMessage, setProfileSuccessMessage] = useState('')
   const navigate = useNavigate()
   const [searchRequest, setSearchRequest] = useState('')
+  const [savedMovies, setSavedMovies] = useState([])
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt')
@@ -120,7 +121,7 @@ function App() {
     setSearchRequest(request.target.value)
   }
 
-  const handleCreateCard = async (card) => {
+  const createCard = async (card) => {
     try {
       const likedMovieCard = await mainApi.createMovieCard(
         {
@@ -145,7 +146,7 @@ function App() {
     }
   }
 
-  const handleDeleteCard = async (card) => {
+  const deleteCard = async (card) => {
     try {
       const cardToDeleted = likedMovies.find(
         (cardToDel) => cardToDel.movieId === (card.id || card.movieId),
@@ -182,8 +183,10 @@ function App() {
                   searchRequest={searchRequest}
                   setSearchRequest={setSearchRequest}
                   handleInputChange={handleInputChange}
-                  handleCreateCard={handleCreateCard}
-                  handleDeleteCard={handleDeleteCard}
+                  createCard={createCard}
+                  deleteCard={deleteCard}
+                  savedMovies={savedMovies}
+                  setSavedMovies={setSavedMovies}
                 />
               }
             />
@@ -193,10 +196,13 @@ function App() {
                 <ProtectedRoute
                   component={SavedMovies}
                   isLoggedIn={isLoggedIn}
+                  token={token}
                   likedMovies={likedMovies}
                   searchRequest={searchRequest}
                   handleInputChange={handleInputChange}
-                  handleDeleteCard={handleDeleteCard}
+                  deleteCard={deleteCard}
+                  savedMovies={savedMovies}
+                  setSavedMovies={setSavedMovies}
                 />
               }
             />

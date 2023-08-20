@@ -8,8 +8,8 @@ const deleteMovieCard = (cardId, token) => {
   return makeRequest(`/movies/${cardId}`, 'DELETE', null, token)
 }
 
-const getMovies = () => {
-  return makeRequest('/movies', 'GET', null, null)
+const getMovies = (token) => {
+  return makeRequest('/movies', 'GET', null, token)
 }
 
 export { getMovies, createMovieCard, deleteMovieCard }

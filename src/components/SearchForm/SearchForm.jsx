@@ -7,7 +7,7 @@ function SearchForm({
   onSubmit,
   isFilterOn,
   // setIsFilterOn,
-  onChangeShortFilmToggle,
+  toggleShortFilm,
   requestError,
 }) {
   return (
@@ -25,7 +25,7 @@ function SearchForm({
       {/* <FilterCheckbox isFilterOn={isFilterOn} setIsFilterOn={setIsFilterOn} /> */}
       <FilterCheckbox
         isFilterOn={isFilterOn}
-        onChangeShortFilmToggle={onChangeShortFilmToggle}
+        toggleShortFilm={toggleShortFilm}
       />
       <span className='search-form__error'>{requestError}</span>
     </form>

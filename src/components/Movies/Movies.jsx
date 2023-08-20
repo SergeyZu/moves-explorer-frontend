@@ -21,13 +21,12 @@ function Movies({
   searchRequest,
   setSearchRequest,
   handleInputChange,
-  handleCreateCard,
-  handleDeleteCard,
+  createCard,
+  deleteCard,
+  savedMovies,
+  setSavedMovies,
 }) {
-  const [allMovies, setAllMovies] = useState([]) // массив фильмов с Beatfilm
   const [foundMovies, setFoundMovies] = useState([]) // массив фильмов по запросу
-  // const [shortMovies, setShortMovies] = useState([]) // массив короткометражек
-  // const [isFilterOn, setIsFilterOn] = useState(false) // состояние чекбокса короткометражек
   const [isShortFilm, setIsShortFilm] = useState(false) // состояние чекбокса короткометражек
   const [requestError, setRequestError] = useState('')
   const [moviesNotFoundMessage, setMoviesNotFoundMessage] = useState('')
@@ -77,14 +76,6 @@ function Movies({
     !searchRequest
       ? setRequestError('Нужно ввести ключевое слово')
       : getMovies()
-    // : setRequestError('')
-    // !localStorage.getItem('allMovies')
-    // !localStorage.getItem('dataForRender')
-    // !localStorage.dataForRender
-    //   ? getMovies()
-    //   : // : filterMovies(allMovies)
-    //     handleSearchRequest()
-    // filterFoundMovies()
   }
 
   // получение списка фильмов с Beatfilm
@@ -94,7 +85,7 @@ function Movies({
     moviesApi
       .getAllMovies()
       .then((movies) => {
-        setAllMovies(movies)
+        // setAllMovies(movies)
         return filterMovies(movies)
       })
       .then((filteredMovies) => {
@@ -211,7 +202,6 @@ function Movies({
     setIsShortFilm(!isShortFilm)
     // isShortFilm && setShortMovies(filterShortMovies(foundMovies))
     // : setShortMovies(foundMovies)
-    // console.log(shortMovies)
   }
 
   // обработчик клика по кнопке [Ещё]
@@ -231,19 +221,18 @@ function Movies({
             onChange={handleInputChange}
             onSubmit={handleSearchFormSubmit}
             isFilterOn={isShortFilm}
-            onChangeShortFilmToggle={filterShortMoviesHandler}
+            toggleShortFilm={filterShortMoviesHandler}
             requestError={requestError}
           />
           <span className='movies__message'>{moviesNotFoundMessage}</span>
           <MoviesCardList
             // foundMovies={foundMovies}
             foundMovies={foundMovies}
-            // shortMovies={shortMovies}
             isLoading={isLoading}
             isFilterOn={isShortFilm}
             renderedCardQty={renderedCardQty}
-            handleCreateCard={handleCreateCard}
-            handleDeleteCard={handleDeleteCard}
+            createCard={createCard}
+            deleteCard={deleteCard}
           />
           <button
             className={

@@ -9,30 +9,22 @@ function MoviesCard({
   duration,
   trailerLink,
   movie,
-  handleCreateCard,
-  handleDeleteCard,
+  createCard,
+  deleteCard,
 }) {
   const [isLiked, setIsLiked] = useState(false)
   const location = useLocation()
 
   const convertedDuration = convertDuration(duration)
 
-  const makeCardLiked = () => {
+  const likeMovie = () => {
     setIsLiked(true)
+    createCard(movie)
   }
 
-  const hadleUnlikedCardClick = () => {
-    makeCardLiked()
-    handleCreateCard(movie)
-  }
-
-  const makeCardUnliked = () => {
+  const deleteMovie = () => {
     setIsLiked(false)
-  }
-
-  const hadleLikedCardClick = () => {
-    makeCardUnliked()
-    handleDeleteCard(movie)
+    deleteCard(movie)
   }
 
   return (
@@ -54,13 +46,13 @@ function MoviesCard({
                 <button
                   className='movies-card__like-button_clicked'
                   type='button'
-                  onClick={hadleLikedCardClick}
+                  onClick={deleteMovie}
                 />
               ) : (
                 <button
                   className='movies-card__like-button'
                   type='button'
-                  onClick={hadleUnlikedCardClick}
+                  onClick={likeMovie}
                 />
               )}
             </div>
@@ -69,7 +61,7 @@ function MoviesCard({
               <button
                 className='movies-card__delete-btn'
                 type='button'
-                onClick={hadleLikedCardClick}
+                onClick={deleteMovie}
               />
             </div>
           )}

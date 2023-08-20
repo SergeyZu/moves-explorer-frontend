@@ -4,13 +4,13 @@ import checkboxoff from '../../images/checkboxoff.svg'
 
 // function FilterCheckbox({ isFilterOn, setIsFilterOn }) {
 
-function FilterCheckbox({ isFilterOn, onChangeShortFilmToggle }) {
+function FilterCheckbox({ isFilterOn, toggleShortFilm }) {
   return (
     <div className='filter-checkbox'>
       <img
         className='filter-checkbox__image'
         // onClick={() => setIsFilterOn(!isFilterOn)}
-        onClick={onChangeShortFilmToggle}
+        onClick={toggleShortFilm}
         src={isFilterOn ? checkbox : checkboxoff}
         alt='Переключатель'
       />

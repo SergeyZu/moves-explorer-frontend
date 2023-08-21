@@ -1,20 +1,18 @@
 import { SHORT_FILM_DURATION } from '../constants/constants'
 
 const filterMovies = (movies, searchRequest, isShortFilm) => {
-  // const filterMovies = (movies) => {
+  // фильтрация по поисковому запросу
   const filterMoviesbyRequest = () => {
     const filteredMoviesbyRequest = movies.filter((movie) => {
-      const ruTitleToLowerCase = movie.nameRU.toLowerCase()
-      const enTitleToLowerCase = movie.nameEN.toLowerCase()
-      const resultSearchRequest = searchRequest.toLowerCase()
       return (
-        ruTitleToLowerCase.includes(resultSearchRequest) ||
-        enTitleToLowerCase.includes(resultSearchRequest)
+        movie.nameRU.toLowerCase().includes(searchRequest.toLowerCase()) ||
+        movie.nameEN.toLowerCase().includes(searchRequest.toLowerCase())
       )
     })
     return filteredMoviesbyRequest
   }
 
+  // фильтрация по длительности
   const filterMoviesbyDuration = () => {
     return filterMoviesbyRequest().filter(
       (movie) => movie.duration <= SHORT_FILM_DURATION,

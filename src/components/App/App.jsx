@@ -200,8 +200,11 @@ function App() {
                   component={SavedMovies}
                   isLoggedIn={isLoggedIn}
                   token={token}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
                   likedMovies={likedMovies}
                   searchRequest={searchRequest}
+                  setSearchRequest={setSearchRequest}
                   handleInputChange={handleInputChange}
                   deleteCard={deleteCard}
                   savedMovies={savedMovies}

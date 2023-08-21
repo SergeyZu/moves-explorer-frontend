@@ -3,38 +3,71 @@ import './SavedMovies.css'
 import Header from '../Header/Header'
 import SearchForm from '../SearchForm/SearchForm'
 import SavedMoviesCardList from '../SavedMoviesCardList/SavedMoviesCardList'
-// import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Footer from '../Footer/Footer'
 import { getMovies } from '../../utils/MainApi'
+import filterMovies from '../../utils/filterMovies'
 
 function SavedMovies({
   isLoggedIn,
   token,
   isLoading,
   likedMovies,
-  searchRequest,
-  handleInputChange,
-  handleSearchFormSubmit,
+  setIsLoading,
+  // searchRequest,
+
+  // handleInputChange,
+  // handleSearchFormSubmit,
   deleteCard,
   savedMovies,
   setSavedMovies,
 }) {
   const [isShortFilm, setIsShortFilm] = useState(false) // состояние чекбокса короткометражек
+  const [searchRequest, setSearchRequest] = useState('')
+  const [allSavedMovies, setAllSavedMovies] = useState([])
 
+  const handleInputChange = (request) => {
+    setSearchRequest(request.target.value)
+  }
+
+  // const getSavedMovies = () => {
+  //   setIsLoading(true)
+
+  //   getMovies(token)
+  //     .then((movies) => {
+  //       return filterMovies(movies, searchRequest, isShortFilm)
+  //     })
+  //     .then((filteredMovies) => {
+  //       setSavedMovies(filteredMovies)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  //     .finally(() => {
+  //       setIsLoading(false)
+  //     })
+  // }
   const getSavedMovies = async () => {
+    // setIsLoading(true)
     try {
       const savedMovies = await getMovies(token)
       if (savedMovies) {
+        // return filterMovies(savedMovies, searchRequest, isShortFilm)
         setSavedMovies(savedMovies)
       }
     } catch (err) {
       console.log(err)
     }
+    // setIsLoading(false)
   }
 
   useEffect(() => {
     isLoggedIn && getSavedMovies()
   }, [isLoggedIn])
+
+  const handleSearchFormSubmit = (evt) => {
+    evt.preventDefault()
+    return filterMovies(savedMovies, searchRequest, isShortFilm)
+  }
 
   return (
     <>

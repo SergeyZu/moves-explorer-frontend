@@ -14,6 +14,9 @@ function Profile({
 }) {
   const currentUser = useContext(CurrentUserContext)
 
+
+  const [isEditPushed, setisEditPushed] = useState(false)
+
   const { form, errors, hadleChange, isFormValid } = useForm({
     name: currentUser.user.name,
     email: currentUser.user.email,
@@ -22,12 +25,12 @@ function Profile({
   const handleSubmit = (evt) => {
     evt.preventDefault()
     updateUserInfo(form)
+    setisEditPushed(false)
   }
 
-  const [isEditPushed, setisEditPushed] = useState(false)
 
   const handleEditButtonClick = () => {
-    setisEditPushed({ isEditPushed: true })
+    setisEditPushed(true)
   }
 
   return (
@@ -113,11 +116,12 @@ function Profile({
                 </button>
               )}
 
-              <span className='profile__span_success'>
-                {profileSuccessMessage}
-              </span>
             </form>
           )}
+
+          <span className='profile__span_success'>
+            {profileSuccessMessage}
+          </span>
         </section>
       </main>
     </>

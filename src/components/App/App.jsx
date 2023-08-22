@@ -13,10 +13,11 @@ import Login from '../Login/Login'
 import PageNotFound from '../PageNotFound/PageNotFound'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import Preloader from '../Preloader/Preloader'
+import { getMovies } from '../../utils/MainApi'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(null)
   const [token, setToken] = useState('')
   const [currentUser, setCurrentUser] = useState({
     name: '',
@@ -139,8 +140,8 @@ function App() {
         },
         token,
       )
-      setLikedMovies([...likedMovies, likedMovieCard])
-      localStorage.setItem('likedMovies', JSON.stringify(likedMovies))
+        setSavedMovies([...savedMovies, likedMovieCard])
+        localStorage.setItem('savedMovies', JSON.stringify([...savedMovies, likedMovieCard]))
     } catch (err) {
       console.log(err)
     }
@@ -164,6 +165,25 @@ function App() {
       console.log(error)
     }
   }
+
+  const getSavedMovies = async () => {
+    // setIsLoading(true)
+    try {
+      const savedMovies = await getMovies(token)
+      if (savedMovies) {
+        setSavedMovies(savedMovies)
+      }
+    } catch (err) {
+      console.log(err)
+    }
+    // setIsLoading(false)
+  }
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      getSavedMovies();
+    }
+  }, [isLoggedIn])
 
   return (
     <div className='app'>

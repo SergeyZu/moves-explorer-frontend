@@ -19,8 +19,8 @@ function Movies({
   isLoggedIn,
   isLoading,
   setIsLoading,
-  searchRequest,
-  setSearchRequest,
+  //searchRequest,
+  //setSearchRequest,
   // handleInputChange,
   createCard,
   deleteCard,
@@ -28,11 +28,15 @@ function Movies({
   setSavedMovies,
 }) {
   const [foundMovies, setFoundMovies] = useState([]) // массив фильмов по запросу
-  // const [searchRequest, setSearchRequest] = useState('')
+  const [searchRequest, setSearchRequest] = useState(localStorage.getItem('searchRequest') || '')
   const [isShortFilm, setIsShortFilm] = useState(false) // состояние чекбокса короткометражек
   const [requestError, setRequestError] = useState('')
   const [moviesNotFoundMessage, setMoviesNotFoundMessage] = useState('')
-  const allMovies = JSON.parse(localStorage.getItem('allMovies'))
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
+
+  //const allMovies = JSON.parse(localStorage.getItem('allMovies'))
+  
 
   const handleInputChange = (request) => {
     setSearchRequest(request.target.value)
@@ -64,39 +68,24 @@ function Movies({
   // количество отрисовываемых карточек
   localStorage.setItem('renderedCardQty', renderedCardQty)
 
-  // состояние переключателя "Короткометражки"
-  // localStorage.setItem('isShortFilm', isFilterOn)
-  localStorage.setItem('isShortFilm', isShortFilm)
 
   // обработчик отправки формы поиска
   const handleSearchFormSubmit = (evt) => {
     evt.preventDefault()
-    !searchRequest
-      ? setRequestError('Нужно ввести ключевое слово')
-      : getMovies()
+    getMovies();
   }
 
-  // // обработчик отправки формы поиска
-  // const handleSearchFormSubmit = (evt) => {
-  //   evt.preventDefault()
-  //   handleRequest()
-  //   !searchRequest
-  //     ? setRequestError('Нужно ввести ключевое слово')
-  //     : setRequestError('')
-  // }
 
-  // обработчик поискового запроса (в зависимости от наличия массива фильмов)
-  // function handleRequest() {
-  //   !searchRequest
-  //     ? setRequestError('Нужно ввести ключевое слово')
-  //     : getMovies()
-  // }
-
-  // получение списка фильмов с Beatfilm
   const getMovies = () => {
-    setIsLoading(true)
-
-    moviesApi
+    //setIsLoading(true)
+    if (localStorage.getItem('allMovies')) {
+      const allMovies = JSON.parse(localStorage.getItem('allMovies'));
+      const result = filterMovies(allMovies, searchRequest, isShortFilm)
+      const dataForRender = { result, searchRequest, isShortFilm }
+      localStorage.setItem('dataForRender', JSON.stringify(dataForRender))
+      setFoundMovies(result);
+    } else {
+      moviesApi
       .getAllMovies()
       .then((movies) => {
         // setAllMovies(movies)
@@ -106,45 +95,18 @@ function Movies({
       .then((filteredMovies) => {
         const dataForRender = { filteredMovies, searchRequest, isShortFilm }
         localStorage.setItem('dataForRender', JSON.stringify(dataForRender))
+        setFoundMovies(dataForRender.filteredMovies)
       })
       .catch((err) => {
         console.log(err)
       })
       .finally(() => {
-        setIsLoading(false)
+       // setIsLoading(false)
       })
+    }
   }
 
-  // получение данных для рендеринга из localStorage
   useEffect(() => {
-    const dataForRender = localStorage.getItem('dataForRender')
-    if (dataForRender) {
-      const { filteredMovies } = JSON.parse(dataForRender)
-      setFoundMovies(filteredMovies)
-      setSearchRequest(searchRequest)
-      setIsShortFilm(isShortFilm)
-    }
-  }, [])
-
-  // // обработка поискового запроса
-  // const handleSearchRequest = () => {
-  //   if (searchRequest !== '') {
-  //     localStorage.setItem('searchRequest', searchRequest)
-  //     // setFoundMovies(searchRequestHandler(searchRequest))
-  //     setFoundMovies(filterMovies(allMovies))
-  //     checkFoundMoviesLength()
-  //   }
-  // }
-
-  //// проверка массива найденных фильмов (найдено что-то или нет)
-  // const checkFilteredMoviesLength = () => {
-  //   foundMovies.length === 0
-  //     ? setMoviesNotFoundMessage('Ничего не найдено')
-  //     : setMoviesNotFoundMessage('')
-  // }
-
-  useEffect(() => {
-    if (searchRequest === '') return
     foundMovies.length === 0
       ? setMoviesNotFoundMessage('Ничего не найдено')
       : setMoviesNotFoundMessage('')
@@ -153,13 +115,9 @@ function Movies({
   // обработчик переключателя "Короткометражки"
   const filterShortMoviesHandler = () => {
     setIsShortFilm(!isShortFilm)
-    // return filterMovies(allMovies, searchRequest, isShortFilm)
-    // isShortFilm && setShortMovies(filterShortMovies(foundMovies))
-    // : setShortMovies(foundMovies)
+    localStorage.setItem('isShortFilm', !isShortFilm)
   }
-  // useEffect(() => {
-  //   filterMovies(allMovies, searchRequest, isShortFilm)
-  // }, [isShortFilm])
+
 
   // обработчик клика по кнопке [Ещё]
   const showMoreCards = () => {
@@ -167,6 +125,34 @@ function Movies({
       ? setRenderedCardQty(renderedCardQty + MAX_WIDTH_ADDED_CARD_QTY)
       : setRenderedCardQty(renderedCardQty + MIN_WIDTH_ADDED_CARD_QTY)
   }
+
+  useEffect(() => {
+    if (localStorage.getItem('allMovies')) {
+      const movies = JSON.parse(localStorage.getItem('allMovies'));
+      setMovies(movies);
+
+      if (localStorage.getItem('isShortFilm') === 'true') {
+        setFilteredMovies(movies?.filter((el) => el.duration < 40));
+      } else {
+        setFilteredMovies(movies);
+      }
+    } else {
+      getMovies();
+    }
+
+    if (localStorage.getItem('isShortFilm')) {
+      setIsShortFilm(JSON.parse(localStorage.getItem('isShortFilm', isShortFilm)))
+    }
+
+  }, []);
+
+  useEffect(() => {
+    getMovies();
+  }, [isShortFilm])
+
+  useEffect(() => {
+    localStorage.setItem('searchRequest', searchRequest)
+  }, [searchRequest])
 
   return (
     <>
@@ -189,6 +175,7 @@ function Movies({
             renderedCardQty={renderedCardQty}
             createCard={createCard}
             deleteCard={deleteCard}
+            savedMovies={savedMovies}
           />
           <button
             className={

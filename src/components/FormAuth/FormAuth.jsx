@@ -14,6 +14,7 @@ function FormAuth({
   children,
   isFormValid,
 }) {
+  
   return (
     <form className='form-auth' onSubmit={onSubmit}>
       <div className='form-auth__container'>

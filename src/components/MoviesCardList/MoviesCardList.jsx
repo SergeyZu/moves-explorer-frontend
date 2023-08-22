@@ -8,6 +8,7 @@ function MoviesCardList({
   createCard,
   deleteCard,
   renderedCardQty,
+  savedMovies
 }) {
   return (
     <section className='movies-card-list'>
@@ -27,6 +28,7 @@ function MoviesCardList({
                 movie={movie}
                 createCard={createCard}
                 deleteCard={deleteCard}
+                isSaved={savedMovies.filter((m) => m.movieId === movie.id).length > 0}
               />
             ))
         )}

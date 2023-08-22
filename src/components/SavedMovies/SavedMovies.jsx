@@ -23,7 +23,7 @@ function SavedMovies({
 }) {
   const [isShortFilm, setIsShortFilm] = useState(false) // состояние чекбокса короткометражек
   const [searchRequest, setSearchRequest] = useState('')
-  const [allSavedMovies, setAllSavedMovies] = useState([])
+  const [filteredMovies, setFilteredMovies] = useState(savedMovies || [])
 
   const handleInputChange = (request) => {
     setSearchRequest(request.target.value)
@@ -66,8 +66,31 @@ function SavedMovies({
 
   const handleSearchFormSubmit = (evt) => {
     evt.preventDefault()
-    return filterMovies(savedMovies, searchRequest, isShortFilm)
+    const result = filterMovies(savedMovies, searchRequest, isShortFilm)
+    setFilteredMovies(result);
   }
+
+
+  // обработчик переключателя "Короткометражки"
+  const filterShortMoviesHandler = () => {
+    setIsShortFilm(!isShortFilm)
+  }
+
+  
+  // const getMovies = () => {
+  // }
+  
+  // useEffect(() => {
+  //   getMovies()
+  // }, [isShortFilm])
+
+
+  useEffect(() => {
+    const result = filterMovies(savedMovies, searchRequest, isShortFilm)
+    setFilteredMovies(result);
+
+  }, [isShortFilm, savedMovies])
+
 
   return (
     <>
@@ -79,9 +102,10 @@ function SavedMovies({
             onChange={handleInputChange}
             onSubmit={handleSearchFormSubmit}
             isFilterOn={isShortFilm}
+            toggleShortFilm={filterShortMoviesHandler}
           />
           <SavedMoviesCardList
-            likedMovies={savedMovies}
+            likedMovies={filteredMovies}
             isLoading={isLoading}
             deleteCard={deleteCard}
           />

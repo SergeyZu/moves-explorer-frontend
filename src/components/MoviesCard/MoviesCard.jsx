@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './MoviesCard.css'
 import convertDuration from '../../utils/convertDuration'
@@ -11,6 +11,7 @@ function MoviesCard({
   movie,
   createCard,
   deleteCard,
+  isSaved
 }) {
   const [isLiked, setIsLiked] = useState(false)
   const location = useLocation()
@@ -18,14 +19,18 @@ function MoviesCard({
   const convertedDuration = convertDuration(duration)
 
   const likeMovie = () => {
-    setIsLiked(true)
+    //setIsLiked(true)
     createCard(movie)
   }
 
   const deleteMovie = () => {
-    setIsLiked(false)
+    //setIsLiked(false)
     deleteCard(movie)
   }
+
+  useEffect(() => {
+    setIsLiked(isSaved)
+  }, [isSaved])
 
   return (
     <>

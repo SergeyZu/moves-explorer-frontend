@@ -107,16 +107,22 @@ function Movies({
   }
 
   useEffect(() => {
-    foundMovies.length === 0
-      ? setMoviesNotFoundMessage('Ничего не найдено')
-      : setMoviesNotFoundMessage('')
-  }, [foundMovies])
+    if (foundMovies.length === 0 && isLoading === false) {
+      setMoviesNotFoundMessage('Ничего не найдено')
+    } else {
+      setMoviesNotFoundMessage('')
+    }
+  }, [foundMovies, isLoading])
 
   // обработчик переключателя "Короткометражки"
   const filterShortMoviesHandler = () => {
     setIsShortFilm(!isShortFilm)
     localStorage.setItem('isShortFilm', !isShortFilm)
   }
+
+  useEffect(() => {
+    setMoviesNotFoundMessage('')
+  }, [])
 
 
   // обработчик клика по кнопке [Ещё]

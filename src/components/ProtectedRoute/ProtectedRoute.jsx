@@ -2,11 +2,12 @@ import React from 'react'
 import { Navigate } from 'react-router-dom'
 
 function ProtectedRoute({ component: Component, ...props }) {
-  if (!props.isLoggedIn && props.isLoading === false) {
-    return <Navigate to='/' replace />
-  } else {
-   return <Component {...props} /> 
-  }
+  
+  return props.isLoggedIn ? (
+    <Component {...props} />
+  ) : (
+    <Navigate to='/' replace />
+  )
 }
 
 export default ProtectedRoute

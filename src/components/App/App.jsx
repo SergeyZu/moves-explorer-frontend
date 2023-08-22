@@ -17,7 +17,7 @@ import { getMovies } from '../../utils/MainApi'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [isLoading, setIsLoading] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
   const [token, setToken] = useState('')
   const [currentUser, setCurrentUser] = useState({
     name: '',
@@ -38,10 +38,14 @@ function App() {
   }, [])
 
   useEffect(() => {
+    if (token === null) {
+      setIsLoading(false)
+    }
+
     if (!token) {
       return
     }
-    setIsLoading(true)
+
     auth
       .getUserData(token)
       .then((user) => {
@@ -141,7 +145,7 @@ function App() {
         token,
       )
         setSavedMovies([...savedMovies, likedMovieCard])
-        localStorage.setItem('savedMovies', JSON.stringify([...savedMovies, likedMovieCard]))
+      localStorage.setItem('savedMovies', JSON.stringify([...savedMovies, likedMovieCard]))
     } catch (err) {
       console.log(err)
     }
@@ -189,7 +193,7 @@ function App() {
     <div className='app'>
       {isLoading ? (
         <div className='app-preloader'>
-          <Preloader />
+          <Preloader isLoading={isLoading}  />
         </div>
       ) : (
         <CurrentUserContext.Provider value={currentUser}>

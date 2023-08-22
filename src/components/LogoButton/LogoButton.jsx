@@ -5,7 +5,7 @@ import './LogoButton.css'
 function LogoButton() {
   return (
     <Link to='/'>
-      <button className='logo-button' />
+      <div className='logo-button' />
     </Link>
   )
 }

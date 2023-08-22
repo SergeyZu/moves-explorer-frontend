@@ -128,6 +128,14 @@
   }
 }
 
+.form-auth__error-message {
+  color: #ee3465;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 50px;
+}
+
 .form-auth__form-button {
   width: 100%;
   /* max-width: 396px; */
@@ -145,6 +153,11 @@
 }
 .form-auth__form-button:hover {
   opacity: 0.6;
+}
+.form-auth__form-button_disabled {
+  background-color: #f8f8f8;
+  color: #c2c2c2;
+  cursor: auto;
 }
 
 .form-auth__qa {

@@ -26,11 +26,20 @@
   }
 }
 
-.movies__more {
+.movies__message {
+  color: #ee3465;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  display: block;
+  text-align: center;
+}
+
+/* .movies__more {
   display: flex;
   justify-content: center;
   margin: 50px auto 80px;
-}
+} */
 
 .movies__more-button {
   display: flex;

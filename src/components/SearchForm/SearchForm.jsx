@@ -1,15 +1,34 @@
 import './SearchForm.css'
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 
-function SearchForm() {
+function SearchForm({
+  searchRequest,
+  onChange,
+  onSubmit,
+  isFilterOn,
+  // setIsFilterOn,
+  toggleShortFilm,
+  requestError,
+}) {
   return (
-    <div className='search-form'>
+    <form className='search-form' onSubmit={onSubmit}>
       <div className='search-form__row'>
-        <input className='search-form__input' type='text' placeholder='Фильм' />
+        <input
+          className='search-form__input'
+          type='text'
+          placeholder='Фильм'
+          value={searchRequest}
+          onChange={onChange}
+        />
         <button className='search-form__find-button' />
       </div>
-      <FilterCheckbox />
-    </div>
+      {/* <FilterCheckbox isFilterOn={isFilterOn} setIsFilterOn={setIsFilterOn} /> */}
+      <FilterCheckbox
+        isFilterOn={isFilterOn}
+        toggleShortFilm={toggleShortFilm}
+      />
+      <span className='search-form__error'>{requestError}</span>
+    </form>
   )
 }
 

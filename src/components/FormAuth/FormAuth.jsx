@@ -9,10 +9,14 @@ function FormAuth({
   question,
   linkPath,
   linkText,
+  onSubmit,
+  errorMessage,
   children,
+  isFormValid,
 }) {
+  
   return (
-    <section className='form-auth'>
+    <form className='form-auth' onSubmit={onSubmit}>
       <div className='form-auth__container'>
         <div className='form-auth__box'>
           <div className='form-auth__logo'>
@@ -23,7 +27,19 @@ function FormAuth({
         </div>
       </div>
       <div className='form-auth__form-footer'>
-        <button className='form-auth__form-button'>{buttonText}</button>
+        <span className='form-auth__error-message'>{errorMessage}</span>
+        {isFormValid ? (
+          <button className='form-auth__form-button'>{buttonText}</button>
+        ) : (
+          <button
+            className='form-auth__form-button
+          form-auth__form-button_disabled'
+            disabled
+          >
+            {buttonText}
+          </button>
+        )}
+
         <div className='form-auth__qa'>
           <p className='form-auth__question'>{question}</p>
           <Link to={linkPath} className='form-auth__link'>
@@ -31,7 +47,7 @@ function FormAuth({
           </Link>
         </div>
       </div>
-    </section>
+    </form>
   )
 }
 
